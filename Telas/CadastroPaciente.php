@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<!-- Required meta tags -->
@@ -22,10 +22,10 @@
 			<a class="navbar-brand" href="Index.html">Registra Clinic Fisio</a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					<a class="nav-link" href="CadastroPaciente.html">Paciente <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="../Telas/CadastroPaciente.php">Paciente <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="CadastroUsuario.html">Funcionario <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="../Telas/CadastroUsuario.php">Funcionario <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="CadastroAtendimento.html">Atendimento <span class="sr-only">(current)</span></a>
