@@ -1,0 +1,60 @@
+html, body{
+  width: 100%;
+  height: 100%;
+  margin:  0;
+  padding: 0;
+
+}
+
+form{
+  width: 100%;
+  height: 100%;
+}
+
+fieldset{
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.fw{
+  font-weight: 600;
+}
+
+.mini-submenu{
+  display:none;  
+  background-color: rgba(0, 0, 0, 0);  
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  padding: 9px;  
+  /*position: relative;*/
+  width: 42px;
+
+}
+
+.mini-submenu:hover{
+  cursor: pointer;
+}
+
+.mini-submenu .icon-bar {
+  border-radius: 1px;
+  display: block;
+  height: 2px;
+  width: 22px;
+  margin-top: 3px;
+}
+
+.mini-submenu .icon-bar {
+  background-color: #000;
+}
+
+#slide-submenu{
+  background: rgba(0, 0, 0, 0.45);
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
