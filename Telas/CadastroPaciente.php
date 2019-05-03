@@ -25,7 +25,7 @@
 					<a class="nav-link" href="../Telas/CadastroPaciente.php">Paciente <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="../Telas/CadastroUsuario.php">Funcionario <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="../Telas/CadastroUsuario.php">Usuário<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="CadastroAtendimento.html">Atendimento <span class="sr-only">(current)</span></a>

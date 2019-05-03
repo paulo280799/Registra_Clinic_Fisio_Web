@@ -15,9 +15,9 @@ if(isset($_POST['nome'])){
    $user->setValor('SENHA',$senhaUser);
 
    if($user->inserir($user)){
-   	 echo "<script>alert('Inserido com Sucesso!!'); window.location = '../Telas/CadastroUsuario.php';</script>";
+   	 echo "<script>alert('USUARIO REGISTRADO COM SUCESSO!!'); window.location = '../Telas/CadastroUsuario.php';</script>";
    }else{
-   	 echo "<script>alert('Erro na Inserção!!')</script>";
+   	 echo "<script>alert('ERRO NA INSERÇÃO DO USUARIO!!')</script>";
    }
 
 

@@ -2,20 +2,19 @@
 
 include_once '../Usuario/Usuario.php';
 
-if(isset($_GET['id'])){
+if(isset($_POST['id'])){
 
-   $id = $_GET['id'];
+   $id = $_POST['id'];
 
    $user = new Usuario();
 
    $user->valorpk = $id;
 
    if($user->excluir($user)){
-   	 echo "<script>Confirm('DESEJA EXCLUIR O USUARIO SELECIONADO?'){}; window.location = '../Telas/CadastroUsuario.php';</script>";
+   	echo json_encode(array('resposta' => true));
    }else{
-   	 echo "<script>alert('Erro na Inserção!!')</script>";
+   	echo json_encode(array('resposta' => false));
    }
-
 
 }
 

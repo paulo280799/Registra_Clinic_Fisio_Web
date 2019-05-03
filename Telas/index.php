@@ -82,9 +82,6 @@
 		min-width: 140px;
         outline: none !important;
     }
-	.modal-login .btn:hover, .modal-login .btn:focus {
-		background: #179b81;
-	}
 	.modal-login .hint-text {
 		text-align: center;
 		padding-top: 5px;

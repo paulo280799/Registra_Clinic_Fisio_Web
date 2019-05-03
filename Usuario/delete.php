@@ -3,13 +3,13 @@ require 'banco.php';
 
 $id = 0;
 
-if(!empty($_GET['id']))
-{
+if(!empty($_GET['id'])){
+
     $id = $_REQUEST['id'];
 }
 
-if(!empty($_POST))
-{
+if(!empty($_POST)){
+    
     $id = $_POST['id'];
 
     //Delete do banco:
