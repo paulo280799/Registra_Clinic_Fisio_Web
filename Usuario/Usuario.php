@@ -1,13 +1,13 @@
 <?php
 
-require_once 'Dao/Banco.php';
+require_once 'Util/daoGenerico.php';
 
 /**
  *
  * @author Felipe
  */
 
-class Usuario extends Banco {
+class Usuario extends daoGenerico {
     
     public function __construct($campos = array()){
         parent::__construct();

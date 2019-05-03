@@ -13,16 +13,15 @@ class ClassConexao{
 
 	function conectar(){
 	
-			try {
-				$con = new PDO("mysql:host=localhost;dbname=fisio",$this->user,$this->password);
-				$this->conexao = $con;
-				return true;
+		try {
+			$this->conexao = new PDO("mysql:host=localhost;dbname=fisio;charset=utf8",$this->user,$this->password);	
+			return true;
 
-			}catch (PDOException $e){
+		}catch (PDOException $e){
 				$this->error = $e->getMessage();
 				return false;
 
-			}
+		}
 	}
 		
 }

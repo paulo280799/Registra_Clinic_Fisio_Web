@@ -28,27 +28,24 @@
 
 		//Validação
 		$validacao = true;
-		if (empty($nome))
-                {
-                    $nomeErro = 'Por favor digite o nome!';
-                    $validacao = false;
-                }
+        
+		if (empty($nome)){
+             $nomeErro = 'Por favor digite o nome!';
+             $validacao = false;
+        }
 
-		if (empty($email))
-                {
-                    $emailErro = 'Por favor digite o email!';
-                    $validacao = false;
-		}
-                else if ( !filter_var($email,FILTER_VALIDATE_EMAIL) )
-                {
-                    $emailErro = 'Por favor digite um email válido!';
-                    $validacao = false;
+		if (empty($email)){
+              $emailErro = 'Por favor digite o email!';
+              $validacao = false;
+
+		}else if (!filter_var($email,FILTER_VALIDATE_EMAIL) ){
+              $emailErro = 'Por favor digite um email válido!';
+              $validacao = false;
 		}
 
-                if (empty($senha))
-                {
-                    $senhaErro = 'Por favor preenche o campo!';
-                    $validacao = false;
+        if (empty($senha)){
+               $senhaErro = 'Por favor preenche o campo!';
+               $validacao = false;
 		}
 
 		// update data
