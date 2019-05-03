@@ -17,17 +17,17 @@ class daoGenerico{
 
 
   public function __construct(){
-    try{
-      $this->pdo = new PDO("mysql:host=localhost;dbname=fisio;charset=utf8",'root','');
-      $this->error = true;
-    }catch(PDOException $e){
+      try{
+        $this->pdo = new PDO("mysql:host=localhost;dbname=fisio;charset=utf8",'root','');
+      }catch(PDOException $e){
+        $this->error = true;
         $this->error($e->getMessage());
-    } 
+      } 
   }
 
 
    function inserir($objeto){
-     if($this->error != false){  
+     if($this->error != true){  
 
          $sql = "INSERT INTO ".$objeto->tabela." (";
          for($i=0; $i<count($objeto->campos); $i++){
@@ -70,10 +70,13 @@ class daoGenerico{
            endforeach;   
       
           //EXECUTA A INSTRUÇÃO E CAPTURA O RETORNO  
-          return $stm->execute();  
+         $stm->execute();
+
+         return true;  
              
         }catch(PDOException $e){  
            $this->error($e->getMessage());  
+           return false;
         }   
      }
 
@@ -125,7 +128,7 @@ class daoGenerico{
 
 
     public function excluir($objeto){
-      if($this->error != false){  
+      if($this->error != true){  
           $sql = "DELETE FROM ".$objeto->tabela;           
           $sql .= " WHERE ".$objeto->campopk." = ";
           $sql .= is_numeric($objeto->valorpk) ? '?' : '?';
@@ -155,8 +158,8 @@ class daoGenerico{
 
 
 
-    public function getDados($sql){
-     if($this->error != false){    
+    public function getDados($sql,$fetchAll){
+     if($this->error != true){    
         try {   
       
           //PREPARAR INSTRUÇÃO PARA PDO    
@@ -178,7 +181,13 @@ class daoGenerico{
           $stm->execute();   
       
           //RETORNA QUANTIDADE DE LINHAS ENCONTRADAS NO BANCO 
-          return $stm->fetchAll(PDO::FETCH_OBJ);   
+          if($fetchAll):   
+            $dados = $stm->fetchAll(PDO::FETCH_OBJ);   
+          else:  
+            $dados = $stm->fetch(PDO::FETCH_OBJ);   
+          endif;  
+      
+          return $dados;   
              
         }catch (PDOException $e) {   
           echo "Erro: " . $e->getMessage();   

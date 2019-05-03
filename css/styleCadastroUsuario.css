@@ -1,0 +1,41 @@
+html, body{
+  width: 100%;
+  height: 100%;
+  margin:  0;
+  padding: 0;
+}
+
+body{
+   font-family: 'Abel', sans-serif;
+}
+
+form{
+  width: 100%;
+  height: 100%;
+}
+
+/*--- FORM CADATRO USUARIO --- */
+.container{
+  transform: translateY(70px);
+  margin: 0 auto;
+  padding: 5px;
+  width: 810px;
+  transition: .3s;
+}
+
+.card{
+   box-shadow: 3px 3px 3px silver;
+   width: 800px;
+}
+
+.card-header{
+   text-align: center;
+   background-color: rgba(0,0,0,0.1);
+}
+
+#btnSalvarUsuario{
+   padding-right: 50px;
+   padding-left: 30px;
+}
+/*--- FIM FORM CADATRO USUARIO --- */
+

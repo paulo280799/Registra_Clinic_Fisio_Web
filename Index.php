@@ -1,11 +1,5 @@
 <?php  
   include ("Banco/ClassConexao.php");
-
-  $con = new ClassConexao();
-
-  if($con->conexao == null){
-    echo $con->error;
-  }
  
 ?>
 <!DOCTYPE html>
@@ -13,7 +7,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css.style.css">
@@ -45,35 +39,35 @@
   </nav>
 
 <table class="table table-striped">
-  <caption>Lista de pacientes a serem atendidos</caption>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Horario</th>
-      <th scope="col">Atendimento</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>10:30</td>
-      <td>CardioRespiratório</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>11:00</td>
-      <td>Terapia Aquatica</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>11:30</td>
-      <td>CardioRespiratório</td>
-    </tr>
-  </tbody>
+    <caption>Lista de pacientes a serem atendidos</caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Horario</th>
+        <th scope="col">Atendimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>10:30</td>
+        <td>CardioRespiratório</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>11:00</td>
+        <td>Terapia Aquatica</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>11:30</td>
+        <td>CardioRespiratório</td>
+      </tr>
+    </tbody>
 </table>
 
 <!-- Optional JavaScript -->

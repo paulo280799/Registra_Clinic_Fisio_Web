@@ -2,25 +2,31 @@
 	
 class ClassConexao{
 
-	public $conexao;
-	public $error;
-	private $user = 'root';
-	private $password = '';
+	private static $conexao;
+	public static $error;
+	private static $user = 'root';
+	private static $password = '';
 
     function __construct(){  		
        $this->conectar(); 	
 	} 
 
-	function conectar(){
+	public static function conectar(){
 	
 		try {
-			$this->conexao = new PDO("mysql:host=localhost;dbname=fisio;charset=utf8",$this->user,$this->password);	
-			return true;
+			self::$conexao = new PDO("mysql:host=localhost;dbname=fisio;charset=utf8",self::$user,self::$password);	
+			return self::$conexao;
 
 		}catch (PDOException $e){
-				$this->error = $e->getMessage();
-				return false;
+			self::$error = $e->getMessage();
+			return null;
 
+		}
+	}
+
+	public static function desconectar(){
+		if(self::$conexao != null){
+			self::$conexao = null;
 		}
 	}
 		
