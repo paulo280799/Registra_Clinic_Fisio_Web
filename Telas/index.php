@@ -1,176 +1,97 @@
+<?php  
+ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
+session_start();
+
+if(isset($_SESSION['SESSION_ID_ALUNO'])){
+  
+    $id = $_SESSION['SESSION_ID_ALUNO'];
+    $tipo = 'Aluno';
+}else if(isset($_SESSION['SESSION_ID_PROF'])){
+  
+    $id = $_SESSION['SESSION_ID_PROF'];
+    $tipo = 'Professor';
+}else if(isset($_SESSION['SESSION_ID_FUNC'])){
+   
+    $id = $_SESSION['SESSION_ID_FUNC'];
+    $tipo = 'Funcionario';
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap Flat Modal Login Modal Form</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<style type="text/css">
-    body {
-		font-family: 'Varela Round', sans-serif;
-	}
-	.modal{
-		background-color: silver;
-	}
-	.modal-login {
-		width: 350px;
-	}
-	.modal-login .modal-content {
-		padding: 20px;
-		border-radius: 5px;
-		border: none;
-	}
-	.modal-login .modal-header {
-		border-bottom: none;
-        position: relative;
-		justify-content: center;
-	}
-	.modal-login .close {
-        position: absolute;
-		top: -10px;
-		right: -10px;
-	}
-	.modal-login h4 {
-		color: #636363;
-		text-align: center;
-		font-size: 26px;
-		margin-top: 0;
-	}
-	.modal-login .modal-content {
-		color: #999;
-		border-radius: 5px;
-    	margin-bottom: 15px;
-        background: #fff;
-		border: 1px solid #f3f3f3;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 25px;
-    }
-	.modal-login .form-group {
-		margin-bottom: 20px;
-	}
-	.modal-login label {
-		font-weight: normal;
-		font-size: 13px;
-	}
-	.modal-login .form-control {
-		min-height: 38px;
-		padding-left: 5px;
-		box-shadow: none !important;
-		border-width: 0 0 1px 0;
-		border-radius: 0;
-	}
-	.modal-login .form-control:focus {
-		border-color: #ccc;
-	}
-	.modal-login .input-group-addon {
-		max-width: 39px;
-		text-align: center;
-		background: none;
-		border-width: 0 0 1px 0;
-		padding-left: 5px;
-		border-radius: 0;
-	}
-    .modal-login .btn {        
-        font-size: 16px;
-        font-weight: bold;
-		background: #0B610B;
-        border-radius: 3px;
-		border: none;
-		min-width: 140px;
-        outline: none !important;
-    }
-	.modal-login .hint-text {
-		text-align: center;
-		padding-top: 5px;
-		font-size: 13px;
-	}
-	.modal-login .modal-footer {
-		color: #999;
-		border-color: #dee4e7;
-		text-align: center;
-		margin: 0 -25px -25px;
-		font-size: 13px;
-		justify-content: center;
-	}
-	.modal-login a {
-		color: #fff;
-		text-decoration: underline;
-	}
-	.modal-login a:hover {
-		text-decoration: none;
-	}
-	.modal-login a {
-		color: #19aa8d;
-		text-decoration: none;
-	}	
-	.modal-login a:hover {
-		text-decoration: underline;
-	}
-	.modal-login .fa {
-		font-size: 21px;
-	}
-	.trigger-btn {
-		display: inline-block;
-		margin: 100px auto;
-	}
-</style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css.style.css">
+    <title>Registra CLinic Fisio</title>
 </head>
 <body>
-<div class="text-center">
+  
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="Index.html">Registra Clinic Fisio</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="Telas/CadastroPaciente.php">Paciente<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="Telas/CadastroPaciente.php">Funcionario<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Triagem <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Atendimento <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="../Login/Logout.php?id=<?php echo $id;?>&tipo=<?php echo $tipo;?>">Sair<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+  </nav>
 
-</div>
+<table class="table table-striped">
+    <caption>Lista de pacientes a serem atendidos</caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Horario</th>
+        <th scope="col">Atendimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>10:30</td>
+        <td>CardioRespiratório</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>11:00</td>
+        <td>Terapia Aquatica</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>11:30</td>
+        <td>CardioRespiratório</td>
+      </tr>
+    </tbody>
+</table>
 
-<!-- Modal HTML -->
-<div id="ModalLogin" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
-	<div class="modal-dialog modal-login">
-		<div class="modal-content">
-			<div class="modal-header">				
-				<h4 class="modal-title">LOGIN</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<form action="#" method="post">
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" class="form-control" name="username" placeholder="Login" required="required">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input type="password" class="form-control" name="password" placeholder="Senha" required="required">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-users"></i></span>
-							<select class="form-control" required>
-								<option>-------</option>
-								<option>Aluno</option>
-								<option>Professor</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block btn-lg">Entrar</button>
-					</div>
-					<p class="hint-text"><a href="#">Esqueceu sua Senha?</a></p>
-				</form>
-			</div>
-			<div class="modal-footer">Don't have an account? <a href="#">Create one</a></div>
-		</div>
-	</div>
-</div>     
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#ModalLogin').modal('show');
-	});
-</script>
-</html> 
+</html>

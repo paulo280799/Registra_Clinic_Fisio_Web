@@ -1,79 +1,118 @@
-<?php  
-  include ("Banco/ClassConexao.php");
- 
+<?php
+if(isset($_SESSION)){
+
+  header('Location: ../Telas/Index.php'); 
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css.style.css">
-    <title>Registra CLinic Fisio</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Flat Modal Login Modal Form</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/styleModalLogin.css">
 </head>
 <body>
-  
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="Index.html">Registra Clinic Fisio</a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="Telas/CadastroPaciente.php">Paciente<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="Telas/CadastroPaciente.php">Funcionario<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Triagem <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Atendimento <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-    </div>
-  </nav>
+    
 
-<table class="table table-striped">
-    <caption>Lista de pacientes a serem atendidos</caption>
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Horario</th>
-        <th scope="col">Atendimento</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>10:30</td>
-        <td>CardioRespiratório</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>11:00</td>
-        <td>Terapia Aquatica</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>11:30</td>
-        <td>CardioRespiratório</td>
-      </tr>
-    </tbody>
-</table>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Modal HTML -->
+<div id="ModalLogin" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+             <div class="alert alert-danger" id="alert" role="alert" style="text-align:center;padding:7px;display:none;margin:-5px;">
+                 Usuário não encontrado..  
+              </div> 
+			<div class="modal-header">	        
+				<h4 class="modal-title">LOGIN</h4>
+			</div>
+			<div class="modal-body">
+				<form id="form">
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" name="login" placeholder="Login" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input type="password" class="form-control" name="senha" placeholder="Senha" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-users"></i></span>
+							<select class="form-control" id="select" name="usuario" required>
+								<option value="">-----</option>
+								<option value="Aluno">Aluno</option>
+								<option value="Professor">Professor</option>
+                                <option value="Funcionario">Funcionario</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="button" class="btn" id="btnEntrar">Entrar</button>
+					</div>
+					<p class="hint-text"><a href="#">Esqueceu sua Senha?</a></p>
+				</form>
+			</div>
+            <div class="modal-footer"><input type="checkbox" id="check"><a><label for="check">Lembrar Senha</label></a></div>
+		</div>
+	</div>
+</div>     
 </body>
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#ModalLogin').modal('show');
+        
+        $('#btnEntrar').click(function(){
+            
+            var form = $('#form').serialize();
+            
+          if($('#select').val() == ''){
+              alert('ESCOLHA O USUARIO DESEJADO!');
+          }else{
+                   
+            $.ajax({
+               url:'Login/Autenticar.php',
+               type:'POST',
+               datatype: 'JSON',
+               data:form,
+               success: function(response){
+                   
+                  if(response.status){
+                      window.location = 'Telas/';  
+                      console.log(response);
+                  }else{
+                      $('#alert').fadeIn(1000);
+                  }
+                
+               },error: function(error){
+                   console.log('Erro na Requisição');
+               }
+           }); 
+              
+          }    
+       
+        });
+        
+        
+        $("input[name='login'],input[name='senha']").focus(function(){
+           $('#alert').fadeOut(999); 
+        });
+        
+    
+        
+	});
+</script>
+</html> 
+
+

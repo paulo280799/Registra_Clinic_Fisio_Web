@@ -4,7 +4,7 @@ class daoGenerico{
 
   public $tabela;
   private $campos = array();
-  private $condicoes = array();
+  public $condicoes = array();
   private $pdo;
   public $campopk;
   public $valorpk = null;
@@ -178,17 +178,19 @@ class daoGenerico{
           endif;   
     
           //EXECUTA A INSTRUÇÃO   
-          $stm->execute();   
-      
-          //RETORNA QUANTIDADE DE LINHAS ENCONTRADAS NO BANCO 
-          if($fetchAll):   
-            $dados = $stm->fetchAll(PDO::FETCH_OBJ);   
-          else:  
-            $dados = $stm->fetch(PDO::FETCH_OBJ);   
-          endif;  
-      
-          return $dados;   
-             
+          if($stm->execute()){
+              //RETORNA QUANTIDADE DE LINHAS ENCONTRADAS NO BANCO 
+              if($fetchAll):   
+                $dados = $stm->fetchAll(PDO::FETCH_OBJ);   
+              else:  
+                $dados = $stm->fetch(PDO::FETCH_OBJ);   
+              endif;  
+
+              return $dados;   
+          }else{
+              return false;
+          }
+           
         }catch (PDOException $e) {   
           echo "Erro: " . $e->getMessage();   
         }
