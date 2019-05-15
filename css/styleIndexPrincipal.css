@@ -1,0 +1,73 @@
+/*----- NAV MENU -----*/
+#nav-menu{
+    background: #3cb371;
+    /*background: white;*/
+    border-bottom: 1px solid green;
+}
+
+#barra-menu{
+    background: white;
+}
+
+#nome-logo{
+    color: white;
+}
+
+.logo-menu{
+    width: 40px;
+    height: 55px;
+    margin-right: 8px;
+}
+
+#menu-opcoes{
+    margin: 0 auto;
+}
+
+#menu-opcoes #items-li #items-a{
+    margin-left: 40px;
+    color: white;
+}
+
+#menu-opcoes #items-li #items-a:hover{
+    background: green;
+    border-radius: 14px;
+    transition: .5s;
+}
+
+#menu-opcoes #items-li:last-child a i{
+     padding-left: 8px;
+}
+
+#menu-logado {
+    margin: 0 auto;
+}
+
+#menu-logado .nav-item{
+    color: white;
+    padding-left: 10px;
+}
+
+#menu-logado .nav-item span i{
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.container{
+    padding-top: 50px;
+}
+
+.container-table{
+    background: white;
+    padding: 20px;
+}
+
+#nav-menu .collapse:nth-child(2){
+    width: 60%;
+}
+
+#nav-menu .collapse:nth-child(3){
+    width: 5%;
+    padding: 0;
+}
+
+/*----- NAV MENU -----*/

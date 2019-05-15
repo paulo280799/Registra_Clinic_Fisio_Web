@@ -1,131 +1,176 @@
-  body {
-		font-family: 'Varela Round', sans-serif;
-	}
-	.modal{
-		background-color: white; 
-	}
-    .modal-body{
-      transition: .7s;
-    }
+body {
+    font-family: 'Varela Round', sans-serif;
+}
+.modal{
+    background-color: white; 
+    /*background-color: #50c878;*/
+    background: #3cb371;
+}
+.modal-body{
+  transition: .7s;
+    position: relative;
+}
+.modal-content{
+    transform: translateY(50px); 
+    transition: .7s;
+}
+.modal-login {
+    width: 350px;
+}
+.modal-login .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+.modal-login .modal-header {
+    position: relative;
+    text-align: center;
+}
+
+.header-pos{
+  padding-right: 20px;
+  display: block;
+}
+
+.header-pos:nth-child(2){
+    margin: 0 auto;
+    width: 33%;
+}
+
+.header-pos:nth-child(2) h4{
+    position: relative;
+}
+
+.header-pos:nth-child(1){
+    border: 1px solid #3cb371;
+    border-radius: 15px;
+    width: 20%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+.header-pos:nth-child(1) img{
+    position: relative;
+    opacity: 0.7;
+}
+
+.modal-login .close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+.modal-login h4 {
+    color: #636363;
+    text-align: center;
+    font-size: 26px;
+    margin-top: 0;
+}
+.modal-login .modal-content {
+    color: #999;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #fff;
+    border: 1px solid #f3f3f3;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0,.4);
+    padding: 25px;
+}
+.modal-login .form-group {
+    margin-bottom: 20px;
+}
+.modal-login label {
+    font-weight: normal;
+    font-size: 13px;
+}
+.modal-login .form-control {
+    min-height: 38px;
+    padding-left: 5px;
+    box-shadow: none !important;
+    border-width: 0 0 1px 0;
+    border-radius: 0;
+}
+.modal-login .form-control:focus {
+    border-color: #ccc;
+}
+.modal-login .input-group-addon {
+    max-width: 39px;
+    text-align: center;
+    background: none;
+    border-width: 0 0 1px 0;
+    padding-left: 5px;
+    border-radius: 0;
+}
+.modal-login .btn {        
+    font-size: 16px;
+    font-weight: bold; 
+    color: #0B610B;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #0B610B;
+    min-width: 100%;
+    outline: none !important;
+    z-index: 8;
+}
+
+.modal-login .btn:hover{
+    background: #3cb371;
+    color: white;
+    border: 1px solid white;
+    transition: .5s;
+}
+.modal-login .hint-text {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 13px;
+}
+.modal-login .modal-footer {
+    color: #999;
+    border-color: #dee4e7;
+    text-align: center;
+    margin: 0 -25px -25px;
+    font-size: 13px;
+    justify-content: center;
+}
+.modal-login a {
+    color: #fff;
+    text-decoration: underline;
+}
+.modal-login a:hover {
+    text-decoration: none;
+}
+.modal-login a {
+    color: #19aa8d;
+    text-decoration: none;
+}	
+.modal-login a:hover {
+    text-decoration: underline;
+}
+.modal-login .fa {
+    font-size: 21px;
+}
+.trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+}
+
+#select,#select > option{
+    cursor: pointer;
+}
+
+.modal-footer a{
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.logo{
+    width: 30px;
+    left: 28%;
+    align-items: center;
+}
+
+/* -------------- RESPONSIVIDADE  -------------*/
+@media (max-width: 768px){
     .modal-content{
-        transform: translateY(50px); 
-        transition: .7s;
+        padding-left: 100px;
     }
-	.modal-login {
-		width: 350px;
-	}
-	.modal-login .modal-content {
-		padding: 20px;
-		border-radius: 5px;
-		border: none;
-	}
-	.modal-login .modal-header {
-		border-bottom: none;
-        position: relative;
-		justify-content: center;
-	}
-	.modal-login .close {
-        position: absolute;
-		top: -10px;
-		right: -10px;
-	}
-	.modal-login h4 {
-		color: #636363;
-		text-align: center;
-		font-size: 26px;
-		margin-top: 0;
-	}
-	.modal-login .modal-content {
-		color: #999;
-		border-radius: 5px;
-    	margin-bottom: 15px;
-        background: #fff;
-		border: 1px solid #f3f3f3;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 25px;
-    }
-	.modal-login .form-group {
-		margin-bottom: 20px;
-	}
-	.modal-login label {
-		font-weight: normal;
-		font-size: 13px;
-	}
-	.modal-login .form-control {
-		min-height: 38px;
-		padding-left: 5px;
-		box-shadow: none !important;
-		border-width: 0 0 1px 0;
-		border-radius: 0;
-	}
-	.modal-login .form-control:focus {
-		border-color: #ccc;
-	}
-	.modal-login .input-group-addon {
-		max-width: 39px;
-		text-align: center;
-		background: none;
-		border-width: 0 0 1px 0;
-		padding-left: 5px;
-		border-radius: 0;
-	}
-    .modal-login .btn {        
-        font-size: 16px;
-        font-weight: bold; 
-        color: #0B610B;
-		background: white;
-        border-radius: 5px;
-		border: 1px solid #0B610B;
-		min-width: 100%;
-        outline: none !important;
-    }
-    
-    .modal-login .btn:hover{
-        background: #0B610B;
-        color: white;
-        border: 1px solid white;
-        transition: .6s;
-    }
-	.modal-login .hint-text {
-		text-align: center;
-		padding-top: 5px;
-		font-size: 13px;
-	}
-	.modal-login .modal-footer {
-		color: #999;
-		border-color: #dee4e7;
-		text-align: center;
-		margin: 0 -25px -25px;
-		font-size: 13px;
-		justify-content: center;
-	}
-	.modal-login a {
-		color: #fff;
-		text-decoration: underline;
-	}
-	.modal-login a:hover {
-		text-decoration: none;
-	}
-	.modal-login a {
-		color: #19aa8d;
-		text-decoration: none;
-	}	
-	.modal-login a:hover {
-		text-decoration: underline;
-	}
-	.modal-login .fa {
-		font-size: 21px;
-	}
-	.trigger-btn {
-		display: inline-block;
-		margin: 100px auto;
-	}
-    
-    #select,#select > option{
-        cursor: pointer;
-    }
-    
-    .modal-footer a{
-        margin-left: 5px;
-        cursor: pointer;
-    }
+}
+/* -------------- RESPONSIVIDADE  -------------*/

@@ -3,90 +3,113 @@ ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../t
 session_start();
 
 if(isset($_SESSION['SESSION_ID_ALUNO'])){
-  
+    $logado = $_SESSION['SESSION_NOME_ALUNO'];
     $id = $_SESSION['SESSION_ID_ALUNO'];
     $tipo = 'Aluno';
 }else if(isset($_SESSION['SESSION_ID_PROF'])){
-  
+    $logado = $_SESSION['SESSION_NOME_PROF'];
     $id = $_SESSION['SESSION_ID_PROF'];
     $tipo = 'Professor';
 }else if(isset($_SESSION['SESSION_ID_FUNC'])){
-   
+    $logado = $_SESSION['SESSION_NOME_FUNC'];
     $id = $_SESSION['SESSION_ID_FUNC'];
     $tipo = 'Funcionario';
+}else{
+    header('location: ../Index.php');
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Required meta tags -->
+    <title>Registra CLinic Fisio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css.style.css">
-    <title>Registra CLinic Fisio</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/styleIndexPrincipal.css">
 </head>
 <body>
   
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+   <!---- MENU PRINCIPAL  ---->
+   <nav class="navbar navbar-expand-lg navbar-light" id="nav-menu">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#abrirMenuResponsivo" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" id="barra-menu">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="Index.html">Registra Clinic Fisio</a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="Telas/CadastroPaciente.php">Paciente<span class="sr-only">(current)</span></a>
+    <div class="collapse navbar-collapse" id="abrirMenuResponsivo">
+      <img src="../Imagens/logo.png" alt="logo" class="logo-menu">
+      <a class="navbar-brand" href="#" id="nome-logo">Registra Clinic Fisio</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu-opcoes">
+            <li class="nav-item active" id="items-li">
+              <a class="nav-link" href="Telas/CadastroPaciente.php" id="items-a">Paciente<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="Telas/CadastroPaciente.php">Funcionario<span class="sr-only">(current)</span></a>
+            <li class="nav-item active"  id="items-li">
+              <a class="nav-link" href="Telas/CadastroPaciente.php" id="items-a">Funcionario<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Triagem <span class="sr-only">(current)</span></a>
+            <li class="nav-item active"  id="items-li">
+              <a class="nav-link" href="#" id="items-a">Atendimento<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Atendimento <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="../Login/Logout.php?id=<?php echo $id;?>&tipo=<?php echo $tipo;?>">Sair<span class="sr-only">(current)</span></a>
+            <li class="nav-item active"  id="items-li">
+              <a class="nav-link" href="../Login/Logout.php?id=<?php echo $id;?>&tipo=<?php echo $tipo;?>" id="items-a">Sair<i class="fas fa-sign-out-alt"></i></a>
             </li>
         </ul>
     </div>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav" id="menu-logado">
+             <li class="nav-item">
+                <span>Bem Vindo |</span>
+             </li>
+             <li class="nav-item">
+                <span><?php echo explode(' ',$logado)[0];?><i class="fas fa-user"></i></span>
+             </li>
+        </ul>
+    </div>
   </nav>
-
-<table class="table table-striped">
-    <caption>Lista de pacientes a serem atendidos</caption>
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Horario</th>
-        <th scope="col">Atendimento</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>10:30</td>
-        <td>CardioRespiratório</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>11:00</td>
-        <td>Terapia Aquatica</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>11:30</td>
-        <td>CardioRespiratório</td>
-      </tr>
-    </tbody>
-</table>
+  <!---------------- FIM MENU PRINCIPAL  ------------>
+    
+<section class="container">
+  
+    <div class="container-table">
+    
+        <table class="table table-striped" id="tabelPAcientes">
+            <caption>Lista de pacientes a serem atendidos</caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Atendimento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>10:30</td>
+                <td>CardioRespiratório</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>11:00</td>
+                <td>Terapia Aquatica</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>11:30</td>
+                <td>CardioRespiratório</td>
+              </tr>
+            </tbody>
+        </table>    
+        
+        </div>
+     
+</section>
+    
+<footer class="rodape">
+</footer>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

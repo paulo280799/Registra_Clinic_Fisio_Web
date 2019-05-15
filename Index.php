@@ -10,9 +10,9 @@ if(isset($_SESSION)){
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
+<title>LOGIN</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap Flat Modal Login Modal Form</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,29 +20,33 @@ if(isset($_SESSION)){
 </head>
 <body>
     
-
 <!-- Modal HTML -->
 <div id="ModalLogin" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-login">
 		<div class="modal-content">
              <div class="alert alert-danger" id="alert" role="alert" style="text-align:center;padding:7px;display:none;margin:-5px;">
                  Usuário não encontrado..  
-              </div> 
-			<div class="modal-header">	        
-				<h4 class="modal-title">LOGIN</h4>
-			</div>
+              </div>  
+			<div class="modal-header">	
+                <div class="header-pos">
+                    <img src="Imagens/logo.png" alt="logo" class="logo">
+                </div>
+                <div class="header-pos">
+                     <h4 class="modal-title">LOGIN</h4>
+                </div>
+            </div>
 			<div class="modal-body">
 				<form id="form">
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" class="form-control" name="login" placeholder="Login" required="required">
+							<input type="text" class="form-control" name="login" placeholder="Login" required="required" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input type="password" class="form-control" name="senha" placeholder="Senha" required="required">
+							<input type="password" class="form-control" name="senha" placeholder="Senha" required="required" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
@@ -109,7 +113,6 @@ if(isset($_SESSION)){
            $('#alert').fadeOut(999); 
         });
         
-    
         
 	});
 </script>
