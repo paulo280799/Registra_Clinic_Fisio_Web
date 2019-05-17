@@ -3,12 +3,13 @@
 class daoGenerico{
 
   public $tabela;
-  private $campos = array();
+  public $campos = array();
   public $condicoes = array();
-  private $pdo;
   public $campopk;
   public $valorpk = null;
   public $error = false;
+  
+  private $pdo;
 
 
   public function error($tipoError){

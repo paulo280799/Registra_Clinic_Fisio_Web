@@ -23,10 +23,10 @@ if(isset($_SESSION)){
 <!-- Modal HTML -->
 <div id="ModalLogin" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-login">
-		<div class="modal-content">
-             <div class="alert alert-danger" id="alert" role="alert" style="text-align:center;padding:7px;display:none;margin:-5px;">
+           <div class="alert alert-danger" id="alert" role="alert" style="text-align:center;padding:7px;display:none;margin-bottom:-25px;">
                  Usuário não encontrado..  
-              </div>  
+           </div>  
+		<div class="modal-content">
 			<div class="modal-header">	
                 <div class="header-pos">
                     <img src="Imagens/logo.png" alt="logo" class="logo">

@@ -1,13 +1,16 @@
 <?php
 
-require_once '../Util/daoGenerico.php';
+require_once '../Pessoa/Pessoa.php';
 
 /**
  *
  * @author Felipe
  */
 
-class Usuario extends daoGenerico {
+class Usuario extends Pessoa {
+    
+    private $login;
+    private $senha;
     
     public function __construct($campos = array()){
         parent::__construct();
@@ -24,6 +27,23 @@ class Usuario extends daoGenerico {
         }
         
         $this->campopk="IDUSUARIO";
+    }
+    
+    
+    public function setLogin($login){
+        $this->login = $login;
+    }
+    
+    public function getLogin(){
+        return $this->login;
+    }
+    
+    public function setSenha($senha){
+        $this->senha = $senha;
+    }
+    
+    public function getSenha(){
+        return $this->senha;
     }
 }
 

@@ -1,8 +1,12 @@
 /*----- NAV MENU -----*/
+body{
+    font-family: 'Selvetica', sans-serif;
+}
 #nav-menu{
     background: #3cb371;
     /*background: white;*/
     border-bottom: 1px solid green;
+    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
 }
 
 #barra-menu{
@@ -40,11 +44,16 @@
 
 #menu-logado {
     margin: 0 auto;
+    border: 1px solid white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 6px;
+    border-radius: 5px;
 }
 
 #menu-logado .nav-item{
     color: white;
-    padding-left: 10px;
+    padding-left: 9px;
 }
 
 #menu-logado .nav-item span i{
@@ -62,7 +71,7 @@
 }
 
 #nav-menu .collapse:nth-child(2){
-    width: 60%;
+    width: 61%;
 }
 
 #nav-menu .collapse:nth-child(3){
