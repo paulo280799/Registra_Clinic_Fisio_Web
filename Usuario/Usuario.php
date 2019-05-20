@@ -9,40 +9,63 @@ require_once '../Pessoa/Pessoa.php';
 
 class Usuario extends Pessoa {
     
-    private $login;
-    private $senha;
+    private $Nome;
+    private $Login;
+    private $Senha;
+    private $Tipo;
     
-    public function __construct($campos = array()){
+    public function __construct(){
         parent::__construct();
         $this->tabela = "USUARIO";
-
-        if (sizeof($campos) <= 0){
-            $this->campos = array(
-                "LOGIN" => NULL,
-                "SENHA" => NULL
-            );
-        }else{
-            $this->campos = $campos;
-        }
         
-        $this->campopk="IDUSUARIO";
+        $this->campopk = "IDUSUARIO";
     }
     
+     function setObjeto($objeto = null){
+         if ($objeto != null){
+            $this->campos = array(
+                /*------ USUARIO -------*/
+                "NOME" => $objeto->getNome(),
+                "LOGIN" => $objeto->getLogin(),
+                "SENHA" => $objeto->getSenha(),
+                "TIPO" => $objeto->getTipo()
+                
+            );
+        }else{
+            $this->campos = array();
+        }
+    }
+    
+    public function setNome($nome){
+        $this->Nome = $nome;
+    }
+    
+    public function getNome(){
+        return $this->Nome;
+    }
     
     public function setLogin($login){
-        $this->login = $login;
+        $this->Login = $login;
     }
     
     public function getLogin(){
-        return $this->login;
+        return $this->Login;
     }
     
     public function setSenha($senha){
-        $this->senha = $senha;
+        $this->Senha = $senha;
     }
     
     public function getSenha(){
-        return $this->senha;
+        return $this->Senha;
+    }
+    
+    public function setTipo($tipo){
+        $this->Tipo = $tipo;
+    }
+    
+    public function getTipo(){
+        return $this->Tipo;
     }
 }
 

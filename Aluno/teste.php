@@ -1,16 +1,14 @@
 <?php
 
-require 'Aluno.php';
+require '../Paciente/Paciente.php';
 
-$aluno = new Aluno();
+$pac = new Paciente();
 
-$aluno->setMatricula('10206');
-$aluno->setNome('Felipe Sousa');
-$aluno->setDataNasc('12/08/1997');
+$pac->setNome('Claudia');
 
-$aluno->setObjeto($aluno);
+$pac->setObjeto($pac);
 
-var_dump($aluno);
+var_dump($pac);
 
 
 ?>

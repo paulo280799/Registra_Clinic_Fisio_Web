@@ -81,6 +81,19 @@ if(isset($_GET['id'])){
 		                       <span class="help-inline"><?php?></span>
 		                    </div>
 		                </div>
+                        
+                         <div class="form-group">
+		                    <label class="control-label">Tipo:</label>
+		                    <div class="controls">
+                               <select class="form-control" name="tipo" id="selectTipo">
+                                 <option value="">---</option>
+                                 <option value="Aluno">Aluno</option>
+                                 <option value="Funcionario">Funcionário</option>
+                                 <option value="Professor">Professor</option>
+                               </select>
+		                       <span class="help-inline"><?php?></span>
+		                    </div>
+		                </div>
 		                
 		                <div class="form-actions">
 

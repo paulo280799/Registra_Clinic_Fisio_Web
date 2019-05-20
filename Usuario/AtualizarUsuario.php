@@ -6,14 +6,18 @@ if(isset($_POST['nome'])){
    
    $id = addslashes($_POST['id']);
    $nomeUser = addslashes($_POST['nome']);
-   $emailUser = addslashes($_POST['login']);
+   $loginUser = addslashes($_POST['login']);
    $senhaUser = addslashes($_POST['senha']);
+   $tipoUser = addslashes($_POST['tipo']);
 
    $user = new Usuario();
 
-   $user->setValor('NOME',$nomeUser);
-   $user->setValor('LOGIN',$emailUser);
-   $user->setValor('SENHA',$senhaUser);
+   $user->setNome($nomeUser);
+   $user->setLogin($loginUser);
+   $user->setSenha(md5($senhaUser));
+   $user->setTipo($tipoUser); 
+    
+   $user->setObjeto($user);
 
    $user->valorpk = $id;
 

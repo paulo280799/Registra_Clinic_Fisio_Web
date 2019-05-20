@@ -5,14 +5,18 @@ include_once '../Usuario/Usuario.php';
 if(isset($_POST['nome'])){
    
    $nomeUser = addslashes($_POST['nome']);
-   $emailUser = addslashes($_POST['login']);
+   $loginlUser = addslashes($_POST['login']);
    $senhaUser = addslashes($_POST['senha']);
+   $tipoUser = addslashes($_POST['tipo']);
 
    $user = new Usuario();
 
-   $user->setValor('NOME',$nomeUser);
-   $user->setValor('LOGIN',$emailUser);
-   $user->setValor('SENHA',$senhaUser);
+   $user->setNome($nomeUser);
+   $user->setLogin($loginlUser);
+   $user->setSenha(md5($senhaUser));
+   $user->setTipo($tipoUser);
+   
+   $user->setObjeto($user);
 
    if($user->inserir($user)){
    	 echo "<script>alert('USUARIO REGISTRADO COM SUCESSO!!'); window.location = '../Telas/CadastroUsuario.php';</script>";

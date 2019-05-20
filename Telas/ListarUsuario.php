@@ -52,7 +52,7 @@ if(isset($_GET['id'])){
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Login</th>
                             <th scope="col">Senha</th>
                             <th scope="col">Ação</th>
                         </tr>
@@ -92,7 +92,7 @@ if(isset($_GET['id'])){
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Atenção</h5>
-        </button>
+   
       </div>
       <div class="modal-body"></div>
       <div class="modal-footer">

@@ -1,64 +1,6 @@
-/*----- NAV MENU -----*/
+/*----- BODY CONTAINER -----*/
 body{
     font-family: 'Selvetica', sans-serif;
-}
-#nav-menu{
-    background: #3cb371;
-    /*background: white;*/
-    border-bottom: 1px solid green;
-    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
-}
-
-#barra-menu{
-    background: white;
-}
-
-#nome-logo{
-    color: white;
-}
-
-.logo-menu{
-    width: 40px;
-    height: 55px;
-    margin-right: 8px;
-}
-
-#menu-opcoes{
-    margin: 0 auto;
-}
-
-#menu-opcoes #items-li #items-a{
-    margin-left: 40px;
-    color: white;
-}
-
-#menu-opcoes #items-li #items-a:hover{
-    background: green;
-    border-radius: 14px;
-    transition: .5s;
-}
-
-#menu-opcoes #items-li:last-child a i{
-     padding-left: 8px;
-}
-
-#menu-logado {
-    margin: 0 auto;
-    border: 1px solid white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 6px;
-    border-radius: 5px;
-}
-
-#menu-logado .nav-item{
-    color: white;
-    padding-left: 9px;
-}
-
-#menu-logado .nav-item span i{
-    padding-left: 10px;
-    font-size: 20px;
 }
 
 .container{
@@ -70,13 +12,4 @@ body{
     padding: 20px;
 }
 
-#nav-menu .collapse:nth-child(2){
-    width: 61%;
-}
-
-#nav-menu .collapse:nth-child(3){
-    width: 5%;
-    padding: 0;
-}
-
-/*----- NAV MENU -----*/
+/*----- BODY CONTAINER -----*/

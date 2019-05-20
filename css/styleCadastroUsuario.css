@@ -14,18 +14,31 @@ form{
   height: 100%;
 }
 
-/*--- FORM CADATRO USUARIO --- */
+/*--- FORM CADASTRO USUARIO --- */
 .container{
-  transform: translateY(70px);
+  transform: translateY(50px);
   margin: 0 auto;
   padding: 5px;
   width: 810px;
   transition: .3s;
 }
 
+.form-group{
+    padding: -20px;
+    margin: 5px;
+}
+.form-actions{
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
 .card{
    box-shadow: 3px 3px 3px silver;
    width: 800px;
+}
+
+#selectTipo{
+ cursor: pointer;
 }
 
 .card-header{
