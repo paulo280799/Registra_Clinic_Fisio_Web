@@ -50,17 +50,6 @@ if(isset($_SESSION)){
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-users"></i></span>
-							<select class="form-control" id="select" name="usuario" required>
-								<option value="">-----</option>
-								<option value="Aluno">Aluno</option>
-								<option value="Professor">Professor</option>
-                                <option value="Funcionario">Funcionario</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
 						<button type="button" class="btn" id="btnEntrar">Entrar</button>
 					</div>
 					<p class="hint-text"><a href="#">Esqueceu sua Senha?</a></p>
@@ -80,10 +69,6 @@ if(isset($_SESSION)){
         $('#btnEntrar').click(function(){
             
             var form = $('#form').serialize();
-            
-          if($('#select').val() == ''){
-              alert('ESCOLHA O USUARIO DESEJADO!');
-          }else{
                    
             $.ajax({
                url:'Login/Autenticar.php',
@@ -94,7 +79,7 @@ if(isset($_SESSION)){
                    
                   if(response.status){
                       window.location = 'Telas/';  
-                      console.log(response);
+                      console.log(response.tipo);
                   }else{
                       $('#alert').fadeIn(1000);
                   }
@@ -103,8 +88,7 @@ if(isset($_SESSION)){
                    console.log('Erro na Requisição');
                }
            }); 
-              
-          }    
+        
        
         });
         

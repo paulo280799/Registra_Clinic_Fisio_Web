@@ -18,7 +18,6 @@ class Usuario extends Pessoa {
 
         if (sizeof($campos) <= 0){
             $this->campos = array(
-                "NOME" => NULL,
                 "LOGIN" => NULL,
                 "SENHA" => NULL
             );
