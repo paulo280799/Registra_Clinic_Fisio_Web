@@ -46,7 +46,7 @@
 
         <div class="form-group">
           <label id="nome" class="fw">RG:</label>
-          <input type="text" name="RG" class="form-control" id="RG" placeholder="Informe seu RG">
+          <input type="text" name="rg" class="form-control" id="rg" placeholder="Informe seu RG">
         </div>
 
         <div class="form-group">
@@ -68,27 +68,27 @@
 
         <div class="form-group">
           <label id="nome" class="fw">Cidade:</label>
-          <input type="text" name="Cidade" class="form-control" id="Cidade" placeholder="Informe sua Cidade">
+          <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Informe sua Cidade">
         </div>
 
         <div class="form-group">
           <label id="nome" class="fw">Bairro:</label>
-          <input type="text" name="Bairro" class="form-control" id="Bairro" placeholder="Informe sua Bairro">
+          <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Informe sua Bairro">
         </div>
 
         <div class="form-group">
           <label id="nome" class="fw">Rua:</label>
-          <input type="text" name="Rua" class="form-control" id="Rua" placeholder="Informe sua Rua">
+          <input type="text" name="rua" class="form-control" id="rua" placeholder="Informe sua Rua">
         </div>
 
         <div class="form-group">
           <label id="nome" class="fw">Numero da casa:</label>
-          <input type="text" name="NumCasa" class="form-control" id="NumCasa" placeholder="Informe o Numero da sua casa">
+          <input type="text" name="numCasa" class="form-control" id="numCasa" placeholder="Informe o Numero da sua casa">
         </div>
 
         <div class="form-group">
           <label id="nome" class="fw">Telefone:</label>
-          <input type="text" name="Telefone" class="form-control" id="Telefone" placeholder="Informe seu Telefone">
+          <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Informe seu Telefone">
         </div>
 
         <div class="form-group">

@@ -32,7 +32,7 @@ if(isset($_GET['id'])){
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-			<a class="navbar-brand" href="Index.html">Registra Clinic Fisio</a>
+			<a class="navbar-brand" href="Index.php">Registra Clinic Fisio</a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
 					<a class="nav-link" href="../Telas/CadastroPaciente.php">Paciente<span class="sr-only">(current)</span></a>
