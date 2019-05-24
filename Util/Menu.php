@@ -14,8 +14,9 @@
             <li class="nav-item active" id="items-li">
               <a class="nav-link" href="Telas/CadastroPaciente.php" id="items-a">Cadastro<span class="sr-only">(current)</span></a>
                 <ul class="sub-menu">
-                  <li class="sub-menu-li"><a href="#">Paciente</a></li>
-                  <li class="sub-menu-li"><a href="#">Professor</a></li>
+                  <li class="sub-menu-li"><a href="CadastroPaciente.php ">Paciente</a></li>
+                  <li class="sub-menu-li"><a href="CadastroProfessor.php">Professor</a></li>
+                  <li class="sub-menu-li"><a href="CadastroUsuario.php">Usuario</a></li>
                   <li class="sub-menu-li"><a href="#">Aluno</a></li>
                 </ul>
             </li>
