@@ -12,7 +12,6 @@ class Usuario extends Pessoa {
     private $Nome;
     private $Login;
     private $Senha;
-    private $Tipo;
     
     public function __construct(){
         parent::__construct();
@@ -27,8 +26,7 @@ class Usuario extends Pessoa {
                 /*------ USUARIO -------*/
                 "NOME" => $objeto->getNome(),
                 "LOGIN" => $objeto->getLogin(),
-                "SENHA" => $objeto->getSenha(),
-                "TIPO" => $objeto->getTipo()
+                "SENHA" => $objeto->getSenha()
                 
             );
         }else{
@@ -60,13 +58,7 @@ class Usuario extends Pessoa {
         return $this->Senha;
     }
     
-    public function setTipo($tipo){
-        $this->Tipo = $tipo;
-    }
-    
-    public function getTipo(){
-        return $this->Tipo;
-    }
+
 }
 
 ?>
