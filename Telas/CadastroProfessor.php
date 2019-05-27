@@ -18,7 +18,7 @@
   <br>
 
   <div class="container">
-    <form action="script.php" method="post">
+    <form action="../Professor/RegistraProfessor.php" method="post">
       <fieldset>
         <legend class="fw" style="text-align: center;">Cadastro de Professor</legend>
         
@@ -35,7 +35,7 @@
         <div class="form-group">
           <label style="margin-right: 5px;" class="fw">Sexo:</label>
           <div class="form-group form-check-inline">
-            <input type="radio" class="form-check-input" name="sexo" value="M" id="masc">
+            <input type="radio" class="form-check-input" name="sexo" value="M" id="masc" >
             <label class="form-check-input" for="masc">Masculino</label>
           </div>
           <div class="form-group form-check-inline">
@@ -57,11 +57,11 @@
         <div class="form-group">
           <label style="margin-right: 5px;" class="fw">Estado Civil:</label>
           <div class="form-group form-check-inline">
-            <input type="radio" class="form-check-input" name="sexo" value="M" id="masc">
+            <input type="radio" class="form-check-input" name="estadoCivil" value="C" id="casado" >
             <label class="form-check-input" for="masc">Casado(a)</label>
           </div>
           <div class="form-group form-check-inline">
-            <input type="radio" class="form-check-input" name="sexo" value="F" id="femi">
+            <input type="radio" class="form-check-input" name="estadoCivil" value="S" id="solteiro" >
             <label class="form-check-input" for="femi">Solteiro(a)</label>
           </div>
         </div>

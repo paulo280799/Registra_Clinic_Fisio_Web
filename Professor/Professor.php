@@ -33,8 +33,6 @@ class Professor extends Pessoa {
                 "ENDERECOPROF" => $objeto->getEndereco(),
                 "RUAPROF" => $objeto->getRua(),
                 "BAIRROPROF" => $objeto->getBairro(),
-                "CIDADEPROF" => $objeto->getCidade(),
-                "PROFISSAOPROF" => $objeto->getProfissao(),
                 "TELEFONEPROF" => $objeto->getTelefone(),
                 /*------- PACIENTE --------*/
                 "ESPECIALIZACAO" => $objeto->getEspecializacao()
