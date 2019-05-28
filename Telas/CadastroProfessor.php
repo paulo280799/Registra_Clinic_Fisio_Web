@@ -1,3 +1,25 @@
+<?php  
+ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
+session_start();
+
+if(isset($_SESSION['SESSION_ID_ALUNO'])){
+    $logado = $_SESSION['SESSION_NOME_ALUNO'];
+    $id = $_SESSION['SESSION_ID_ALUNO'];
+    $tipo = 'Aluno';
+}else if(isset($_SESSION['SESSION_ID_PROF'])){
+    $logado = $_SESSION['SESSION_NOME_PROF'];
+    $id = $_SESSION['SESSION_ID_PROF'];
+    $tipo = 'Professor';
+}else if(isset($_SESSION['SESSION_ID_FUNC'])){
+    $logado = $_SESSION['SESSION_NOME_FUNC'];
+    $id = $_SESSION['SESSION_ID_FUNC'];
+    $tipo = 'Funcionario';
+}else{
+    header('location: ../Index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,8 +36,7 @@
 </head>
 <body>
 
-  <br>
-  <br>
+  <?php include_once '../Util/Menu.php'; ?>
 
   <div class="container">
     <form action="../Professor/RegistraProfessor.php" method="post">

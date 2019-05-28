@@ -1,3 +1,24 @@
+<?php  
+ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
+session_start();
+
+if(isset($_SESSION['SESSION_ID_ALUNO'])){
+    $logado = $_SESSION['SESSION_NOME_ALUNO'];
+    $id = $_SESSION['SESSION_ID_ALUNO'];
+    $tipo = 'Aluno';
+}else if(isset($_SESSION['SESSION_ID_PROF'])){
+    $logado = $_SESSION['SESSION_NOME_PROF'];
+    $id = $_SESSION['SESSION_ID_PROF'];
+    $tipo = 'Professor';
+}else if(isset($_SESSION['SESSION_ID_FUNC'])){
+    $logado = $_SESSION['SESSION_NOME_FUNC'];
+    $id = $_SESSION['SESSION_ID_FUNC'];
+    $tipo = 'Funcionario';
+}else{
+    header('location: ../Index.php');
+}
+
+?>
 <?php
 
 include_once '../Util/daoGenerico.php';
@@ -27,25 +48,7 @@ if(isset($_GET['id'])){
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-			<a class="navbar-brand" href="Index.php">Registra Clinic Fisio</a>
-			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active">
-					<a class="nav-link" href="../Telas/CadastroPaciente.php">Paciente<span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="../Telas/CadastroUsuario.php">Usuário<span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="CadastroAtendimento.html">Atendimento<span class="sr-only">(current)</span></a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<?php include_once '../Util/Menu.php'; ?>
 	
 	 <div class="container">
         <div clas="span10 offset1">
