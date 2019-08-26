@@ -1,5 +1,25 @@
 <?php
 
+ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
+session_start();
+
+if(isset($_SESSION['SESSION_ID_ALUNO'])){
+    $logado = $_SESSION['SESSION_NOME_ALUNO'];
+    $id = $_SESSION['SESSION_ID_ALUNO'];
+    $tipo = 'Aluno';
+}else if(isset($_SESSION['SESSION_ID_PROF'])){
+    $logado = $_SESSION['SESSION_NOME_PROF'];
+    $id = $_SESSION['SESSION_ID_PROF'];
+    $tipo = 'Professor';
+}else if(isset($_SESSION['SESSION_ID_FUNC'])){
+    $logado = $_SESSION['SESSION_NOME_FUNC'];
+    $id = $_SESSION['SESSION_ID_FUNC'];
+    $tipo = 'Funcionario';
+}else{
+    header('location: ../Index.php');
+}
+
+
 $id = null;
 
 if(isset($_GET['id'])){
@@ -14,32 +34,17 @@ if(isset($_GET['id'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Abel" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/styleListarUsuario.css">
+    <link rel="stylesheet" type="text/css" href="../css/styleListarAlunos.css">
+    <link rel="stylesheet"  type="text/css"  href="../css/styleMenu.css">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="Index.html">Registra Clinic Fisio</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="../Telas/CadastroPaciente.php">Paciente <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="../Telas/CadastroUsuario.php">Usuário<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Atendimento <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+    <?php include_once '../Util/Menu.php'; ?>
 
       <div class="container">
 
@@ -59,23 +64,23 @@ if(isset($_GET['id'])){
                     </thead>
                     <tbody>
                         <?php
-                        include_once '../Util/daoGenerico.php';
+                        require '../Util/daoGenerico.php';
 
                         $dao = new daoGenerico();
-                        $sql = 'SELECT * FROM USUARIO ORDER BY IDUSUARIO ASC';
+                        $sql = 'SELECT * FROM ALUNO ORDER BY IDALUNO ASC';
                         $dados = $dao->getDados($sql,true);
 
                         foreach($dados as $row){
                             echo '<tr>';
-			                echo '<th scope="row">'. $row->IDUSUARIO . '</th>';
-                            echo '<td>'. $row->NOME . '</td>';
+			                echo '<th scope="row">'. $row->IDALUNO . '</th>';
+                            echo '<td>'. $row->NOMEALUNO . '</td>';
                             echo '<td>'. $row->LOGIN . '</td>';
                             echo '<td>'. $row->SENHA . '</td>';
                             echo '<td width=250>';
                             echo ' ';
-                            echo '<a class="btn btn-success" href="../Telas/CadastroUsuario.php?id='.$row->IDUSUARIO.'">Atualizar</a>';
+                            echo '<a class="btn btn-success" href="../Telas/CadastroAluno.php?id='.$row->IDALUNO.'">Atualizar</a>';
                             echo ' ';
-                            echo '<a class="btn btn-danger" href="../Telas/ListarUsuario.php?id='.$row->IDUSUARIO.'">Excluir</button>';
+                            echo '<a class="btn btn-danger" href="../Telas/ListarAlunos.php?id='.$row->IDALUNO.'">Excluir</button>';
                             echo '</td>';
                             echo '</tr>';
                         }
@@ -106,31 +111,30 @@ if(isset($_GET['id'])){
 <!-- FIM MODAL NOTIFICAÇÃO -->
 <!-- -------- SCRIPTS ------- -->
  <script src="../js/jquery-3.4.1.min.js"></script>
- <script src="../bootstrap/js/bootstrap.min.js"></script>
+ <script src="../bootstrap-4.3.1/js/bootstrap.min.js"></script>
 <!-- ------------------------ -->
 
 <script type="text/javascript">
     $(document).ready(function(){
 
-      var valor = '<?php echo $id; ?>';
+      var valor = "<?php echo $id; ?>";
+      var tipo = "<?php echo $tipo;?>";
 
       if(valor != 0){
         $('#ModalNotificacao').modal('show');
         $('#ModalNotificacao .modal-body').html('Deseja Excluir o Usuário Selecionado??');
       }
 
-      $('#btnConfirm').click(function(){
+      $('#btnConfirm').click(function(e){
         $.ajax({
-            url: '../Usuario/ExcluirUsuario.php',
+            url: '../Aluno/ExcluirAluno.php',
             method: 'POST',
             datatype: 'JSON',
             data: { id : valor},
-            success: function(e){
+            success: function(response){
 
-                var json = JSON.parse(e);
-
-                if(json.resposta){
-                   window.location = '../Telas/ListarUsuario.php';   
+                if(response.status){
+                   window.location = '../Telas/ListarAluno.php';   
                 }
                 
             },error: function(e){
@@ -140,10 +144,27 @@ if(isset($_GET['id'])){
       });
 
 
-      $('#btnCancelar').click(function(){
+      $('#btnCancelar').click(function(e){
          history.back(0);
       });
-        
+
+
+      switch(tipo){
+        case "Professor":
+        $('#cadPaciente,#cadProfessor,#cadFuncionario').css('display','none');
+        break;
+
+        case "Aluno":
+        $('#cadAluno,#cadProfessor,#cadFuncionario').css('display','none');
+        break;
+
+        case "Funcionario":
+        $('#cadAluno,#cadPaciente,#cadFuncionario').css('display','none');
+        break;
+
+        default:
+    }
+
     
     });
 </script>

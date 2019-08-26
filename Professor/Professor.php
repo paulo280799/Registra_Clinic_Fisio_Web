@@ -1,13 +1,13 @@
 <?php
 
-require '../Pessoa/Pessoa.php';
+require '../Usuario/Usuario.php';
 
 /**
  *
  * @author Felipe
  */
 
-class Professor extends Pessoa {
+class Professor extends Usuario {
     
     private $Especializacao;
     
@@ -16,7 +16,7 @@ class Professor extends Pessoa {
         
         $this->tabela = "PROFESSOR";
         
-        $this->campopk = "IDPROFESSOR";
+        $this->campopk = "IDPROF";
     }
     
        
@@ -25,17 +25,20 @@ class Professor extends Pessoa {
             $this->campos = array(
                 /*------ PESSOA -------*/
                 "NOMEPROF" => $objeto->getNome(),
-                "DATANASC" => $objeto->getDataNasc(),
+                "DATANASCPROF" => $objeto->getDataNasc(),
                 "SEXOPROF" => $objeto->getSexo(),
                 "RGPROF" => $objeto->getRg(),
                 "CPFPROF" => $objeto->getCpf(),
-                "ESTADOCIVIL" => $objeto->getEstadoCivil(),
+                "ESTADOCIVILPROF" => $objeto->getEstadoCivil(),
                 "ENDERECOPROF" => $objeto->getEndereco(),
-                "RUAPROF" => $objeto->getRua(),
                 "BAIRROPROF" => $objeto->getBairro(),
+                "CIDADEPROF" => $objeto->getCidade(),
                 "TELEFONEPROF" => $objeto->getTelefone(),
-                /*------- PACIENTE --------*/
-                "ESPECIALIZACAO" => $objeto->getEspecializacao()
+                /*------- PROFESSOR --------*/
+                "ESPECIALIZACAO" => $objeto->getEspecializacao(),
+                /*------- USUARIO --------*/
+                "LOGIN" => $objeto->getLogin(),
+                "SENHA" => $objeto->getSenha()
             );
         }else{
             $this->campos = array();

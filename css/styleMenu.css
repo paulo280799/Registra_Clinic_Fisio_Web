@@ -1,7 +1,4 @@
 /*----- NAV MENU -----*/
-body{
-    font-family: 'Selvetica', sans-serif;
-}
 #nav-menu{
     background: #3cb371;
     /*background: white;*/
@@ -28,14 +25,13 @@ body{
 }
 
 #menu-opcoes #items-li #items-a{
-    margin-left: 40px;
+    margin-left: 45px;
     color: white;
 }
 
 #menu-opcoes #items-li #items-a:hover{
     background: green;
     border-radius: 14px;
-    transition: .5s;
 }
 
 #menu-opcoes #items-li:last-child a i{
@@ -91,6 +87,7 @@ body{
     border-bottom: 4px solid yellow;
     visibility: hidden;
     transition: all .1s ease;
+    border-top: 1px solid white;
 }
 
 #items-li:nth-child(2) > .sub-menu{
@@ -125,7 +122,7 @@ body{
 #menu-opcoes #items-li:hover .sub-menu{
      visibility: visible;
      display: block;
-     transform: translateY(15px);
+     transform: translateY(5px);
 }
 /* --- FIM SUB MENU --- */
 

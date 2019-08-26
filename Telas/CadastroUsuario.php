@@ -19,32 +19,19 @@ if(isset($_SESSION['SESSION_ID_ALUNO'])){
 }
 
 ?>
-<?php
-
-include_once '../Util/daoGenerico.php';
-
-$dados = null;
-
-if(isset($_GET['id'])){
-    
-    $id = $_GET['id'];
-    $dao = new daoGenerico();
-    $sql = 'SELECT * FROM USUARIO WHERE IDUSUARIO = ?';
-    $dao->setCondicao($id);
-
-    $dados = $dao->getDados($sql,false);
-}
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<!-- Required meta tags -->
 	<title>Cadastro Usuário</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Abel" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/styleCadastroUsuario.css">
+	<link rel="stylesheet"  type="text/css"  href="../css/styleMenu.css">
 </head>
 <body>
 
@@ -54,7 +41,7 @@ if(isset($_GET['id'])){
         <div clas="span10 offset1">
           <div class="card">
 	            <div class="card-header">
-	                <h3 class="well"> Cadastro Usuário</h3>
+	                <h3 class="well">Usuário</h3>
 	            </div>
               <div class="card-body">
 		            <form class="form-horizontal" action="../Usuario/RegistraUsuario.php" method="post">
@@ -62,8 +49,8 @@ if(isset($_GET['id'])){
 		                <div class="form-group">
 		                   <label class="control-label">Nome:</label>
 		                    <div class="controls">
-		                      <input size="50" class="form-control" name="nome" type="text" placeholder="..." value="<?php if($dados != null){ echo $dados->NOME; }else{ ''; } ?>" required>
-		                      <input type="hidden" name="id" value="<?php if($dados != null){ echo $dados->IDUSUARIO; }else{ ''; } ?>">
+		                      <input size="50" class="form-control" name="nome" type="text" placeholder="..." required>
+		                      <input type="hidden" name="id">
 		                      <span class="help-inline"><?php?></span>
 		                    </div>
 		                </div>
@@ -72,7 +59,7 @@ if(isset($_GET['id'])){
 		                <div class="form-group">
 		                    <label class="control-label">Login:</label>
 		                    <div class="controls">
-		                        <input size="40" class="form-control" name="login" type="text" placeholder="..." value="<?php if($dados != null){ echo $dados->LOGIN; }else{ ''; } ?>" required>
+		                        <input size="40" class="form-control" name="login" type="text" placeholder="..." required>
 		                        <span class="help-inline"><?php?></span>
 		                    </div>
 		                </div>
@@ -80,7 +67,7 @@ if(isset($_GET['id'])){
 		                <div class="form-group">
 		                    <label class="control-label">Senha:</label>
 		                    <div class="controls">
-		                       <input size="40" class="form-control" name="senha" type="password" placeholder="..."  value="<?php if($dados != null){ echo $dados->SENHA; }else{ ''; } ?>" required>
+		                       <input size="40" class="form-control" name="senha" type="password" placeholder="..." required>
 		                       <span class="help-inline"><?php?></span>
 		                    </div>
 		                </div>
@@ -117,7 +104,7 @@ if(isset($_GET['id'])){
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		  $(document).ready(function(){
+		  $(document).ready(function(e){
 		  
 		  	var dado = '<?php echo $_GET['id']; ?>';
 		  

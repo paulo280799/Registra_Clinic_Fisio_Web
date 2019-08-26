@@ -12,18 +12,20 @@ class daoGenerico{
   private $pdo;
 
 
-  public function error($tipoError){
-    echo $tipoError;
-  }
 
-
-  public function __construct(){
+ function __construct(){
       try{
         $this->pdo = new PDO("mysql:host=localhost;dbname=fisio;charset=utf8",'root','');
       }catch(PDOException $e){
         $this->error = true;
         $this->error($e->getMessage());
       } 
+  }
+
+
+  //FUNÇÃO DE ERROR DETALHADA
+  function error($tipoError){
+     echo $tipoError;
   }
 
 
@@ -71,14 +73,12 @@ class daoGenerico{
            endforeach;   
       
           //EXECUTA A INSTRUÇÃO E CAPTURA O RETORNO  
-         $stm->execute();
-
-         return true;  
+         return $stm->execute();
              
         }catch(PDOException $e){  
            $this->error($e->getMessage());  
            return false;
-        }   
+         }   
      }
 
 
@@ -123,7 +123,7 @@ class daoGenerico{
           return $stm->execute();   
             
         } catch (PDOException $e){   
-          echo "Erro: " . $e->getMessage();   
+           $this->error($e->getMessage());     
         }   
      }  
 
@@ -187,11 +187,16 @@ class daoGenerico{
                 $dados = $stm->fetch(PDO::FETCH_OBJ);   
               endif;  
 
-              return $dados;   
+                if(!empty($dados)){
+                  return $dados;
+                }else{
+                  return null;
+                }
+               
           }else{
-              return false;
+              return null;
           }
-           
+      
         }catch (PDOException $e) {   
           echo "Erro: " . $e->getMessage();   
         }

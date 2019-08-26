@@ -1,11 +1,3 @@
-<?php
-if(isset($_SESSION)){
-
-  header('Location: ../Telas/Index.php'); 
-    
-}
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,7 +5,7 @@ if(isset($_SESSION)){
 <title>LOGIN</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Abel" rel="stylesheet">  
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/styleModalLogin.css">
@@ -24,7 +16,7 @@ if(isset($_SESSION)){
 <div id="ModalLogin" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-login">
            <div class="alert alert-danger" id="alert" role="alert" style="text-align:center;padding:7px;display:none;margin-bottom:-25px;">
-                 Usuário não encontrado..  
+                
            </div>  
 		<div class="modal-content">
 			<div class="modal-header">	
@@ -61,40 +53,49 @@ if(isset($_SESSION)){
 </div>     
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
 <script type="text/javascript">
 	$(document).ready(function(){
+
 		$('#ModalLogin').modal('show');
         
-        $('#btnEntrar').click(function(){
+        $('#btnEntrar').click(function(e){
             
             var form = $('#form').serialize();
+
+            if($('input[name="login"]').val() == '' || $('input[name="senha"]').val() == ''){
+                 $('#alert').fadeIn(1000);
+                 $('#alert').html('Campos Obrigatórios!!');
+            }else{
+
+                 $.ajax({
+                 url:'Login/Autenticar.php',
+                 type:'POST',
+                 datatype: 'JSON',
+                 data:form,
+                 success: function(response){
+                     
+                    if(response.status){
+                        window.location = 'Telas/';  
+                        console.log(response.tipo);
+                    }else{
+                        $('#alert').fadeIn(1000);
+                        $('#alert').html('Usuário não encontrado..');
+                    }
+                  
+                 },error: function(error){
+                     console.log('Erro na Requisição');
+                 }
+              }); 
+           }
                    
-            $.ajax({
-               url:'Login/Autenticar.php',
-               type:'POST',
-               datatype: 'JSON',
-               data:form,
-               success: function(response){
-                   
-                  if(response.status){
-                      window.location = 'Telas/';  
-                      console.log(response.tipo);
-                  }else{
-                      $('#alert').fadeIn(1000);
-                  }
-                
-               },error: function(error){
-                   console.log('Erro na Requisição');
-               }
-           }); 
-        
        
         });
         
         
         $("input[name='login'],input[name='senha']").focus(function(){
-           $('#alert').fadeOut(999); 
+           $('#alert').fadeOut(900); 
         });
         
         

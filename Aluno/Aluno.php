@@ -11,12 +11,12 @@ class Aluno extends Usuario{
     private $Matricula;
     
     
-    public function __construct(){
+    public function __construct(){ 
         parent::__construct();
 
         $this->tabela = "ALUNO";
 
-        $this->campopk="IDALUNO";
+        $this->campopk = "IDALUNO";
     }
     
     
@@ -25,22 +25,21 @@ class Aluno extends Usuario{
             $this->campos = array(
                 /*------ PESSOA -------*/
                 "NOMEALUNO" => $objeto->getNome(),
-                "DATANASC" => $objeto->getDataNasc(),
+                "DATANASCALUNO" => $objeto->getDataNasc(),
                 "SEXOALUNO" => $objeto->getSexo(),
                 "RGALUNO" => $objeto->getRg(),
                 "CPFALUNO" => $objeto->getCpf(),
-                "ESTADOCIVIL" => $objeto->getEstadoCivil(),
+                "ESTADOCIVILALUNO" => $objeto->getEstadoCivil(),
                 "ENDERECOALUNO" => $objeto->getEndereco(),
-                "RUAALUNO" => $objeto->getRua(),
                 "BAIRROALUNO" => $objeto->getBairro(),
                 "CIDADEALUNO" => $objeto->getCidade(),
                 "PROFISSAOALUNO" => $objeto->getProfissao(),
                 "TELEFONEALUNO" => $objeto->getTelefone(),
-                /*------ USUARIO -------*/
-                "LOGINALUNO" => $objeto->getLogin(),
-                "SENHAALUNO" => $objeto->getSenha(),
                 /*------- ALUNO --------*/
-                "MATRICULAALUNO" => $objeto->getMatricula()
+                "MATRICULAALUNO" => $objeto->getMatricula(),
+                /*------- USUARIO --------*/
+                "LOGIN" => $objeto->getLogin(),
+                "SENHA" => $objeto->getSenha()
             );
         }else{
             $this->campos = array();

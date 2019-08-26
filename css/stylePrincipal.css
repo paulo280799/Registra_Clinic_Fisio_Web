@@ -1,0 +1,21 @@
+/*----- BODY CONTAINER -----*/
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Abel', sans-serif;
+	user-select: none;
+	font-size: 13pt;
+}
+.container{
+	padding: 15px;
+}
+
+.container-table{
+    padding: 20px;
+}
+
+.table{
+	text-align: center;
+}
+
+/*----- BODY CONTAINER -----*/

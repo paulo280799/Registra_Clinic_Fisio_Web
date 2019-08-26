@@ -1,5 +1,6 @@
 body {
     font-family: 'Varela Round', sans-serif;
+    user-select: none;
 }
 .modal{
     background-color: white; 
@@ -110,6 +111,13 @@ body {
     min-width: 100%;
     outline: none !important;
     z-index: 8;
+    box-shadow: 2px 2px 2px silver;
+}
+
+.modal-login .btn:active {  
+    position:relative;
+    top:3px;
+    box-shadow:none;
 }
 
 .modal-login .btn:hover{

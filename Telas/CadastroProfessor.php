@@ -1,7 +1,7 @@
 <?php  
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
-
+/*
 if(isset($_SESSION['SESSION_ID_ALUNO'])){
     $logado = $_SESSION['SESSION_NOME_ALUNO'];
     $id = $_SESSION['SESSION_ID_ALUNO'];
@@ -17,7 +17,7 @@ if(isset($_SESSION['SESSION_ID_ALUNO'])){
 }else{
     header('location: ../Index.php');
 }
-
+*/
 ?>
 
 <!DOCTYPE html>

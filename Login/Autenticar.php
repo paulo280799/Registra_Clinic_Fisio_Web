@@ -16,17 +16,17 @@ if(isset($requisicao['login']) && isset($requisicao['senha'])){
     $senha = $requisicao['senha'];
     
     //VERIFICA SE O ACESSO É UM ALUNO
-    $sql = 'SELECT * FROM ALUNO WHERE LOGINALUNO = ? AND SENHAALUNO = ?';
+    $sql = 'SELECT * FROM ALUNO WHERE LOGIN = ? AND SENHA = ?';
     
 	$dao->setCondicao($login);
     $dao->setCondicao($senha);
     $result = $dao->getDados($sql,false);
     
-    if($result != false){
+    if($result){
         
         $_SESSION['SESSION_ID_ALUNO'] = $result->IDALUNO;
 	    $_SESSION['SESSION_NOME_ALUNO'] = $result->NOMEALUNO;
-		$_SESSION['SESSION_LOGIN_ALUNO'] = $result->LOGINALUNO;
+		$_SESSION['SESSION_LOGIN_ALUNO'] = $result->LOGIN;
         
         echo json_encode(array('status' => true,'tipo' => 'Aluno'));
         
@@ -35,18 +35,18 @@ if(isset($requisicao['login']) && isset($requisicao['senha'])){
         //VERIFICA SE O ACESSO É UM PROFESSOR
          $dao = new daoGenerico();
         
-         $sql = 'SELECT * FROM PROFESSOR WHERE LOGINPROF = ? AND SENHAPROF = ?';
+         $sql = 'SELECT * FROM PROFESSOR WHERE LOGIN = ? AND SENHA = ?';
           
          $dao->setCondicao($login);
          $dao->setCondicao($senha);
 
          $result = $dao->getDados($sql,false);
         
-         if($result != false){
+         if($result){
               
             $_SESSION['SESSION_ID_PROF'] = $result->IDPROF;
             $_SESSION['SESSION_NOME_PROF'] = $result->NOMEPROF;
-            $_SESSION['SESSION_LOGIN_PROF'] = $result->LOGINPROF;
+            $_SESSION['SESSION_LOGIN_PROF'] = $result->LOGIN;
 
             echo json_encode(array('status' => true,'tipo' => 'Prof'));
             
@@ -55,18 +55,18 @@ if(isset($requisicao['login']) && isset($requisicao['senha'])){
              //VERIFICA SE O ACESSO É UM FUNCIONÁRIO
              $dao = new daoGenerico();
            
-             $sql = 'SELECT * FROM FUNCIONARIO WHERE LOGINFUNC = ? AND SENHAFUNC = ?'; 
+             $sql = 'SELECT * FROM FUNCIONARIO WHERE LOGIN = ? AND SENHA = ?'; 
              
              $dao->setCondicao($login);
              $dao->setCondicao($senha);
 
              $result = $dao->getDados($sql,false);
              
-              if($result != false){
+              if($result){
 
                 $_SESSION['SESSION_ID_FUNC'] = $result->IDFUNC;
                 $_SESSION['SESSION_NOME_FUNC'] = $result->NOMEFUNC;
-                $_SESSION['SESSION_LOGIN_FUNC'] = $result->LOGINFUNC;
+                $_SESSION['SESSION_LOGIN_FUNC'] = $result->LOGIN;
 
                     echo json_encode(array('status' => true,'tipo' => 'func'));
 
@@ -76,7 +76,7 @@ if(isset($requisicao['login']) && isset($requisicao['senha'])){
                    
               }   
          } 
-    } 
+    }
 }
 
 
