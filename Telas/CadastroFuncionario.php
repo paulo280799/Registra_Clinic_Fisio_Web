@@ -1,7 +1,6 @@
 <?php  
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
-require '../Util/daoGenerico.php';
 
 if(isset($_SESSION['SESSION_ID_ALUNO'])){
   $logado = $_SESSION['SESSION_NOME_ALUNO'];
@@ -19,31 +18,25 @@ if(isset($_SESSION['SESSION_ID_ALUNO'])){
   header('location: ../Index.php');
 }
 
-$IdAtualizar = 0;
+/*$id = null;
 
 if(isset($_GET['id'])){
-
-     $IdAtualizar = $_GET['id'];
-
-     $dao = new daoGenerico();
-     $sql = 'SELECT * FROM PROFESSOR WHERE IDPROF = ?';
-     $dao->setCondicao($IdAtualizar);
-     $dados = $dao->getDados($sql,false);
-}
+    $id = $_GET['id'];
+}*/
 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <!-- Required meta tags -->
-  <title>Cadastro Professor</title>
+  <title>Aluno</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Abel" rel="stylesheet"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../css/styleCadastroProf.css">
+  <link rel="stylesheet" type="text/css" href="../css/styleCadastroFunc.css">
   <link rel="stylesheet"  type="text/css"  href="../css/styleMenu.css">
 </head>
 <body>
@@ -57,7 +50,7 @@ if(isset($_GET['id'])){
     <div class="span10 offset1">
       <div class="card">
           <div class="header">
-                  <h3 class="well"><i class="fas fa-chalkboard-teacher"></i>Cadastro Professor</h3>
+                  <h3 class="well"><i class="fas fa-chalkboard-teacher"></i>Cadastro Funcionario</h3>
               </div>
         <div class="card-body">
           <form class="form-horizontal">
@@ -68,7 +61,7 @@ if(isset($_GET['id'])){
                             
             <div class="form-group">
               <div class="controls">
-                <input size="50" class="campo" name="nomeProf" type="text" autocomplete="off" value="<?php isset($_GET['id']) ? print($dados->NOMEPROF) : print(""); ?>" required>
+                <input size="50" class="campo" name="nomeProf" type="text" autocomplete="off" required>
                 <label class="control-label">Nome</label>
                 <i class="fas fa-info-circle infoNome" id="icon-info" data-toggle="popover" data-placement="left" 
                 data-content="Ola mundo"></i>
@@ -83,7 +76,7 @@ if(isset($_GET['id'])){
 
             <div class="form-group">
               <div class="controls">
-                <input size="40" class="campo" id="dataNasc" name="dataNascProf" type="text" value="<?php isset($_GET['id']) ? print(date("d-m-Y",strtotime($dados->DATANASCPROF))) : print(""); ?>" autocomplete="off" required>
+                <input size="40" class="campo" id="dataNasc" name="dataNascProf" type="text" autocomplete="off" required>
                 <label class="control-label">Data Nascimento</label>
                 <i class="fas fa-info-circle infoDataNasc" id="icon-info" data-toggle="popover" data-placement="left" 
                 data-content="Ola mundo"></i>
@@ -96,7 +89,7 @@ if(isset($_GET['id'])){
 
             <div class="form-group">
               <div class="controls">
-                <select class="campo" name="sexoProf" value="<?php isset($_GET['id']) ? print($dados->SEXOPROF) : print(""); ?>" required>
+                <select class="campo" name="sexoProf" required>
                   <option value=""></option>
                   <option value="Solteiro">Masculino</option>
                   <option value="Casado">Feminino</option>
@@ -116,7 +109,7 @@ if(isset($_GET['id'])){
 
               <div class="form-group">
                 <div class="controls">
-                  <input size="40" class="campo" id="cpf" name="cpfProf" type="text" value="<?php isset($_GET['id']) ? print($dados->CPFPROF) : print(""); ?>" autocomplete="off" required>
+                  <input size="40" class="campo" id="cpf" name="cpfProf" type="text" autocomplete="off" required>
                   <label class="control-label">CPF</label>
                   <i class="fas fa-info-circle" id="icon-info" data-toggle="popover" data-placement="left" 
                   data-content="Ola mundo"></i>
@@ -129,7 +122,7 @@ if(isset($_GET['id'])){
 
               <div class="form-group">
                 <div class="controls">
-                  <input size="40" class="campo" name="rgProf" type="text" value="<?php isset($_GET['id']) ? print($dados->RGPROF) : print(""); ?>" autocomplete="off" required>
+                  <input size="40" class="campo" name="rgProf" type="text" autocomplete="off" required>
                   <label class="control-label">RG</label>
                   <i class="fas fa-info-circle" id="icon-info" data-toggle="popover" data-placement="left" 
                   data-content="Ola mundo"></i>
@@ -147,7 +140,7 @@ if(isset($_GET['id'])){
               <div class="form-group">
                 
                 <div class="controls">
-                  <input size="40" class="campo" name="enderecoProf" type="text" value="<?php isset($_GET['id']) ? print($dados->ENDERECOPROF) : print(""); ?>" autocomplete="off" required>
+                  <input size="40" class="campo" name="enderecoProf" type="text" autocomplete="off" required>
                   <label class="control-label">Endereço:</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
@@ -161,7 +154,7 @@ if(isset($_GET['id'])){
               <div class="form-group">
               
                 <div class="controls">
-                  <input size="40" class="campo" name="bairroProf" type="text" value="<?php isset($_GET['id']) ? print($dados->BAIRROPROF) : print(""); ?>" autocomplete="off" required>
+                  <input size="40" class="campo" name="bairroProf" type="text" autocomplete="off" required>
                   <label class="control-label">Bairro:</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
@@ -174,7 +167,7 @@ if(isset($_GET['id'])){
               <div class="form-group">
                 
                 <div class="controls">
-                  <input size="40" class="campo" name="cidadeProf" type="text" value="<?php isset($_GET['id']) ? print($dados->CIDADEPROF) : print(""); ?>" autocomplete="off" required>
+                  <input size="40" class="campo" name="cidadeProf" type="text" autocomplete="off" required>
                   <label class="control-label">Cidade:</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
@@ -210,7 +203,7 @@ if(isset($_GET['id'])){
               <div class="form-group">
             
                 <div class="controls">
-                  <input size="40" class="campo" id="telefone" name="telefoneProf" type="text" value="<?php isset($_GET['id']) ? print($dados->TELEFONEPROF) : print(""); ?>" autocomplete="off" required>
+                  <input size="40" class="campo" id="telefone" name="telefoneProf" type="text" autocomplete="off" required>
                   <label class="control-label">Telefone:</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
@@ -226,7 +219,7 @@ if(isset($_GET['id'])){
 
                 <div class="form-group">
                   <div class="controls">
-                     <input size="10" class="campo" id="especializacao" name="especializacaoProf" type="text" value="<?php isset($_GET['id']) ? print($dados->ESPECIALIZACAO) : print(""); ?>" autocomplete="off" required>
+                     <input size="10" class="campo" id="especializacao" name="especializacaoProf" type="text" autocomplete="off" required>
                      <label class="control-label">Especialização:</label>
                      <i class="fas fa-info-circle" id="icon-info"></i>
                      <span class="help-inline"><?php?></span>
@@ -239,7 +232,7 @@ if(isset($_GET['id'])){
                 <div class="form-group">
                   
                   <div class="controls">
-                    <input size="10" class="campo" name="loginProf" type="text" value="<?php isset($_GET['id']) ? print($dados->LOGIN) : print(""); ?>" autocomplete="off" required>
+                    <input size="10" class="campo" name="loginProf" type="text" autocomplete="off" required>
                     <label class="control-label">Login:</label>
                     <i class="fas fa-info-circle" id="icon-info"></i>
                     <span class="help-inline"><?php?></span>
@@ -252,7 +245,7 @@ if(isset($_GET['id'])){
                 <div class="form-group">
                 
                   <div class="controls">
-                    <input size="10" class="campo" name="senhaProf" type="password" value="<?php isset($_GET['id']) ? print($dados->SENHA) : print(""); ?>" autocomplete="off" required>
+                    <input size="10" class="campo" name="senhaProf" type="password" autocomplete="off" required>
                     <label class="control-label">Senha:</label>
                     <i class="fas fa-info-circle" id="icon-info"></i>
                     <span class="help-inline"><?php?></span>
@@ -270,8 +263,7 @@ if(isset($_GET['id'])){
         <div class="form-actions">
 
           <button type="button" class="btn btn-success" id="btnSalvarProf">Salvar</button>
-          <button type="button" class="btn btn-success" id="btnAtualizarProf">Atualizar</button>
-          <a href="../Telas/ListarProfessor.php">
+          <a href="../Telas/ListarAlunos.php">
           <button type="button" class="btn btn-success" id="btnPesquisarAluno">Pesquisar</button></a>
 
         </div>
@@ -290,16 +282,31 @@ if(isset($_GET['id'])){
 <script src="../js/jquerymask.js"></script>
 
 <script type="text/javascript">
+  
+  $(document).ready(function(e){
 
-      var id = "<?php echo $IdAtualizar; ?>"; 
+    
+    var tipo = "<?php echo $tipo;?>";
 
-      if(id != 0){
-          $('#btnAtualizarProf').css('visibility','visible');
-          $('#btnSalvarProf').css('visibility','hidden');
-      }else{
-          $('#btnAtualizarProf').css('display','none');
-      }
+        switch(tipo){
+          case "Professor":
+          $('#cadPaciente,#cadProfessor,#cadFuncionario').css('display','none');
+          break;
 
+          case "Aluno":
+          $('#cadAluno,#cadProfessor,#cadFuncionario').css('display','none');
+          break;
+
+          case "Funcionario":
+          $('#cadAluno,#cadPaciente,#cadFuncionario').css('display','none');
+          break;
+
+          default:
+        }
+
+  });
+</script>
+<script type="text/javascript">
 
       $('#btnSalvarProf').on('click',function(e){
 
@@ -342,53 +349,11 @@ if(isset($_GET['id'])){
       });
 
 
-      $('#btnAtualizarProf').on('click',function(e){
-
-        var dados = $('.form-horizontal').serialize();
-
-        $.ajax({
-          url: "../Professor/AtualizarProfessor.php",
-          datatype: 'JSON',
-          type: 'POST',
-          data: dados,
-          success: function(response){
-
-            if(response.status){
-          
-               $('#alert').fadeIn(1000);
-               $('#alert').html('Professor Atualizado com sucesso!');
-
-                 window.setTimeout(function(){
-                          $('#alert').fadeOut(900); 
-                  },3000);
-
-                 $('.form-horizontal')[0].reset();
-
-                 console.log(response.sql);
-
-            }else{
-
-               $('#alert').css('background','red');
-               $('#alert').fadeIn(1000);
-               $('#alert').html('Error de Atualizacao!');
-
-                window.setTimeout(function(){
-                                    $('#alert').fadeOut(900); 
-                              },3000);
-            }         
-
-          },error: function(error){
-            console.log(error);
-          }
-        });
-
-      });
-
-
     // MÁSCARA DOS CAMPOS
     $('#telefone').mask('(00) 0.0000-0000');
     $('#cpf').mask('000.000.000-00');
     $('#dataNasc').mask('00/00/0000');
+    $('#matricula').mask('0000');
     //---------------------------------------
 
 

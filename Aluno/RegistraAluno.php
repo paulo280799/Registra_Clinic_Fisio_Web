@@ -8,22 +8,24 @@ $aluno = new Aluno();
 
 if(isset($_POST['nomeAluno'])){
 
-	$aluno->setNome(addslashes($_POST['nomeAluno']));
-	$aluno->setDataNasc(addslashes(date("Y-m-d",strtotime($_POST['dataNascAluno']))));
-	$aluno->setSexo(addslashes($_POST['sexoAluno']));
-	$aluno->setCpf(addslashes($_POST['cpfAluno']));
-	$aluno->setRg(addslashes($_POST['rgAluno']));
+	$aluno->setNome($_POST['nomeAluno']);
+	$aluno->setDataNasc(date("Y-m-d",strtotime($_POST['dataNascAluno'])));
+	$aluno->setSexo($_POST['sexoAluno']);
+	$aluno->setCpf($_POST['cpfAluno']);
+	$aluno->setRg($_POST['rgAluno']);
 
-	$aluno->setEstadoCivil(addslashes($_POST['estadoCivilAluno']));
-	$aluno->setEndereco(addslashes($_POST['enderecoAluno']));
-	$aluno->setBairro(addslashes($_POST['bairroAluno']));
-	$aluno->setCidade(addslashes($_POST['cidadeAluno']));
-	$aluno->setProfissao(addslashes($_POST['profissaoAluno']));
-	$aluno->setBairro(addslashes($_POST['bairroAluno']));
-	$aluno->setTelefone(addslashes($_POST['telefoneAluno']));
-	$aluno->setMatricula(addslashes($_POST['matriculaAluno']));
-	$aluno->setLogin(addslashes($_POST['loginAluno']));
-	$aluno->setSenha(md5(addslashes($_POST['senhaAluno'])));
+	$senha = $_POST['senhaAluno'];
+
+	$aluno->setEstadoCivil($_POST['estadoCivilAluno']);
+	$aluno->setEndereco($_POST['enderecoAluno']);
+	$aluno->setBairro($_POST['bairroAluno']);
+	$aluno->setCidade($_POST['cidadeAluno']);
+	$aluno->setProfissao($_POST['profissaoAluno']);
+	$aluno->setTelefone($_POST['telefoneAluno']);
+	$aluno->setMatricula($_POST['matriculaAluno']);
+
+	$aluno->setLogin($_POST['loginAluno']);
+	$aluno->setSenha(md5($senha));
 
 	$aluno->setObjeto($aluno);
 
@@ -36,15 +38,5 @@ if(isset($_POST['nomeAluno'])){
 	}
 	
 }
-/*
-$aluno->setNome('Felipe de Sousa');
-$aluno->setLogin('fe@gmail');
-$aluno->setSenha('1233');
-$aluno->setTipo('Aluno');
-
-$aluno->setObjeto($aluno);
-
-var_dump($ ->inserir($aluno));*/
-
 
 ?>

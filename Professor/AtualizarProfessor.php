@@ -28,9 +28,9 @@ if(isset($_POST['nomeProf'])){
 
 	$prof->setObjeto($prof);
 
-	if($prof->inserir($prof)){
+	if($prof->atualizar($prof)){
 
-		echo json_encode(array('status' => true));
+		echo json_encode(array('status' => true,'sql' => $prof->atualizar($prof)));
 	}else{
 
 		echo json_encode(array('status' => false));

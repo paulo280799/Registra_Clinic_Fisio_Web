@@ -30,7 +30,7 @@ if(isset($_GET['id'])){
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Lista de Usuarios</title>
+    <title>Lista de Professores</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -44,13 +44,13 @@ if(isset($_GET['id'])){
 
 <body>
 
-    <?php include_once '../Util/Menu.php'; ?>
+    <?php require '../Util/Menu.php'; ?>
 
       <div class="container">
 
             <div class="row">
                 <p>
-                    <a href="../Telas/CadastroUsuario.php" class="btn btn-success">Adicionar</a>
+                    <a href="../Telas/CadastroProfessor.php" class="btn btn-success">Adicionar</a>
                 </p>
                 <table class="table table-striped">
                     <thead>
@@ -67,20 +67,20 @@ if(isset($_GET['id'])){
                         require '../Util/daoGenerico.php';
 
                         $dao = new daoGenerico();
-                        $sql = 'SELECT * FROM ALUNO ORDER BY IDALUNO ASC';
+                        $sql = 'SELECT * FROM PROFESSOR ORDER BY IDPROF ASC';
                         $dados = $dao->getDados($sql,true);
 
                         foreach($dados as $row){
                             echo '<tr>';
-			                echo '<th scope="row">'. $row->IDALUNO . '</th>';
-                            echo '<td>'. $row->NOMEALUNO . '</td>';
+			                echo '<th scope="row">'. $row->IDPROF . '</th>';
+                            echo '<td>'. $row->NOMEPROF . '</td>';
                             echo '<td>'. $row->LOGIN . '</td>';
                             echo '<td>'. $row->SENHA . '</td>';
                             echo '<td width=250>';
                             echo ' ';
-                            echo '<a class="btn btn-success" href="../Telas/CadastroAluno.php?id='.$row->IDALUNO.'">Atualizar</a>';
+                            echo '<a class="btn btn-success" href="../Telas/CadastroProfessor.php?id='.$row->IDPROF.'">Atualizar</a>';
                             echo ' ';
-                            echo '<a class="btn btn-danger" href="../Telas/ListarAlunos.php?id='.$row->IDALUNO.'">Excluir</button>';
+                            echo '<a class="btn btn-danger" href="../Telas/ListarProfessor.php?id='.$row->IDPROF.'">Excluir</button>';
                             echo '</td>';
                             echo '</tr>';
                         }
@@ -115,7 +115,7 @@ if(isset($_GET['id'])){
 <!-- ------------------------ -->
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function(e){
 
       var valor = "<?php echo $id; ?>";
 
@@ -126,18 +126,18 @@ if(isset($_GET['id'])){
 
       $('#btnConfirm').click(function(e){
         $.ajax({
-            url: '../Aluno/ExcluirAluno.php',
-            method: 'POST',
+            url: '../Professor/ExcluirProfessor.php',
+            type: 'POST',
             datatype: 'JSON',
             data: { id : valor},
             success: function(response){
 
                 if(response.status){
-                   window.location = '../Telas/ListarAluno.php';   
+                   window.location = '../Telas/ListarProfessor.php';   
                 }
                 
             },error: function(e){
-                alert('ERRO DE ENVIO PARA EXCLUSAO DO USUARIO!!');
+                console.log('ERRO DE ENVIO: '+e.responseText);
             }
         })
       });

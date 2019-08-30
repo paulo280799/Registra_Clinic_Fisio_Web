@@ -11,7 +11,6 @@ class Usuario extends Pessoa{
     
     private $Login;
     private $Senha;
-    private $Tipo;
     
 
     public function setLogin($login){
@@ -29,15 +28,6 @@ class Usuario extends Pessoa{
     public function getSenha(){
         return $this->Senha;
     }
-
-    public function setTipo($tipo){
-        $this->Tipo = $tipo;
-    }
-    
-    public function getTipo(){
-        return $this->Tipo;
-    }
-    
     
 }
 

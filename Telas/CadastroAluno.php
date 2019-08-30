@@ -53,13 +53,12 @@ if(isset($_GET['id'])){
 	                <h3 class="well"><i class="fas fa-user-graduate"></i>Cadastro Aluno</h3>
 	            </div>
 				<div class="card-body">
-					<form class="form" action="../Aluno/RegistraAluno.php">
+					<form class="form-horizontal">
 
-					 <div class="group-bloco-1" style="">
+					 <div class="group-bloco">
 
 		              <div class="bloco">
-		              	
-		            
+		              	        
 						<div class="form-group">
 							<div class="controls">
 								<input size="50" class="campo" name="nomeAluno" type="text" autocomplete="off" required>
@@ -104,7 +103,7 @@ if(isset($_GET['id'])){
 					  </div>
 
 					</div>
-				    <div class="group-bloco-2" style="text-align: center;">
+				    <div class="group-bloco" style="text-align: center;">
 
 						<div class="bloco">	
 
@@ -134,7 +133,7 @@ if(isset($_GET['id'])){
 						</div>
 					</div>	 
 
-					<div class="group-bloco-3">
+					<div class="group-bloco">
 
 					    <div class="bloco">
 
@@ -165,7 +164,7 @@ if(isset($_GET['id'])){
 						</div>
 						<div class="bloco">	
 
-							<div class="form-group" style="width: 50%;">
+							<div class="form-group">
 								
 								<div class="controls">
 									<input size="40" class="campo" name="cidadeAluno" type="text" autocomplete="off" required>
@@ -178,6 +177,10 @@ if(isset($_GET['id'])){
 
 		             </div>	
 
+		             <div class="group-bloco">
+		             	
+		             	<div class="bloco">
+		                	
 		                	<div class="form-group">
 								<div class="controls">
 									<select class="campo" name="estadoCivilAluno" required>
@@ -192,6 +195,8 @@ if(isset($_GET['id'])){
 									<span class="help-inline"><?php?></span>
 								</div>
 							</div>
+						</div>	
+					 <div class="bloco">
 
 						<div class="form-group">
 							
@@ -203,8 +208,10 @@ if(isset($_GET['id'])){
 							</div>
 						</div>
 
-		             <div class="bloco" style="margin-top: 0; transform: translateY(-60px);">
+					 </div>
+					 <div class="bloco">
 				
+
 						<div class="form-group">
 					
 							<div class="controls">
@@ -215,6 +222,13 @@ if(isset($_GET['id'])){
 							</div>
 						</div>
 
+					 </div>	
+
+					</div>
+					<div class="group-bloco">
+	
+                      <div class="bloco">
+
 						<div class="form-group">
 							<div class="controls">
 							   <input size="10" class="campo" id="matricula" name="matriculaAluno" type="text" autocomplete="off" required>
@@ -224,36 +238,44 @@ if(isset($_GET['id'])){
 							</div>
 						</div>
 
-						<div class="form-group">
+					   </div>
+					   <div class="bloco">
+
+							<div class="form-group">
+								
+								<div class="controls">
+									<input size="10" class="campo" name="loginAluno" type="text" autocomplete="off" required>
+									<label class="control-label">Login:</label>
+									<i class="fas fa-info-circle" id="icon-info"></i>
+									<span class="help-inline"><?php?></span>
+								</div>
+							</div>
+					    </div>
+					    <div class="bloco">
+
+							<div class="form-group">
 							
-							<div class="controls">
-								<input size="10" class="campo" name="loginAluno" type="text" autocomplete="off" required>
-								<label class="control-label">Login:</label>
-								<i class="fas fa-info-circle" id="icon-info"></i>
-								<span class="help-inline"><?php?></span>
+								<div class="controls">
+									<input size="10" class="campo" name="senhaAluno" type="password" autocomplete="off" required>
+									<label class="control-label">Senha:</label>
+									<i class="fas fa-info-circle" id="icon-info"></i>
+									<span class="help-inline"><?php?></span>
+								</div>
 							</div>
-						</div>
+					    </div>
 
-						<div class="form-group">
-						
-							<div class="controls">
-								<input size="10" class="campo" name="senhaAluno" type="password" placeholder="..." required>
-								<label class="control-label">Senha:</label>
-								<i class="fas fa-info-circle" id="icon-info"></i>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
-
-				     </div>
-
-						<div class="form-actions">
-
-							<button type="button" class="btn btn-success" id="btnSalvarAluno">Salvar</button>
-							<a href="../Telas/ListarAlunos.php"><button type="button" class="btn btn-success" id="btnPesquisarAluno">Pesquisar</button></a>
-
-						</div>
+					</div>
 
 					</form>
+				</div>
+			</div>
+			<div class="btn-actions">
+				<div class="form-actions">
+
+					<button type="button" class="btn btn-success" id="btnSalvarAluno">Salvar</button>
+					<a href="../Telas/ListarAlunos.php">
+					<button type="button" class="btn btn-success" id="btnPesquisarAluno">Pesquisar</button></a>
+
 				</div>
 			</div>
 		</div>
@@ -274,8 +296,7 @@ if(isset($_GET['id'])){
 	$(document).ready(function(e){
 
 		
-
-		var tipo = "<?php echo $tipo;?>";
+		
 
 		/*if(idAtualizar != 0){
 			$('#btnSalvarAluno').text('Atualizar');
@@ -288,22 +309,7 @@ if(isset($_GET['id'])){
 		  	}*/
 
 
-		  	switch(tipo){
-		  		case "Professor":
-		  		$('#cadPaciente,#cadProfessor,#cadFuncionario').css('display','none');
-		  		break;
-
-		  		case "Aluno":
-		  		$('#cadAluno,#cadProfessor,#cadFuncionario').css('display','none');
-		  		break;
-
-		  		case "Funcionario":
-		  		$('#cadAluno,#cadPaciente,#cadFuncionario').css('display','none');
-		  		break;
-
-		  		default:
-		  	}
-
+		  
 	});
 </script>
 <script type="text/javascript">
@@ -311,17 +317,16 @@ if(isset($_GET['id'])){
 			$('#btnSalvarAluno').on('click',function(e){
 
 				var dados = $('.form-horizontal').serialize();
-				var action = $('.form-horizontal').attr('action');
 
 				$.ajax({
-					url: action,
+					url: "../Aluno/RegistraAluno.php",
 					datatype: 'JSON',
 					type: 'POST',
 					data: dados,
 					success: function(response){
 
 						if(response.status){
-						 	console.log(e);
+					
 						 	 $('#alert').fadeIn(1000);
 						 	 $('#alert').html('Realizado com Sucesso!');
 
@@ -329,13 +334,21 @@ if(isset($_GET['id'])){
                                     $('#alert').fadeOut(900); 
                                },3000);
 
-                            
 						     $('.form-horizontal')[0].reset();
-						}
-						
 
-					},error: function(e){
+						}else{
 
+							 $('#alert').css('background','red');
+							 $('#alert').fadeIn(1000);
+						 	 $('#alert').html('Error de Inserção!');
+
+						 	  window.setTimeout(function(){
+                                    $('#alert').fadeOut(900); 
+                              },3000);
+						}					
+
+					},error: function(error){
+						console.log(error);
 					}
 				});
 

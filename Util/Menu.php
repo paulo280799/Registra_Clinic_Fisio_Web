@@ -14,9 +14,9 @@
               <a class="nav-link" href="##" id="items-a">Cadastro</a>
                 <ul class="sub-menu">
                   <li class="sub-menu-li"  id="cadPaciente"><a href="">Paciente</a></li>
-                  <li class="sub-menu-li"  id="cadProfessor"><a href="">Professor</a></li>
+                  <li class="sub-menu-li"  id="cadProfessor"><a href="../Telas/CadastroProfessor.php">Professor</a></li>
                   <li class="sub-menu-li"  id="cadFuncionario"><a href="">Funcionário</a></li>
-                  <li class="sub-menu-li"  id="cadAluno"><a href="">Aluno</a></li>
+                  <li class="sub-menu-li"  id="cadAluno"><a href="../Telas/CadastroAluno.php">Aluno</a></li>
                 </ul>
             </li>
             <li class="nav-item active"  id="items-li">
@@ -44,23 +44,53 @@
 <!---------------- FIM MENU PRINCIPAL  ------------>
 <script type="text/javascript">
   
-   window.onload = function(){
+   window.onload = function(e){
 
      var li = document.getElementsByClassName('sub-menu-li');
+     var tipo = "<?php echo $tipo;?>";
+
+     console.log(tipo);
 
      $('.sub-menu-li').click(function(e){
           var logado = e.target.firstChild.text;
 
           if(logado == 'Professor'){
+
             window.location = '../Telas/CadastroProfessor.php';
+
           }else if(logado == 'Aluno'){
+
             window.location = '../Telas/CadastroAluno.php';
+
           }else if(logado == 'Funcionário'){
+
              window.location = '../Telas/CadastroFuncionario.php';
+
           }else if(logado == 'Paciente'){
              window.location = '../Telas/CadastroPaciente.php';
           }
      });
+
+
+      switch(tipo){
+          case "Professor":
+          $('#cadPaciente,#cadProfessor,#cadFuncionario').css('display','none');
+          break;
+
+          case "Aluno":
+          $('#cadAluno,#cadProfessor,#cadFuncionario').css('display','none');
+          break;
+
+          case "Funcionario":
+          $('#cadAluno,#cadPaciente,#cadFuncionario').css('display','none');
+          break;
+
+          case "Paciente":
+          $('#cadAluno,#cadPaciente,#cadFuncionario,#cadProfessor').css('display','none');
+          break;
+
+          default:
+        }
 
      /*li.addEventListener('click',function(e){
          console.log(e);

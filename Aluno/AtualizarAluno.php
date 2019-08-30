@@ -19,9 +19,10 @@ if(isset($_POST['nomeAluno'])){
 	$aluno->setBairro(addslashes($_POST['bairroAluno']));
 	$aluno->setCidade(addslashes($_POST['cidadeAluno']));
 	$aluno->setProfissao(addslashes($_POST['profissaoAluno']));
-	$aluno->setBairro(addslashes($_POST['bairroAluno']));
 	$aluno->setTelefone(addslashes($_POST['telefoneAluno']));
+	
 	$aluno->setMatricula(addslashes($_POST['matriculaAluno']));
+
 	$aluno->setLogin(addslashes($_POST['loginAluno']));
 	$aluno->setSenha(md5(addslashes($_POST['senhaAluno'])));
 
@@ -36,7 +37,6 @@ if(isset($_POST['nomeAluno'])){
 	}
 	
 }
-
 
 
 ?>
