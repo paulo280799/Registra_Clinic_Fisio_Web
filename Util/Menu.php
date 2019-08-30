@@ -13,16 +13,16 @@
             <li class="nav-item active" id="items-li">
               <a class="nav-link" href="##" id="items-a">Cadastro</a>
                 <ul class="sub-menu">
-                  <li class="sub-menu-li"  id="cadPaciente"><a href="CadastroPaciente.php">Paciente</a></li>
-                  <li class="sub-menu-li"  id="cadProfessor"><a href="CadastroProfessor.php">Professor</a></li>
-                  <li class="sub-menu-li"  id="cadFuncionario"><a href="#">Funcionário</a></li>
-                  <li class="sub-menu-li"  id="cadAluno"><a href="../Telas/CadastroAluno.php">Aluno</a></li>
+                  <li class="sub-menu-li"  id="cadPaciente"><a href="">Paciente</a></li>
+                  <li class="sub-menu-li"  id="cadProfessor"><a href="">Professor</a></li>
+                  <li class="sub-menu-li"  id="cadFuncionario"><a href="">Funcionário</a></li>
+                  <li class="sub-menu-li"  id="cadAluno"><a href="">Aluno</a></li>
                 </ul>
             </li>
             <li class="nav-item active"  id="items-li">
               <a class="nav-link" href="#" id="items-a">Atendimento<span class="sr-only">(current)</span></a>
                  <ul class="sub-menu">
-                  <li class="sub-menu-li" id="cadAgendamento"><a href="#">Agendar</a></li>
+                  <li class="sub-menu-li" id="cadAgendamento"><a href="">Agendar</a></li>
                  </ul>
             </li>
             <li class="nav-item active"  id="items-li">
@@ -42,3 +42,30 @@
     </div>
   </nav>
 <!---------------- FIM MENU PRINCIPAL  ------------>
+<script type="text/javascript">
+  
+   window.onload = function(){
+
+     var li = document.getElementsByClassName('sub-menu-li');
+
+     $('.sub-menu-li').click(function(e){
+          var logado = e.target.firstChild.text;
+
+          if(logado == 'Professor'){
+            window.location = '../Telas/CadastroProfessor.php';
+          }else if(logado == 'Aluno'){
+            window.location = '../Telas/CadastroAluno.php';
+          }else if(logado == 'Funcionário'){
+             window.location = '../Telas/CadastroFuncionario.php';
+          }else if(logado == 'Paciente'){
+             window.location = '../Telas/CadastroPaciente.php';
+          }
+     });
+
+     /*li.addEventListener('click',function(e){
+         console.log(e);
+     });*/
+   
+   }
+
+</script> 

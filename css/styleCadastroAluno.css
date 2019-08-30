@@ -22,47 +22,131 @@ form{
   position: relative;
   margin: 0 auto;
   top: 20px;
-  width: 62%;
+  width: 74%;
   height: 500px;
   transition: .3s;
-  overflow: auto;
   padding: 10px;
 }
 
-.container::-webkit-scrollbar { width:5px; background: #00beaa;}
+/* .container::-webkit-scrollbar { width:5px; background: #00beaa;}
 .container::-webkit-scrollbar-track { background: #4e4e4e; }
 .container::-webkit-scrollbar-thumb { border-radius:20px; background: #3cb371;}
 .container::-webkit-scrollbar-corner { visibility: hidden;}
-.container::-webkit-resizer { visibility: hidden; }
+.container::-webkit-resizer { visibility: hidden; } */
 
 .form-group{
-    padding: -20px;
-    margin: 5px;
+    /*padding: -20px;*/
+    margin: 30px;
+    width: 80%;
+    transition: .4s all;
 }
+
+.bloco{
+  display: inline-block;
+  margin: -10px -30px 0 -20px;
+}
+
 .form-actions{
     margin-top: 8px;
     margin-left: 5px;
+    float: right;
+}
+
+.controls{
+ position: relative;
+}
+
+.controls label{
+   position: absolute;
+   top: 3px;
+   font-size: 19px;
+   pointer-events: none;
+   left: 0;
+   transition: all .4s;
+   color: #999;
+}
+
+.campo{
+  border: none;
+  border-bottom: 1px solid silver;
+  outline: none;
+  width: 100%;
+  padding: 2px;
+}
+
+.campo:focus ~ label,
+.campo:valid ~ label{
+  position: absolute;
+  top: -20px;
+  left: 0;
+  color: #3cb371;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.campo:focus {
+ outline: none;
+ border-bottom-color: rgba(0,0,0,0.8);
+}
+
+#icon-info{
+  position: absolute;
+  top: -10px;
+  right: 0;
+  font-size: 13px;
+  border: 1px solid #3cb371;
+  border-radius: 12px;
+  background: green;
+  cursor: pointer;
+  color: white;
+  opacity: .5;
 }
 
 select{
   cursor: pointer;
 }
 
+.header{
+  border: 1px solid #3cb371;
+  background:  white;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 100;
+}
+
+.header h3 i{
+  font-size: 22px;
+  margin-right: 20px;
+  color: #3cb371;
+}
+
 .card{
    box-shadow: 3px 3px 3px silver;
-   width: 800px;
    margin: 0 auto;
    position: relative;
    top: -20px;
 }
 
-#selectTipo{
- cursor: pointer;
+.card-body{
+  overflow: auto;
+  height: 400px;
+
 }
 
-.card-header{
-   text-align: center;
-   background-color: rgba(0,0,0,0.1);
+.popover{
+  z-index: 0;
+  height: 40px;
+}
+
+.card-body::-webkit-scrollbar { width:5px; background: #00beaa;}
+.card-body::-webkit-scrollbar-track { background: #4e4e4e; }
+.card-body::-webkit-scrollbar-thumb { border-radius:20px; background: #3cb371;}
+.card-body::-webkit-scrollbar-corner { visibility: hidden;}
+.card-body::-webkit-resizer { visibility: hidden; }
+
+#selectTipo{
+ cursor: pointer;
 }
 
 #btnSalvarUsuario{
@@ -70,4 +154,24 @@ select{
    padding-right: 20px;
 }
 /*--- FIM FORM CADASTRO ALUNO --- */
+/*------------ RESPONSIVIDADE ----------------*/
+@media(max-width: 1110px){
+  
+  .bloco{
+    /*display: block;*/
+    margin: -10px -50px 0 -20px;
+  } 
 
+
+  .form-group{
+    width: 70%;
+  }
+}
+
+@media(max-width: 1038px){
+  
+  .bloco{
+    display: block;
+  }
+
+}

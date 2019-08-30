@@ -18,11 +18,11 @@ if(isset($_SESSION['SESSION_ID_ALUNO'])){
 	header('location: ../Index.php');
 }
 
-$id = null;
+/*$id = null;
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-}
+}*/
 
 ?>
 <!DOCTYPE html>
@@ -49,139 +49,202 @@ if(isset($_GET['id'])){
 	<div class="container">
 		<div class="span10 offset1">
 			<div class="card">
-				<div class="card-header">
-					<h3 class="well">Aluno</h3>
-				</div>
+			    <div class="header">
+	                <h3 class="well"><i class="fas fa-user-graduate"></i>Cadastro Aluno</h3>
+	            </div>
 				<div class="card-body">
-					<form class="form-horizontal" action="../Aluno/RegistraAluno.php">
+					<form class="form" action="../Aluno/RegistraAluno.php">
 
+					 <div class="group-bloco-1" style="">
+
+		              <div class="bloco">
+		              	
+		            
 						<div class="form-group">
-							<label class="control-label">Nome:</label>
 							<div class="controls">
-								<input size="50" class="form-control" name="nomeAluno" type="text" placeholder="..." required>
+								<input size="50" class="campo" name="nomeAluno" type="text" autocomplete="off" required>
+								<label class="control-label">Nome Completo</label>
+								<i class="fas fa-info-circle infoNome" id="icon-info" data-toggle="popover" data-placement="left" 
+								data-content="Ola mundo"></i>
+								<span class="help-inline"><?php?></span>
 								<input type="hidden" name="id">
+							</div>
+						</div>
+
+					  </div>
+
+					  <div class="bloco">
+
+						<div class="form-group">
+							<div class="controls">
+								<input size="40" class="campo" id="dataNasc" name="dataNascAluno" type="text" autocomplete="off" required>
+								<label class="control-label">Data Nascimento</label>
+								<i class="fas fa-info-circle infoDataNasc" id="icon-info" data-toggle="popover" data-placement="left" 
+								data-content="Ola mundo"></i>
 								<span class="help-inline"><?php?></span>
 							</div>
 						</div>
 
+					  </div>
+					  <div class="bloco">	
 
 						<div class="form-group">
-							<label class="control-label">DataNasc:</label>
 							<div class="controls">
-								<input size="40" class="form-control" id="dataNasc" name="dataNascAluno" type="text" placeholder="..." required>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">CPF:</label>
-							<div class="controls">
-								<input size="40" class="form-control" id="cpf" name="cpfAluno" type="text" placeholder="..." required>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">RG:</label>
-							<div class="controls">
-								<input size="40" class="form-control" name="rgAluno" type="text" placeholder="..." required>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">Sexo:</label>
-							<div class="controls">
-								<select class="form-control" name="sexoAluno">
-									<option value="">---</option>
+								<select class="campo" name="sexoAluno" required>
+									<option value=""></option>
 									<option value="Solteiro">Masculino</option>
 									<option value="Casado">Feminino</option>
 								</select>
+								<label class="control-label">Sexo:</label>
+								<i class="fas fa-info-circle" id="icon-info"></i>
 								<span class="help-inline"><?php?></span>
 							</div>
 						</div>
 
+					  </div>
+
+					</div>
+				    <div class="group-bloco-2" style="text-align: center;">
+
+						<div class="bloco">	
+
+							<div class="form-group">
+								<div class="controls">
+									<input size="40" class="campo" id="cpf" name="cpfAluno" type="text" autocomplete="off" required>
+									<label class="control-label">CPF</label>
+									<i class="fas fa-info-circle" id="icon-info" data-toggle="popover" data-placement="left" 
+									data-content="Ola mundo"></i>
+									<span class="help-inline"><?php?></span>
+								</div>
+							</div>
+
+						</div>	
+						<div class="bloco">
+
+							<div class="form-group">
+								<div class="controls">
+									<input size="40" class="campo" name="rgAluno" type="text" autocomplete="off" required>
+									<label class="control-label">RG</label>
+									<i class="fas fa-info-circle" id="icon-info" data-toggle="popover" data-placement="left" 
+									data-content="Ola mundo"></i>
+									<span class="help-inline"><?php?></span>
+								</div>
+							</div>
+
+						</div>
+					</div>	 
+
+					<div class="group-bloco-3">
+
+					    <div class="bloco">
+
+							<div class="form-group">
+								
+								<div class="controls">
+									<input size="40" class="campo" name="enderecoAluno" type="text" autocomplete="off" required>
+									<label class="control-label">Endereço:</label>
+									<i class="fas fa-info-circle" id="icon-info"></i>
+									<span class="help-inline"><?php?></span>
+								</div>
+							</div>
+
+					    </div>
+					    <div class="bloco">
+
+
+							<div class="form-group">
+							
+								<div class="controls">
+									<input size="40" class="campo" name="bairroAluno" type="text" autocomplete="off" required>
+									<label class="control-label">Bairro:</label>
+									<i class="fas fa-info-circle" id="icon-info"></i>
+									<span class="help-inline"><?php?></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="bloco">	
+
+							<div class="form-group" style="width: 50%;">
+								
+								<div class="controls">
+									<input size="40" class="campo" name="cidadeAluno" type="text" autocomplete="off" required>
+									<label class="control-label">Cidade:</label>
+									<i class="fas fa-info-circle" id="icon-info"></i>
+									<span class="help-inline"><?php?></span>
+								</div>
+							</div>
+					    </div>
+
+		             </div>	
+
+		                	<div class="form-group">
+								<div class="controls">
+									<select class="campo" name="estadoCivilAluno" required>
+										<option value=""></option>
+										<option value="Solteiro">Solteiro</option>
+										<option value="Casado">Casado</option>
+										<option value="Divorciado">Divorciado</option>
+										<option value="Viuvo">Viúvo</option>
+									</select>
+									<label class="control-label">Estado Civil:</label>
+									<i class="fas fa-info-circle" id="icon-info"></i>
+									<span class="help-inline"><?php?></span>
+								</div>
+							</div>
 
 						<div class="form-group">
-							<label class="control-label">Estado Civil:</label>
+							
 							<div class="controls">
-								<select class="form-control" name="estadoCivilAluno">
-									<option value="">---</option>
-									<option value="Solteiro">Solteiro</option>
-									<option value="Casado">Casado</option>
-									<option value="Divorciado">Divorciado</option>
-									<option value="Viuvo">Viúvo</option>
-								</select>
+								<input size="40" class="campo" name="profissaoAluno" type="text" autocomplete="off" required>
+								<label class="control-label">Profissão:</label>
+								<i class="fas fa-info-circle" id="icon-info"></i>
 								<span class="help-inline"><?php?></span>
 							</div>
 						</div>
 
-
+		             <div class="bloco" style="margin-top: 0; transform: translateY(-60px);">
+				
 						<div class="form-group">
-							<label class="control-label">Endereço:</label>
+					
 							<div class="controls">
-								<input size="40" class="form-control" name="enderecoAluno" type="text" placeholder="..." required>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<label class="control-label">Bairro:</label>
-							<div class="controls">
-								<input size="40" class="form-control" name="bairroAluno" type="text" placeholder="..." required>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<label class="control-label">Cidade:</label>
-							<div class="controls">
-								<input size="40" class="form-control" name="cidadeAluno" type="text" placeholder="..." required>
+								<input size="40" class="campo" id="telefone" name="telefoneAluno" type="text" autocomplete="off" required>
+								<label class="control-label">Telefone:</label>
+								<i class="fas fa-info-circle" id="icon-info"></i>
 								<span class="help-inline"><?php?></span>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label">Profissão:</label>
 							<div class="controls">
-								<input size="40" class="form-control" name="profissaoAluno" type="text" placeholder="..." required>
+							   <input size="10" class="campo" id="matricula" name="matriculaAluno" type="text" autocomplete="off" required>
+							   <label class="control-label">Matricula:</label>
+							   <i class="fas fa-info-circle" id="icon-info"></i>
+							   <span class="help-inline"><?php?></span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							
+							<div class="controls">
+								<input size="10" class="campo" name="loginAluno" type="text" autocomplete="off" required>
+								<label class="control-label">Login:</label>
+								<i class="fas fa-info-circle" id="icon-info"></i>
 								<span class="help-inline"><?php?></span>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label">Telefone:</label>
+						
 							<div class="controls">
-								<input size="40" class="form-control" id="telefone" name="telefoneAluno" type="text" placeholder="..." required>
+								<input size="10" class="campo" name="senhaAluno" type="password" placeholder="..." required>
+								<label class="control-label">Senha:</label>
+								<i class="fas fa-info-circle" id="icon-info"></i>
 								<span class="help-inline"><?php?></span>
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label">Matricula:</label>
-							<div class="controls">
-							   <input size="10" class="form-control" id="matricula" name="matriculaAluno" type="text" placeholder="..." required>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">Login:</label>
-							<div class="controls">
-								<input size="10" class="form-control" name="loginAluno" type="text" placeholder="..." required>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label">Senha:</label>
-							<div class="controls">
-								<input size="10" class="form-control" name="senhaAluno" type="password" placeholder="..." required>
-								<span class="help-inline"><?php?></span>
-							</div>
-						</div>
+				     </div>
 
 						<div class="form-actions">
 
@@ -200,23 +263,24 @@ if(isset($_GET['id'])){
 </body>
 
 <script src="../js/jquery-3.4.1.min.js"></script>
-<script src="../bootstrap-4.3.1/js/bootstrap.js"></script>
 <script src="../bootstrap-4.3.1/js/bootstrap.min.js"></script>
+<script src="../bootstrap-4.3.1/js/bootstrap.js"></script>
+<script src="../bootstrap-4.3.1/js/bootstrap.bundle.js"></script>
+<script src="../bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
 <script src="../js/jquerymask.js"></script>
 
 <script type="text/javascript">
-
+	
 	$(document).ready(function(e){
 
+		
 
 		var tipo = "<?php echo $tipo;?>";
-		var idAtualizar = '<?php echo $_GET['id']; ?>';
 
-
-		if(idAtualizar != 0){
+		/*if(idAtualizar != 0){
 			$('#btnSalvarAluno').text('Atualizar');
 			$('.form-horizontal').attr('action','../Aluno/AtualizarAluno.php');
-		}	
+		}	*/
 
 		     /*	if(dado != 0){
 		  		$('#btnSalvarUsuario').text('Atualizar');
@@ -278,9 +342,32 @@ if(isset($_GET['id'])){
 			});
 
 
+		// MÁSCARA DOS CAMPOS
 		$('#telefone').mask('(00) 0.0000-0000');
 		$('#cpf').mask('000.000.000-00');
 		$('#dataNasc').mask('00/00/0000');
 		$('#matricula').mask('0000');
+		//---------------------------------------
+
+
+		function verificaCampos(){
+
+			var quantidade = $('.form-horizontal')[0].childElementCount;
+
+			for (var i = 0; i < quantidade; i++) {
+
+				 var campo = $('.form-horizontal')[0][i];
+
+				 if($(campo).val() == ""){
+				 	var pai = $(campo).parents()[0];
+
+				 	var info = $(campo).offsetParent()[0].children[2];
+
+				 	$(info).popover('show');
+
+				 	$(campo).css('border-bottom','1px solid red');
+				 }
+			}
+		}
 </script>
 </html>
