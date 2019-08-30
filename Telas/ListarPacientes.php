@@ -30,7 +30,7 @@ if(isset($_GET['id'])){
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Lista de Professores</title>
+    <title>Lista de Pacientes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -38,7 +38,7 @@ if(isset($_GET['id'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/styleListarProf.css">
+    <link rel="stylesheet" type="text/css" href="../css/styleListarPac.css">
     <link rel="stylesheet"  type="text/css"  href="../css/styleMenu.css">
 </head>
 
@@ -50,15 +50,16 @@ if(isset($_GET['id'])){
 
             <div class="row">
                 <p>
-                    <a href="../Telas/CadastroProfessor.php" class="btn btn-success">Adicionar</a>
+                    <a href="../Telas/CadastroPaciente.php" class="btn btn-success">Adicionar</a>
                 </p>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Login</th>
-                            <th scope="col">Senha</th>
+                            <th scope="col">Numero Prontuário</th>
+                            <th scope="col">Posto Saúde</th>
+                            <th scope="col">Agente Saúde</th>
                             <th scope="col">Ação</th>
                         </tr>
                     </thead>
@@ -67,20 +68,21 @@ if(isset($_GET['id'])){
                         require '../Util/daoGenerico.php';
 
                         $dao = new daoGenerico();
-                        $sql = 'SELECT * FROM PROFESSOR ORDER BY IDPROF ASC';
+                        $sql = 'SELECT * FROM PACIENTE ORDER BY IDPACIENTE ASC';
                         $dados = $dao->getDados($sql,true);
 
                         foreach($dados as $row){
                             echo '<tr>';
-			                echo '<th scope="row">'. $row->IDPROF . '</th>';
-                            echo '<td>'. $row->NOMEPROF . '</td>';
-                            echo '<td>'. $row->LOGIN . '</td>';
-                            echo '<td>'. $row->SENHA . '</td>';
+			                echo '<th scope="row">'. $row->IDPACIENTE . '</th>';
+                            echo '<td>'. $row->NOMEPAC . '</td>';
+                            echo '<td>'. $row->NUMEROPRONT . '</td>';
+                            echo '<td>'. $row->POSTOSAUDE . '</td>';
+                            echo '<td>'. $row->AGENTESAUDE . '</td>';
                             echo '<td width=250>';
                             echo ' ';
-                            echo '<a class="btn btn-success" href="../Telas/CadastroProfessor.php?id='.$row->IDPROF.'">Atualizar</a>';
+                            echo '<a class="btn btn-success" href="../Telas/CadastroPaciente.php?id='.$row->IDPACIENTE.'">Atualizar</a>';
                             echo ' ';
-                            echo '<a class="btn btn-danger" href="../Telas/ListarProfessor.php?id='.$row->IDPROF.'">Excluir</button>';
+                            echo '<a class="btn btn-danger" href="../Telas/ListarPacientes.php?id='.$row->IDPACIENTE.'">Excluir</button>';
                             echo '</td>';
                             echo '</tr>';
                         }
@@ -126,14 +128,14 @@ if(isset($_GET['id'])){
 
       $('#btnConfirm').click(function(e){
         $.ajax({
-            url: '../Professor/ExcluirProfessor.php',
+            url: '../Paciente/ExcluirPaciente.php',
             type: 'POST',
             datatype: 'JSON',
             data: { id : valor},
             success: function(response){
 
                 if(response.status){
-                   window.location = '../Telas/ListarProfessor.php';   
+                   window.location = '../Telas/ListarPacientes.php';   
                 }
                 
             },error: function(e){

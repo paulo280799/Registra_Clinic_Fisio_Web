@@ -1,6 +1,7 @@
 <?php  
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
+require '../Util/daoGenerico.php';
 
 if(isset($_SESSION['SESSION_ID_ALUNO'])){
   $logado = $_SESSION['SESSION_NOME_ALUNO'];
@@ -18,18 +19,24 @@ if(isset($_SESSION['SESSION_ID_ALUNO'])){
   header('location: ../Index.php');
 }
 
-/*$id = null;
+$IdAtualizar = 0;
 
 if(isset($_GET['id'])){
-    $id = $_GET['id'];
-}*/
+
+     $IdAtualizar = $_GET['id'];
+
+     $dao = new daoGenerico();
+     $sql = 'SELECT * FROM FUNCIONARIO WHERE IDFUNC = ?';
+     $dao->setCondicao($IdAtualizar);
+     $dados = $dao->getDados($sql,false);
+}
 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <!-- Required meta tags -->
-  <title>Aluno</title>
+  <title>Cadastro Funcionário</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +57,7 @@ if(isset($_GET['id'])){
     <div class="span10 offset1">
       <div class="card">
           <div class="header">
-                  <h3 class="well"><i class="fas fa-chalkboard-teacher"></i>Cadastro Funcionario</h3>
+                  <h3 class="well"><i class="fas fa-user-tie"></i>Cadastro Funcionário</h3>
               </div>
         <div class="card-body">
           <form class="form-horizontal">
@@ -61,12 +68,12 @@ if(isset($_GET['id'])){
                             
             <div class="form-group">
               <div class="controls">
-                <input size="50" class="campo" name="nomeProf" type="text" autocomplete="off" required>
+                <input size="50" class="campo" name="nomeFunc" type="text" autocomplete="off" value="<?php isset($_GET['id']) ? print($dados->NOMEFUNC) : print(""); ?>" required>
                 <label class="control-label">Nome</label>
                 <i class="fas fa-info-circle infoNome" id="icon-info" data-toggle="popover" data-placement="left" 
                 data-content="Ola mundo"></i>
                 <span class="help-inline"><?php?></span>
-                <input type="hidden" name="id">
+                <input type="hidden" name="idFunc" value="<?php isset($_GET['id']) ? print($dados->IDFUNC) : print(""); ?>">
               </div>
             </div>
 
@@ -76,7 +83,7 @@ if(isset($_GET['id'])){
 
             <div class="form-group">
               <div class="controls">
-                <input size="40" class="campo" id="dataNasc" name="dataNascProf" type="text" autocomplete="off" required>
+                <input size="40" class="campo" id="dataNasc" name="dataNascFunc" type="text" value="<?php isset($_GET['id']) ? print($dados->DATANASCFUNC) : print(""); ?>" autocomplete="off" required>
                 <label class="control-label">Data Nascimento</label>
                 <i class="fas fa-info-circle infoDataNasc" id="icon-info" data-toggle="popover" data-placement="left" 
                 data-content="Ola mundo"></i>
@@ -89,7 +96,7 @@ if(isset($_GET['id'])){
 
             <div class="form-group">
               <div class="controls">
-                <select class="campo" name="sexoProf" required>
+                <select class="campo" name="sexoFunc" required>
                   <option value=""></option>
                   <option value="Solteiro">Masculino</option>
                   <option value="Casado">Feminino</option>
@@ -109,7 +116,7 @@ if(isset($_GET['id'])){
 
               <div class="form-group">
                 <div class="controls">
-                  <input size="40" class="campo" id="cpf" name="cpfProf" type="text" autocomplete="off" required>
+                  <input size="40" class="campo" id="cpf" name="cpfFunc" type="text" value="<?php isset($_GET['id']) ? print($dados->CPFFUNC) : print(""); ?>" autocomplete="off" required>
                   <label class="control-label">CPF</label>
                   <i class="fas fa-info-circle" id="icon-info" data-toggle="popover" data-placement="left" 
                   data-content="Ola mundo"></i>
@@ -122,7 +129,7 @@ if(isset($_GET['id'])){
 
               <div class="form-group">
                 <div class="controls">
-                  <input size="40" class="campo" name="rgProf" type="text" autocomplete="off" required>
+                  <input size="40" class="campo" name="rgFunc" type="text" value="<?php isset($_GET['id']) ? print($dados->RGFUNC) : print(""); ?>" autocomplete="off" required>
                   <label class="control-label">RG</label>
                   <i class="fas fa-info-circle" id="icon-info" data-toggle="popover" data-placement="left" 
                   data-content="Ola mundo"></i>
@@ -140,7 +147,7 @@ if(isset($_GET['id'])){
               <div class="form-group">
                 
                 <div class="controls">
-                  <input size="40" class="campo" name="enderecoProf" type="text" autocomplete="off" required>
+                  <input size="40" class="campo" name="enderecoFunc" type="text" value="<?php isset($_GET['id']) ? print($dados->ENDERECOFUNC) : print(""); ?>" autocomplete="off" required>
                   <label class="control-label">Endereço:</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
@@ -154,7 +161,7 @@ if(isset($_GET['id'])){
               <div class="form-group">
               
                 <div class="controls">
-                  <input size="40" class="campo" name="bairroProf" type="text" autocomplete="off" required>
+                  <input size="40" class="campo" name="bairroFunc" type="text" value="<?php isset($_GET['id']) ? print($dados->BAIRROFUNC) : print(""); ?>" autocomplete="off" required>
                   <label class="control-label">Bairro:</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
@@ -167,7 +174,7 @@ if(isset($_GET['id'])){
               <div class="form-group">
                 
                 <div class="controls">
-                  <input size="40" class="campo" name="cidadeProf" type="text" autocomplete="off" required>
+                  <input size="40" class="campo" name="cidadeFunc" type="text" value="<?php isset($_GET['id']) ? print($dados->CIDADEFUNC) : print(""); ?>" autocomplete="off" required>
                   <label class="control-label">Cidade:</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
@@ -177,81 +184,79 @@ if(isset($_GET['id'])){
 
                  </div> 
 
-                <div class="group-bloco">
+                 <div class="group-bloco">
                   
                   <div class="bloco">
                       
                       <div class="form-group">
-                        <div class="controls">
-                          <select class="campo" name="estadoCivilProf" required>
-                            <option value=""></option>
-                            <option value="Solteiro">Solteiro</option>
-                            <option value="Casado">Casado</option>
-                            <option value="Divorciado">Divorciado</option>
-                            <option value="Viuvo">Viúvo</option>
-                          </select>
-                          <label class="control-label">Estado Civil:</label>
-                          <i class="fas fa-info-circle" id="icon-info"></i>
-                          <span class="help-inline"><?php?></span>
-                        </div>
-                     </div>
-                  </div>  
-
-             <div class="bloco">
-          
-
-              <div class="form-group">
-            
                 <div class="controls">
-                  <input size="40" class="campo" id="telefone" name="telefoneProf" type="text" autocomplete="off" required>
-                  <label class="control-label">Telefone:</label>
+                  <select class="campo" name="estadoCivilFunc" required>
+                    <option value=""></option>
+                    <option value="Solteiro">Solteiro(a)</option>
+                    <option value="Casado">Casado(a)</option>
+                    <option value="Divorciado">Divorciado(a)</option>
+                    <option value="Viuvo">Viúvo(a)</option>
+                  </select>
+                  <label class="control-label">Estado Civil:</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
                 </div>
               </div>
+            </div>  
+          
+            <div class="bloco">
 
-             </div> 
+            <div class="form-group">
+              <div class="controls">
+                 <input size="10" class="campo" id="funcao" name="funcaoFunc" type="text"  value="<?php isset($_GET['id']) ? print($dados->FUNCAOFUNC) : print(""); ?>" autocomplete="off" required>
+                 <label class="control-label">Função:</label>
+                 <i class="fas fa-info-circle" id="icon-info"></i>
+                 <span class="help-inline"><?php?></span>
+              </div>
+            </div>
+
+             </div>
+           <div class="bloco">
+        
+
+            <div class="form-group">
+          
+              <div class="controls"> 
+                <input size="40" class="campo" id="telefone" name="telefoneFunc" type="text" value="<?php isset($_GET['id']) ? print($dados->TELEFONEFUNC) : print(""); ?>" autocomplete="off" required>
+                <label class="control-label">Telefone:</label>
+                <i class="fas fa-info-circle" id="icon-info"></i>
+                <span class="help-inline"><?php?></span>
+              </div>
+            </div>
+
+           </div> 
 
           </div>
           <div class="group-bloco">
   
-              <div class="bloco">
-
-                <div class="form-group">
-                  <div class="controls">
-                     <input size="10" class="campo" id="especializacao" name="especializacaoProf" type="text" autocomplete="off" required>
-                     <label class="control-label">Especialização:</label>
-                     <i class="fas fa-info-circle" id="icon-info"></i>
-                     <span class="help-inline"><?php?></span>
-                  </div>
-                </div>
-
-             </div>
              <div class="bloco">
 
-                <div class="form-group">
-                  
-                  <div class="controls">
-                    <input size="10" class="campo" name="loginProf" type="text" autocomplete="off" required>
-                    <label class="control-label">Login:</label>
-                    <i class="fas fa-info-circle" id="icon-info"></i>
-                    <span class="help-inline"><?php?></span>
-                  </div>
+              <div class="form-group">
+                
+                <div class="controls">
+                  <input size="10" class="campo" name="loginFunc" type="text" value="<?php isset($_GET['id']) ? print($dados->LOGIN) : print(""); ?>" autocomplete="off" required>
+                  <label class="control-label">Login:</label>
+                  <i class="fas fa-info-circle" id="icon-info"></i>
+                  <span class="help-inline"><?php?></span>
                 </div>
-
+              </div>
               </div>
               <div class="bloco">
 
-                <div class="form-group">
-                
-                  <div class="controls">
-                    <input size="10" class="campo" name="senhaProf" type="password" autocomplete="off" required>
-                    <label class="control-label">Senha:</label>
-                    <i class="fas fa-info-circle" id="icon-info"></i>
-                    <span class="help-inline"><?php?></span>
-                  </div>
+              <div class="form-group">
+              
+                <div class="controls">
+                  <input size="10" class="campo" name="senhaFunc" type="password" value="<?php isset($_GET['id']) ? print($dados->SENHA) : print(""); ?>" autocomplete="off" required>
+                  <label class="control-label">Senha:</label>
+                  <i class="fas fa-info-circle" id="icon-info"></i>
+                  <span class="help-inline"><?php?></span>
                 </div>
-
+              </div>
               </div>
 
           </div>
@@ -262,9 +267,10 @@ if(isset($_GET['id'])){
       <div class="btn-actions">
         <div class="form-actions">
 
-          <button type="button" class="btn btn-success" id="btnSalvarProf">Salvar</button>
-          <a href="../Telas/ListarAlunos.php">
-          <button type="button" class="btn btn-success" id="btnPesquisarAluno">Pesquisar</button></a>
+          <button type="button" class="btn btn-success" id="btnSalvarFunc">Salvar</button>
+          <button type="button" class="btn btn-success" id="btnAtualizarFunc">Atualizar</button>
+          <a href="../Telas/ListarFuncionarios.php">
+          <button type="button" class="btn btn-success" id="btnPesquisarFunc">Pesquisar</button></a>
 
         </div>
       </div>
@@ -282,38 +288,23 @@ if(isset($_GET['id'])){
 <script src="../js/jquerymask.js"></script>
 
 <script type="text/javascript">
-  
-  $(document).ready(function(e){
 
-    
-    var tipo = "<?php echo $tipo;?>";
+     var id = "<?php echo $IdAtualizar; ?>"; 
 
-        switch(tipo){
-          case "Professor":
-          $('#cadPaciente,#cadProfessor,#cadFuncionario').css('display','none');
-          break;
-
-          case "Aluno":
-          $('#cadAluno,#cadProfessor,#cadFuncionario').css('display','none');
-          break;
-
-          case "Funcionario":
-          $('#cadAluno,#cadPaciente,#cadFuncionario').css('display','none');
-          break;
-
-          default:
+        if(id != 0){
+            $('#btnAtualizarFunc').css('visibility','visible');
+            $('#btnSalvarFunc').css('visibility','hidden');
+        }else{
+            $('#btnAtualizarFunc').css('display','none');
         }
 
-  });
-</script>
-<script type="text/javascript">
 
-      $('#btnSalvarProf').on('click',function(e){
+      $('#btnSalvarFunc').on('click',function(e){
 
         var dados = $('.form-horizontal').serialize();
 
         $.ajax({
-          url: "../Professor/RegistraProfessor.php",
+          url: "../Funcionario/RegistrarFuncionario.php",
           datatype: 'JSON',
           type: 'POST',
           data: dados,
@@ -322,7 +313,7 @@ if(isset($_GET['id'])){
             if(response.status){
           
                $('#alert').fadeIn(1000);
-               $('#alert').html('Professor cadastrado com sucesso!');
+               $('#alert').html('Funcionário cadastrado com Sucesso!');
 
                  window.setTimeout(function(){
                                     $('#alert').fadeOut(900); 
@@ -347,6 +338,47 @@ if(isset($_GET['id'])){
         });
 
       });
+
+
+      $('#btnAtualizarFunc').on('click',function(e){
+
+          var dados = $('.form-horizontal').serialize();
+
+          $.ajax({
+            url: "../Funcionario/AtualizarFuncionario.php",
+            datatype: 'JSON',
+            type: 'POST',
+            data: dados,
+            success: function(response){
+
+              if(response.status){
+
+                 $('#alert').fadeIn(1000);
+                 $('#alert').html('Funcionário atualizado com sucesso!');
+
+                   window.setTimeout(function(){
+                        $('#alert').fadeOut(900); 
+                        window.location = "../Telas/ListarFuncionarios.php";
+                    },3000);
+
+              }else{
+
+                 $('#alert').css('background','red');
+                 $('#alert').fadeIn(1000);
+                 $('#alert').html('Error de Atualizacao!');
+
+                  window.setTimeout(function(){
+                        $('#alert').fadeOut(900); 
+                  },3000);
+              }         
+
+            },error: function(error){
+              console.log("Error Encontrado: "+error.responseText);
+            }
+          });
+
+        });
+
 
 
     // MÁSCARA DOS CAMPOS
@@ -376,6 +408,5 @@ if(isset($_GET['id'])){
          }
       }
     }
-
 </script>
 </html>

@@ -13,9 +13,9 @@
             <li class="nav-item active" id="items-li">
               <a class="nav-link" href="##" id="items-a">Cadastro</a>
                 <ul class="sub-menu">
-                  <li class="sub-menu-li"  id="cadPaciente"><a href="">Paciente</a></li>
+                  <li class="sub-menu-li"  id="cadPaciente"><a href="../Telas/CadastroPaciente.php">Paciente</a></li>
                   <li class="sub-menu-li"  id="cadProfessor"><a href="../Telas/CadastroProfessor.php">Professor</a></li>
-                  <li class="sub-menu-li"  id="cadFuncionario"><a href="">Funcionário</a></li>
+                  <li class="sub-menu-li"  id="cadFuncionario"><a href="../Telas/CadastroFuncionario.php">Funcionário</a></li>
                   <li class="sub-menu-li"  id="cadAluno"><a href="../Telas/CadastroAluno.php">Aluno</a></li>
                 </ul>
             </li>
@@ -48,8 +48,6 @@
 
      var li = document.getElementsByClassName('sub-menu-li');
      var tipo = "<?php echo $tipo;?>";
-
-     console.log(tipo);
 
      $('.sub-menu-li').click(function(e){
           var logado = e.target.firstChild.text;

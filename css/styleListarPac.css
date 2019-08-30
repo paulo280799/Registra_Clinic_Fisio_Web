@@ -1,0 +1,30 @@
+/* --- CORPO ---*/
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Abel', sans-serif;
+  user-select: none;
+  font-size: 13pt;
+}
+/* --- FIM CORPO ---*/
+
+/*--- FORM CADASTRO ALUNOS --- */
+.container{
+  transform: translateY(60px);
+  margin: 0 auto;
+  padding: 5px;
+  width: 810px;
+  transition: .3s;
+}
+
+.card{
+   box-shadow: 3px 3px 3px silver;
+   width: 800px;
+}
+
+.card-header{
+   text-align: center;
+   background-color: rgba(0,0,0,0.1);
+}
+
+/*--- FIM FORM CADASTRO ALUNOS --- */

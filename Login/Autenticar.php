@@ -13,7 +13,7 @@ $requisicao = $_POST;
 if(isset($requisicao['login']) && isset($requisicao['senha'])){
     
     $login = $requisicao['login'];
-    $senha = $requisicao['senha'];
+    $senha = md5($requisicao['senha']);
     
     //VERIFICA SE O ACESSO É UM ALUNO
     $sql = 'SELECT * FROM ALUNO WHERE LOGIN = ? AND SENHA = ?';

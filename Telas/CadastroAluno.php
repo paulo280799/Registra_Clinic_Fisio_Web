@@ -1,6 +1,7 @@
 <?php  
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
 session_start();
+require '../Util/daoGenerico.php';
 
 if(isset($_SESSION['SESSION_ID_ALUNO'])){
 	$logado = $_SESSION['SESSION_NOME_ALUNO'];
@@ -18,11 +19,17 @@ if(isset($_SESSION['SESSION_ID_ALUNO'])){
 	header('location: ../Index.php');
 }
 
-/*$id = null;
+$IdAtualizar = 0;
 
 if(isset($_GET['id'])){
-    $id = $_GET['id'];
-}*/
+
+     $IdAtualizar = $_GET['id'];
+
+     $dao = new daoGenerico();
+     $sql = 'SELECT * FROM ALUNO WHERE IDALUNO = ?';
+     $dao->setCondicao($IdAtualizar);
+     $dados = $dao->getDados($sql,false);
+}
 
 ?>
 <!DOCTYPE html>
@@ -44,7 +51,7 @@ if(isset($_GET['id'])){
 	<?php include_once '../Util/Menu.php'; ?>
 
 	<div class="alert alert-success" id="alert" role="alert" 
-	style="text-align:center;margin: 0 auto;display:none;width: 300px;position: absolute;padding: 10px;z-index: 10;"></div> 
+	style="text-align:center;margin: 0 auto;display:none;width: 300px;position: absolute;padding: 10px;z-index: 1000;"></div> 
 	
 	<div class="container">
 		<div class="span10 offset1">
@@ -61,12 +68,12 @@ if(isset($_GET['id'])){
 		              	        
 						<div class="form-group">
 							<div class="controls">
-								<input size="50" class="campo" name="nomeAluno" type="text" autocomplete="off" required>
+								<input size="50" class="campo" name="nomeAluno" type="text" autocomplete="off" value="<?php isset($_GET['id']) ? print($dados->NOMEALUNO) : print(""); ?>" required>
 								<label class="control-label">Nome Completo</label>
 								<i class="fas fa-info-circle infoNome" id="icon-info" data-toggle="popover" data-placement="left" 
 								data-content="Ola mundo"></i>
 								<span class="help-inline"><?php?></span>
-								<input type="hidden" name="id">
+								<input type="hidden" name="idAluno" value="<?php isset($_GET['id']) ? print($dados->IDALUNO) : print(""); ?>">
 							</div>
 						</div>
 
@@ -76,7 +83,7 @@ if(isset($_GET['id'])){
 
 						<div class="form-group">
 							<div class="controls">
-								<input size="40" class="campo" id="dataNasc" name="dataNascAluno" type="text" autocomplete="off" required>
+								<input size="40" class="campo" id="dataNasc" name="dataNascAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->DATANASCALUNO) : print(""); ?>" autocomplete="off" required>
 								<label class="control-label">Data Nascimento</label>
 								<i class="fas fa-info-circle infoDataNasc" id="icon-info" data-toggle="popover" data-placement="left" 
 								data-content="Ola mundo"></i>
@@ -109,7 +116,7 @@ if(isset($_GET['id'])){
 
 							<div class="form-group">
 								<div class="controls">
-									<input size="40" class="campo" id="cpf" name="cpfAluno" type="text" autocomplete="off" required>
+									<input size="40" class="campo" id="cpf" name="cpfAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->CPFALUNO) : print(""); ?>" autocomplete="off" required>
 									<label class="control-label">CPF</label>
 									<i class="fas fa-info-circle" id="icon-info" data-toggle="popover" data-placement="left" 
 									data-content="Ola mundo"></i>
@@ -122,7 +129,7 @@ if(isset($_GET['id'])){
 
 							<div class="form-group">
 								<div class="controls">
-									<input size="40" class="campo" name="rgAluno" type="text" autocomplete="off" required>
+									<input size="40" class="campo" name="rgAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->RGALUNO) : print(""); ?>" autocomplete="off" required>
 									<label class="control-label">RG</label>
 									<i class="fas fa-info-circle" id="icon-info" data-toggle="popover" data-placement="left" 
 									data-content="Ola mundo"></i>
@@ -140,7 +147,7 @@ if(isset($_GET['id'])){
 							<div class="form-group">
 								
 								<div class="controls">
-									<input size="40" class="campo" name="enderecoAluno" type="text" autocomplete="off" required>
+									<input size="40" class="campo" name="enderecoAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->ENDERECOALUNO) : print(""); ?>" autocomplete="off" required>
 									<label class="control-label">Endereço:</label>
 									<i class="fas fa-info-circle" id="icon-info"></i>
 									<span class="help-inline"><?php?></span>
@@ -154,7 +161,7 @@ if(isset($_GET['id'])){
 							<div class="form-group">
 							
 								<div class="controls">
-									<input size="40" class="campo" name="bairroAluno" type="text" autocomplete="off" required>
+									<input size="40" class="campo" name="bairroAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->BAIRROALUNO) : print(""); ?>" autocomplete="off" required>
 									<label class="control-label">Bairro:</label>
 									<i class="fas fa-info-circle" id="icon-info"></i>
 									<span class="help-inline"><?php?></span>
@@ -167,7 +174,7 @@ if(isset($_GET['id'])){
 							<div class="form-group">
 								
 								<div class="controls">
-									<input size="40" class="campo" name="cidadeAluno" type="text" autocomplete="off" required>
+									<input size="40" class="campo" name="cidadeAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->CIDADEALUNO) : print(""); ?>" autocomplete="off" required>
 									<label class="control-label">Cidade:</label>
 									<i class="fas fa-info-circle" id="icon-info"></i>
 									<span class="help-inline"><?php?></span>
@@ -185,10 +192,10 @@ if(isset($_GET['id'])){
 								<div class="controls">
 									<select class="campo" name="estadoCivilAluno" required>
 										<option value=""></option>
-										<option value="Solteiro">Solteiro</option>
-										<option value="Casado">Casado</option>
-										<option value="Divorciado">Divorciado</option>
-										<option value="Viuvo">Viúvo</option>
+										<option value="Solteiro">Solteiro(a)</option>
+										<option value="Casado">Casado(a)</option>
+										<option value="Divorciado">Divorciado(a)</option>
+										<option value="Viuvo">Viúvo(a)</option>
 									</select>
 									<label class="control-label">Estado Civil:</label>
 									<i class="fas fa-info-circle" id="icon-info"></i>
@@ -201,7 +208,7 @@ if(isset($_GET['id'])){
 						<div class="form-group">
 							
 							<div class="controls">
-								<input size="40" class="campo" name="profissaoAluno" type="text" autocomplete="off" required>
+								<input size="40" class="campo" name="profissaoAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->PROFISSAOALUNO) : print(""); ?>" autocomplete="off" required>
 								<label class="control-label">Profissão:</label>
 								<i class="fas fa-info-circle" id="icon-info"></i>
 								<span class="help-inline"><?php?></span>
@@ -214,8 +221,8 @@ if(isset($_GET['id'])){
 
 						<div class="form-group">
 					
-							<div class="controls">
-								<input size="40" class="campo" id="telefone" name="telefoneAluno" type="text" autocomplete="off" required>
+							<div class="controls"> 
+								<input size="40" class="campo" id="telefone" name="telefoneAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->TELEFONEALUNO) : print(""); ?>" autocomplete="off" required>
 								<label class="control-label">Telefone:</label>
 								<i class="fas fa-info-circle" id="icon-info"></i>
 								<span class="help-inline"><?php?></span>
@@ -231,7 +238,7 @@ if(isset($_GET['id'])){
 
 						<div class="form-group">
 							<div class="controls">
-							   <input size="10" class="campo" id="matricula" name="matriculaAluno" type="text" autocomplete="off" required>
+							   <input size="10" class="campo" id="matricula" name="matriculaAluno" type="text"  value="<?php isset($_GET['id']) ? print($dados->MATRICULAALUNO) : print(""); ?>" autocomplete="off" required>
 							   <label class="control-label">Matricula:</label>
 							   <i class="fas fa-info-circle" id="icon-info"></i>
 							   <span class="help-inline"><?php?></span>
@@ -244,7 +251,7 @@ if(isset($_GET['id'])){
 							<div class="form-group">
 								
 								<div class="controls">
-									<input size="10" class="campo" name="loginAluno" type="text" autocomplete="off" required>
+									<input size="10" class="campo" name="loginAluno" type="text" value="<?php isset($_GET['id']) ? print($dados->LOGIN) : print(""); ?>" autocomplete="off" required>
 									<label class="control-label">Login:</label>
 									<i class="fas fa-info-circle" id="icon-info"></i>
 									<span class="help-inline"><?php?></span>
@@ -256,7 +263,7 @@ if(isset($_GET['id'])){
 							<div class="form-group">
 							
 								<div class="controls">
-									<input size="10" class="campo" name="senhaAluno" type="password" autocomplete="off" required>
+									<input size="10" class="campo" name="senhaAluno" type="password" value="<?php isset($_GET['id']) ? print($dados->SENHA) : print(""); ?>" autocomplete="off" required>
 									<label class="control-label">Senha:</label>
 									<i class="fas fa-info-circle" id="icon-info"></i>
 									<span class="help-inline"><?php?></span>
@@ -273,6 +280,7 @@ if(isset($_GET['id'])){
 				<div class="form-actions">
 
 					<button type="button" class="btn btn-success" id="btnSalvarAluno">Salvar</button>
+					<button type="button" class="btn btn-success" id="btnAtualizarAluno">Atualizar</button>
 					<a href="../Telas/ListarAlunos.php">
 					<button type="button" class="btn btn-success" id="btnPesquisarAluno">Pesquisar</button></a>
 
@@ -292,27 +300,16 @@ if(isset($_GET['id'])){
 <script src="../js/jquerymask.js"></script>
 
 <script type="text/javascript">
-	
-	$(document).ready(function(e){
 
-		
-		
+		 var id = "<?php echo $IdAtualizar; ?>"; 
 
-		/*if(idAtualizar != 0){
-			$('#btnSalvarAluno').text('Atualizar');
-			$('.form-horizontal').attr('action','../Aluno/AtualizarAluno.php');
-		}	*/
+	      if(id != 0){
+	          $('#btnAtualizarAluno').css('visibility','visible');
+	          $('#btnSalvarAluno').css('visibility','hidden');
+	      }else{
+	          $('#btnAtualizarAluno').css('display','none');
+	      }
 
-		     /*	if(dado != 0){
-		  		$('#btnSalvarUsuario').text('Atualizar');
-		  		$('.form-horizontal').attr('action','../Usuario/AtualizarUsuario.php');
-		  	}*/
-
-
-		  
-	});
-</script>
-<script type="text/javascript">
 
 			$('#btnSalvarAluno').on('click',function(e){
 
@@ -328,7 +325,7 @@ if(isset($_GET['id'])){
 						if(response.status){
 					
 						 	 $('#alert').fadeIn(1000);
-						 	 $('#alert').html('Realizado com Sucesso!');
+						 	 $('#alert').html('Aluno cadastrado com Sucesso!');
 
 						 	   window.setTimeout(function(){
                                     $('#alert').fadeOut(900); 
@@ -353,6 +350,47 @@ if(isset($_GET['id'])){
 				});
 
 			});
+
+
+		  $('#btnAtualizarAluno').on('click',function(e){
+
+	        var dados = $('.form-horizontal').serialize();
+
+	        $.ajax({
+	          url: "../Aluno/AtualizarAluno.php",
+	          datatype: 'JSON',
+	          type: 'POST',
+	          data: dados,
+	          success: function(response){
+
+	            if(response.status){
+
+	               $('#alert').fadeIn(1000);
+	               $('#alert').html('Aluno atualizado com sucesso!');
+
+	                 window.setTimeout(function(){
+	                      $('#alert').fadeOut(900); 
+	                      window.location = "../Telas/ListarAlunos.php";
+	                  },3000);
+
+	            }else{
+
+	               $('#alert').css('background','red');
+	               $('#alert').fadeIn(1000);
+	               $('#alert').html('Error de Atualizacao!');
+
+	                window.setTimeout(function(){
+	                      $('#alert').fadeOut(900); 
+	                },3000);
+	            }         
+
+	          },error: function(error){
+	            console.log(error);
+	          }
+	        });
+
+	      });
+
 
 
 		// MÁSCARA DOS CAMPOS

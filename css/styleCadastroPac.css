@@ -48,6 +48,7 @@ form{
 .group-bloco .bloco{
   display: inline-block;
   width: 30%;
+  transition: .4s all;
 }
 
 .btn-actions{
@@ -158,7 +159,7 @@ select{
  cursor: pointer;
 }
 
-#btnSalvarAluno{
+#btnSalvarPac{
    padding-left: 20px;
    padding-right: 20px;
    background: white;
@@ -167,33 +168,31 @@ select{
    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
 }
 
-#btnSalvarAluno:hover{
+#btnSalvarPac:hover{
  background: #3cb371;
  color: white;
 }
 
-#btnPesquisarAluno{
+#btnPesquisarPac{
    background: white;
    color: #3cb371;
    font-weight: bolder;
    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
 }
 
-#btnPesquisarAluno:hover{
+#btnPesquisarPac:hover{
  background: #3cb371;
  color: white;
 }
-
 
 /*--- FIM FORM CADASTRO ALUNO --- */
 /*------------ RESPONSIVIDADE ----------------*/
 @media(max-width: 1110px){
   
-  .bloco{
+  .group-bloco .bloco{
     /*display: block;*/
     margin: -10px -50px 0 -20px;
   } 
-
 
   .form-group{
     width: 70%;
@@ -207,4 +206,3 @@ select{
   }
 
 }
-

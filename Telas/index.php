@@ -55,21 +55,21 @@ if(isset($_SESSION['SESSION_ID_ALUNO'])){
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>10:30</td>
-                <td>CardioRespiratório</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>11:00</td>
-                <td>Terapia Aquatica</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
               </tr>
               <tr>
                 <th scope="row">3</th>
-                <td>Larry</td>
-                <td>11:30</td>
-                <td>CardioRespiratório</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
               </tr>
             </tbody>
         </table>    

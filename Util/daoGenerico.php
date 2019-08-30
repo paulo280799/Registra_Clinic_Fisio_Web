@@ -98,7 +98,7 @@ class daoGenerico{
         $sql .= "WHERE ".$objeto->campopk." = ";
         $sql .= is_numeric($objeto->valorpk) ? '?' : '?';
         
-           return $sql;
+           return $this->update($sql);
       
      }
 

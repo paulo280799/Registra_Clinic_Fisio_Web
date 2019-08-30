@@ -1,27 +1,27 @@
-<?php  
-ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
-session_start();
-require '../Util/daoGenerico.php';
+  <?php  
+  ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
+  session_start();
+  require '../Util/daoGenerico.php';
 
-if(isset($_SESSION['SESSION_ID_ALUNO'])){
+  if(isset($_SESSION['SESSION_ID_ALUNO'])){
   $logado = $_SESSION['SESSION_NOME_ALUNO'];
   $id = $_SESSION['SESSION_ID_ALUNO'];
   $tipo = 'Aluno';
-}else if(isset($_SESSION['SESSION_ID_PROF'])){
+  }else if(isset($_SESSION['SESSION_ID_PROF'])){
   $logado = $_SESSION['SESSION_NOME_PROF'];
   $id = $_SESSION['SESSION_ID_PROF'];
   $tipo = 'Professor';
-}else if(isset($_SESSION['SESSION_ID_FUNC'])){
+  }else if(isset($_SESSION['SESSION_ID_FUNC'])){
   $logado = $_SESSION['SESSION_NOME_FUNC'];
   $id = $_SESSION['SESSION_ID_FUNC'];
   $tipo = 'Funcionario';
-}else{
+  }else{
   header('location: ../Index.php');
-}
+  }
 
-$IdAtualizar = 0;
+  $IdAtualizar = 0;
 
-if(isset($_GET['id'])){
+  if(isset($_GET['id'])){
 
      $IdAtualizar = $_GET['id'];
 
@@ -29,12 +29,12 @@ if(isset($_GET['id'])){
      $sql = 'SELECT * FROM PROFESSOR WHERE IDPROF = ?';
      $dao->setCondicao($IdAtualizar);
      $dados = $dao->getDados($sql,false);
-}
+  }
 
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+  ?>
+  <!DOCTYPE html>
+  <html lang="pt-br">
+  <head>
   <!-- Required meta tags -->
   <title>Cadastro Professor</title>
   <meta charset="utf-8">
@@ -45,39 +45,39 @@ if(isset($_GET['id'])){
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="../css/styleCadastroProf.css">
   <link rel="stylesheet"  type="text/css"  href="../css/styleMenu.css">
-</head>
-<body>
+  </head>
+  <body>
 
   <?php include_once '../Util/Menu.php'; ?>
 
   <div class="alert alert-success" id="alert" role="alert" 
   style="text-align:center;margin: 0 auto;display:none;width: 300px;position: absolute;padding: 10px;z-index: 10;"></div> 
-  
+
   <div class="container">
     <div class="span10 offset1">
       <div class="card">
           <div class="header">
                   <h3 class="well"><i class="fas fa-chalkboard-teacher"></i>Cadastro Professor</h3>
-              </div>
+          </div>
         <div class="card-body">
           <form class="form-horizontal">
 
            <div class="group-bloco">
 
-                  <div class="bloco">
+              <div class="bloco">
                             
-            <div class="form-group">
-              <div class="controls">
-                <input size="50" class="campo" name="nomeProf" type="text" autocomplete="off" value="<?php isset($_GET['id']) ? print($dados->NOMEPROF) : print(""); ?>" required>
-                <label class="control-label">Nome</label>
-                <i class="fas fa-info-circle infoNome" id="icon-info" data-toggle="popover" data-placement="left" 
-                data-content="Ola mundo"></i>
-                <span class="help-inline"><?php?></span>
-                <input type="hidden" name="id">
-              </div>
-            </div>
+                  <div class="form-group">
+                    <div class="controls">
+                      <input size="50" class="campo" name="nomeProf" type="text" autocomplete="off" value="<?php isset($_GET['id']) ? print($dados->NOMEPROF) : print(""); ?>" required>
+                      <label class="control-label">Nome</label>
+                      <i class="fas fa-info-circle infoNome" id="icon-info" data-toggle="popover" data-placement="left" 
+                      data-content="Ola mundo"></i>
+                      <span class="help-inline"><?php?></span>
+                      <input type="hidden" name="idProf" value="<?php isset($_GET['id']) ? print($dados->IDPROF) : print(""); ?>">
+                    </div>
+                  </div>
 
-            </div>
+              </div>
 
             <div class="bloco">
 
@@ -191,11 +191,11 @@ if(isset($_GET['id'])){
                       <div class="form-group">
                         <div class="controls">
                           <select class="campo" name="estadoCivilProf" required>
-                            <option value=""></option>
-                            <option value="Solteiro">Solteiro</option>
-                            <option value="Casado">Casado</option>
-                            <option value="Divorciado">Divorciado</option>
-                            <option value="Viuvo">Viúvo</option>
+                              <option value=""></option>
+                              <option value="Solteiro">Solteiro(a)</option>
+                              <option value="Casado">Casado(a)</option>
+                              <option value="Divorciado">Divorciado(a)</option>
+                              <option value="Viuvo">Viúvo(a)</option>
                           </select>
                           <label class="control-label">Estado Civil:</label>
                           <i class="fas fa-info-circle" id="icon-info"></i>
@@ -221,7 +221,7 @@ if(isset($_GET['id'])){
 
           </div>
           <div class="group-bloco">
-  
+
               <div class="bloco">
 
                 <div class="form-group">
@@ -272,7 +272,7 @@ if(isset($_GET['id'])){
           <button type="button" class="btn btn-success" id="btnSalvarProf">Salvar</button>
           <button type="button" class="btn btn-success" id="btnAtualizarProf">Atualizar</button>
           <a href="../Telas/ListarProfessor.php">
-          <button type="button" class="btn btn-success" id="btnPesquisarAluno">Pesquisar</button></a>
+          <button type="button" class="btn btn-success" id="btnPesquisarProf">Pesquisar</button></a>
 
         </div>
       </div>
@@ -280,16 +280,16 @@ if(isset($_GET['id'])){
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-</body>
+  </body>
 
-<script src="../js/jquery-3.4.1.min.js"></script>
-<script src="../bootstrap-4.3.1/js/bootstrap.min.js"></script>
-<script src="../bootstrap-4.3.1/js/bootstrap.js"></script>
-<script src="../bootstrap-4.3.1/js/bootstrap.bundle.js"></script>
-<script src="../bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
-<script src="../js/jquerymask.js"></script>
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../bootstrap-4.3.1/js/bootstrap.min.js"></script>
+  <script src="../bootstrap-4.3.1/js/bootstrap.js"></script>
+  <script src="../bootstrap-4.3.1/js/bootstrap.bundle.js"></script>
+  <script src="../bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquerymask.js"></script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
       var id = "<?php echo $IdAtualizar; ?>"; 
 
@@ -354,17 +354,14 @@ if(isset($_GET['id'])){
           success: function(response){
 
             if(response.status){
-          
+
                $('#alert').fadeIn(1000);
                $('#alert').html('Professor Atualizado com sucesso!');
 
                  window.setTimeout(function(){
-                          $('#alert').fadeOut(900); 
+                      $('#alert').fadeOut(900); 
+                      window.location = "../Telas/ListarProfessor.php";
                   },3000);
-
-                 $('.form-horizontal')[0].reset();
-
-                 console.log(response.sql);
 
             }else{
 
@@ -373,8 +370,8 @@ if(isset($_GET['id'])){
                $('#alert').html('Error de Atualizacao!');
 
                 window.setTimeout(function(){
-                                    $('#alert').fadeOut(900); 
-                              },3000);
+                      $('#alert').fadeOut(900); 
+                },3000);
             }         
 
           },error: function(error){
@@ -412,5 +409,5 @@ if(isset($_GET['id'])){
       }
     }
 
-</script>
-</html>
+  </script>
+  </html>

@@ -31,13 +31,12 @@ class Paciente extends Pessoa {
             $this->campos = array(
                 /*------ PESSOA -------*/
                 "NOMEPAC" => $objeto->getNome(),
-                "DATANASC" => $objeto->getDataNasc(),
+                "DATANASCPAC" => $objeto->getDataNasc(),
                 "SEXOPAC" => $objeto->getSexo(),
                 "RGPAC" => $objeto->getRg(),
                 "CPFPAC" => $objeto->getCpf(),
-                "ESTADOCIVIL" => $objeto->getEstadoCivil(),
+                "ESTADOCIVILPAC" => $objeto->getEstadoCivil(),
                 "ENDERECOPAC" => $objeto->getEndereco(),
-                "RUAPAC" => $objeto->getRua(),
                 "BAIRROPAC" => $objeto->getBairro(),
                 "CIDADEPAC" => $objeto->getCidade(),
                 "PROFISSAOPAC" => $objeto->getProfissao(),
@@ -46,10 +45,9 @@ class Paciente extends Pessoa {
                 "NUMEROPRONT" => $objeto->getNumeroProntuario(),
                 "POSTOSAUDE" => $objeto->getPostoDeSaude(),
                 "AGENTESAUDE" => $objeto->getAgenteDeSaude(),
-                "PESOPAC" => $objeto->getPesoPaciente(),
-                "ALTURAPAC" => $objeto->getAlturaPaciente(),
-                "TIPOPAC" => $objeto->getTipoPaciente(),
-                "SITUACAOPAC" => $objeto->getSituacaoPaciente()
+                "PESOPAC" => $objeto->getPeso(),
+                "ALTURAPAC" => $objeto->getAltura(),
+                "SITUACAOPAC" => $objeto->getSituacao()
             );
         }else{
             $this->campos = array();
@@ -81,35 +79,27 @@ class Paciente extends Pessoa {
         return $this->AgenteDeSaude;
     }
     
-    function setPesoPaciente($peso){
+    function setPeso($peso){
         $this->PesoPaciente = $peso;
     }
     
-    function getPesoPaciente(){
+    function getPeso(){
         return $this->PesoPaciente;
     }
     
-    function setAlturaPaciente($altura){
+    function setAltura($altura){
         $this->AlturaPaciente = $altura;
     }
     
-    function getAlturaPaciente(){
+    function getAltura(){
         return $this->AlturaPaciente;
     }
     
-     function setTipoPaciente($tipo){
-        $this->TipoPaciente = $tipo;
-    }
-    
-    function getTipoPaciente(){
-        return $this->TipoPaciente;
-    }
-    
-    function setSituacaoPaciente($situacao){
+    function setSituacao($situacao){
         $this->SituacaoPaciente = $situacao;
     }
     
-    function getSituacaoPaciente(){
+    function getSituacao(){
         return $this->SituacaoPaciente;
     }
     

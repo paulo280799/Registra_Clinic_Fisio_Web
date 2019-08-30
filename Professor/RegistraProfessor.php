@@ -9,7 +9,7 @@ $prof = new Professor();
 if(isset($_POST['nomeProf'])){
 
 	$prof->setNome($_POST['nomeProf']);
-	$prof->setDataNasc(date("Y-m-d",strtotime($_POST['dataNascProf'])));
+	$prof->setDataNasc(date("Y-d-m",strtotime($_POST['dataNascProf'])));
 	$prof->setSexo($_POST['sexoProf']);
 	$prof->setCpf($_POST['cpfProf']);
 	$prof->setRg($_POST['rgProf']);
