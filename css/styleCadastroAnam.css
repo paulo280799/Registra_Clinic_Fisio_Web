@@ -34,20 +34,20 @@ form{
 .container::-webkit-scrollbar-corner { visibility: hidden;}
 .container::-webkit-resizer { visibility: hidden; } */
 
-.form-group{
-    /*padding: -20px;*/
-    margin: 20px;
-    transition: .4s all;
-}
-
 .group-bloco{
   display: block;
   text-align: center;
 }
 
+.form-group{
+    /*padding: -20px;*/
+    transition: .4s all;
+}
+
 .group-bloco .bloco{
+  margin: 15px 30px 10px 20px;
   display: inline-block;
-  width: 30%;
+  width: 37%;
   transition: .4s all;
 }
 
@@ -117,7 +117,7 @@ select{
 
 .header{
   border: 1px solid #3cb371;
-  background:  white;
+  background: white;
   padding-left: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -125,7 +125,7 @@ select{
 }
 
 .header h3 i{
-  font-size: 22px;
+  font-size: 25px;
   margin-right: 20px;
   color: #3cb371;
 }
@@ -158,7 +158,7 @@ select{
  cursor: pointer;
 }
 
-#btnSalvarFunc{
+#btnSalvar,#btnAtualizar{
    padding-left: 20px;
    padding-right: 20px;
    background: white;
@@ -167,19 +167,24 @@ select{
    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
 }
 
-#btnSalvarFunc:hover{
+#btnSalvar:hover{
  background: #3cb371;
  color: white;
 }
 
-#btnPesquisarFunc{
+#btnAtualizar:hover{
+ background: #3cb371;
+ color: white;
+}
+
+#btnPesquisar{
    background: white;
    color: #3cb371;
    font-weight: bolder;
    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
 }
 
-#btnPesquisarFunc:hover{
+#btnPesquisar:hover{
  background: #3cb371;
  color: white;
 }
@@ -188,7 +193,7 @@ select{
 /*------------ RESPONSIVIDADE ----------------*/
 @media(max-width: 1110px){
   
-  .bloco{
+  .group-bloco .bloco{
     /*display: block;*/
     margin: -10px -50px 0 -20px;
   } 
@@ -196,7 +201,6 @@ select{
   .form-group{
     width: 70%;
   }
-
 }
 
 @media(max-width: 1038px){

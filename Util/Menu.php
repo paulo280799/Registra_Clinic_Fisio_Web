@@ -17,6 +17,8 @@
                   <li class="sub-menu-li"  id="cadProfessor"><a href="../Telas/CadastroProfessor.php">Professor</a></li>
                   <li class="sub-menu-li"  id="cadFuncionario"><a href="../Telas/CadastroFuncionario.php">Funcionário</a></li>
                   <li class="sub-menu-li"  id="cadAluno"><a href="../Telas/CadastroAluno.php">Aluno</a></li>
+                  <li class="sub-menu-li"  id="cadAnamnese"><a href="../Telas/CadastroAnamnese.php">Anamnese</a></li>
+                  <li class="sub-menu-li"  id="cadTriagem"><a href="../Telas/CadastroTriagem.php">Triagem</a></li>
                 </ul>
             </li>
             <li class="nav-item active"  id="items-li">
@@ -66,6 +68,9 @@
 
           }else if(logado == 'Paciente'){
              window.location = '../Telas/CadastroPaciente.php';
+             
+          }else if(logado == 'Anamnese'){
+             window.location = '../Telas/CadastroAnamnese.php';
           }
      });
 
@@ -80,15 +85,11 @@
           break;
 
           case "Funcionario":
-          $('#cadAluno,#cadPaciente,#cadFuncionario').css('display','none');
-          break;
-
-          case "Paciente":
-          $('#cadAluno,#cadPaciente,#cadFuncionario,#cadProfessor').css('display','none');
+          $('#cadAluno,#cadPaciente,#cadFuncionario,#cadAnamnese,#cadTriagem').css('display','none');
           break;
 
           default:
-        }
+      }
 
      /*li.addEventListener('click',function(e){
          console.log(e);

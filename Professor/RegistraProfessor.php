@@ -22,6 +22,7 @@ if(isset($_POST['nomeProf'])){
 	$prof->setCidade($_POST['cidadeProf']);
 	$prof->setTelefone($_POST['telefoneProf']);
 	$prof->setEspecializacao($_POST['especializacaoProf']);
+	$prof->setCoordenador($_POST['coordenador']);
 
 	$prof->setLogin($_POST['loginProf']);
 	$prof->setSenha(md5($senha));

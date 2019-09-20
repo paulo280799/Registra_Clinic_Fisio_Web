@@ -35,10 +35,11 @@ if(isset($requisicao['login']) && isset($requisicao['senha'])){
         //VERIFICA SE O ACESSO É UM PROFESSOR
          $dao = new daoGenerico();
         
-         $sql = 'SELECT * FROM PROFESSOR WHERE LOGIN = ? AND SENHA = ?';
+         $sql = 'SELECT * FROM PROFESSOR WHERE LOGIN = ? AND SENHA = ? AND COORDENADOR = ?';
           
          $dao->setCondicao($login);
          $dao->setCondicao($senha);
+         $dao->setCondicao('true');
 
          $result = $dao->getDados($sql,false);
         

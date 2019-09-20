@@ -1,27 +1,27 @@
-  <?php  
-  ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
-  session_start();
-  require '../Util/daoGenerico.php';
+    <?php  
+    ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../tmp'));
+    session_start();
+    require '../Util/daoGenerico.php';
 
-  if(isset($_SESSION['SESSION_ID_ALUNO'])){
-  $logado = $_SESSION['SESSION_NOME_ALUNO'];
-  $id = $_SESSION['SESSION_ID_ALUNO'];
-  $tipo = 'Aluno';
-  }else if(isset($_SESSION['SESSION_ID_PROF'])){
-  $logado = $_SESSION['SESSION_NOME_PROF'];
-  $id = $_SESSION['SESSION_ID_PROF'];
-  $tipo = 'Professor';
-  }else if(isset($_SESSION['SESSION_ID_FUNC'])){
-  $logado = $_SESSION['SESSION_NOME_FUNC'];
-  $id = $_SESSION['SESSION_ID_FUNC'];
-  $tipo = 'Funcionario';
-  }else{
-  header('location: ../Index.php');
-  }
+    if(isset($_SESSION['SESSION_ID_ALUNO'])){
+      $logado = $_SESSION['SESSION_NOME_ALUNO'];
+      $id = $_SESSION['SESSION_ID_ALUNO'];
+      $tipo = 'Aluno';
+    }else if(isset($_SESSION['SESSION_ID_PROF'])){
+      $logado = $_SESSION['SESSION_NOME_PROF'];
+      $id = $_SESSION['SESSION_ID_PROF'];
+      $tipo = 'Professor';
+    }else if(isset($_SESSION['SESSION_ID_FUNC'])){
+      $logado = $_SESSION['SESSION_NOME_FUNC'];
+      $id = $_SESSION['SESSION_ID_FUNC'];
+      $tipo = 'Funcionario';
+    }else{
+      header('location: ../Index.php');
+    }
 
-  $IdAtualizar = 0;
+    $IdAtualizar = 0;
 
-  if(isset($_GET['id'])){
+    if(isset($_GET['id'])){
 
      $IdAtualizar = $_GET['id'];
 
@@ -29,88 +29,88 @@
      $sql = 'SELECT * FROM PACIENTE WHERE IDPACIENTE = ?';
      $dao->setCondicao($IdAtualizar);
      $dados = $dao->getDados($sql,false);
-  }
+   }
 
-  ?>
-  <!DOCTYPE html>
-  <html lang="pt-br">
-  <head>
-  <!-- Required meta tags -->
-  <title>Cadastro Pacientes</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Abel" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../css/styleCadastroPac.css">
-  <link rel="stylesheet"  type="text/css"  href="../css/styleMenu.css">
+   ?>
+   <!DOCTYPE html>
+   <html lang="pt-br">
+   <head>
+    <!-- Required meta tags -->
+    <title>Cadastro Pacientes</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Abel" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/styleCadastroPac.css">
+    <link rel="stylesheet"  type="text/css"  href="../css/styleMenu.css">
   </head>
   <body>
 
-  <?php include_once '../Util/Menu.php'; ?>
+    <?php include_once '../Util/Menu.php'; ?>
 
-  <div class="alert alert-success" id="alert" role="alert" 
-  style="text-align:center;margin: 0 auto;display:none;width: 300px;position: absolute;padding: 10px;z-index: 10;"></div> 
+    <div class="alert alert-success" id="alert" role="alert" 
+    style="text-align:center;margin: 0 auto;display:none;width: 300px;position: absolute;padding: 10px;z-index: 10;"></div> 
 
-  <div class="container">
-    <div class="span10 offset1">
-      <div class="card">
+    <div class="container">
+      <div class="span10 offset1">
+        <div class="card">
           <div class="header">
-                  <h3 class="well"><i class="fas fa-user-injured"></i>Cadastro Pacientes</h3>
-              </div>
-        <div class="card-body">
-          <form class="form-horizontal">
+            <h3 class="well"><i class="fas fa-user-injured"></i>Cadastro Pacientes</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal">
 
-           <div class="group-bloco">
+             <div class="group-bloco">
 
               <div class="bloco">
-                            
-	            <div class="form-group">
-	              <div class="controls">
-	                <input size="50" class="campo" name="nomePac" type="text" autocomplete="off" value="<?php isset($_GET['id']) ? print($dados->NOMEPAC) : print(""); ?>" required>
-	                <label class="control-label">Nome Paciente</label>
-	                <i class="fas fa-info-circle infoNome" id="icon-info" data-toggle="popover" data-placement="left" 
-	                data-content="Ola mundo"></i>
-	                <span class="help-inline"><?php?></span>
-	                <input type="hidden" name="idPac" value="<?php isset($_GET['id']) ? print($dados->IDPACIENTE) : print(""); ?>">
-	              </div>
-	            </div>
 
+               <div class="form-group">
+                 <div class="controls">
+                   <input size="50" class="campo" name="nomePac" type="text" autocomplete="off" value="<?php isset($_GET['id']) ? print($dados->NOMEPAC) : print(""); ?>" required>
+                   <label class="control-label">Nome Paciente</label>
+                   <i class="fas fa-info-circle infoNome" id="icon-info" data-toggle="popover" data-placement="left" 
+                   data-content="Ola mundo"></i>
+                   <span class="help-inline"><?php?></span>
+                   <input type="hidden" name="idPac" value="<?php isset($_GET['id']) ? print($dados->IDPACIENTE) : print(""); ?>">
+                 </div>
+               </div>
+
+             </div>
+
+             <div class="bloco">
+
+               <div class="form-group">
+                 <div class="controls">
+                   <input size="40" class="campo" id="dataNasc" name="dataNascPac" type="text" value="<?php isset($_GET['id']) ? print(date("d-m-Y",strtotime($dados->DATANASCPAC))) : print(""); ?>" autocomplete="off" required>
+                   <label class="control-label">Data Nascimento</label>
+                   <i class="fas fa-info-circle infoDataNasc" id="icon-info" data-toggle="popover" data-placement="left" 
+                   data-content="Ola mundo"></i>
+                   <span class="help-inline"><?php?></span>
+                 </div>
+               </div>
+
+             </div>
+             <div class="bloco"> 
+
+              <div class="form-group">
+                <div class="controls">
+                  <select class="campo" name="sexoPac" value="<?php isset($_GET['id']) ? print($dados->SEXOPAC) : print(""); ?>" required>
+                    <option value=""></option>
+                    <option value="Solteiro">Masculino</option>
+                    <option value="Casado">Feminino</option>
+                  </select>
+                  <label class="control-label">Sexo:</label>
+                  <i class="fas fa-info-circle" id="icon-info"></i>
+                  <span class="help-inline"><?php?></span>
+                </div>
               </div>
-
-            <div class="bloco">
-
-	            <div class="form-group">
-	              <div class="controls">
-	                <input size="40" class="campo" id="dataNasc" name="dataNascPac" type="text" value="<?php isset($_GET['id']) ? print(date("d-m-Y",strtotime($dados->DATANASCPAC))) : print(""); ?>" autocomplete="off" required>
-	                <label class="control-label">Data Nascimento</label>
-	                <i class="fas fa-info-circle infoDataNasc" id="icon-info" data-toggle="popover" data-placement="left" 
-	                data-content="Ola mundo"></i>
-	                <span class="help-inline"><?php?></span>
-	              </div>
-	            </div>
-
-            </div>
-            <div class="bloco"> 
-
-            <div class="form-group">
-              <div class="controls">
-                <select class="campo" name="sexoPac" value="<?php isset($_GET['id']) ? print($dados->SEXOPAC) : print(""); ?>" required>
-                  <option value=""></option>
-                  <option value="Solteiro">Masculino</option>
-                  <option value="Casado">Feminino</option>
-                </select>
-                <label class="control-label">Sexo:</label>
-                <i class="fas fa-info-circle" id="icon-info"></i>
-                <span class="help-inline"><?php?></span>
-              </div>
-            </div>
 
             </div>
 
           </div>
-            <div class="group-bloco" style="text-align: center;">
+          <div class="group-bloco" style="text-align: center;">
 
             <div class="bloco"> 
 
@@ -138,14 +138,10 @@
               </div>
 
             </div>
-          </div>   
-
-          <div class="group-bloco">
-
-              <div class="bloco">
+            <div class="bloco">
 
               <div class="form-group">
-                
+
                 <div class="controls">
                   <input size="40" class="campo" name="enderecoPac" type="text" value="<?php isset($_GET['id']) ? print($dados->ENDERECOPAC) : print(""); ?>" autocomplete="off" required>
                   <label class="control-label">Endereço</label>
@@ -154,12 +150,17 @@
                 </div>
               </div>
 
-              </div>
-              <div class="bloco">
+            </div>
+          </div>   
+
+          <div class="group-bloco">
+
+
+            <div class="bloco">
 
 
               <div class="form-group">
-              
+
                 <div class="controls">
                   <input size="40" class="campo" name="bairroPac" type="text" value="<?php isset($_GET['id']) ? print($dados->BAIRROPAC) : print(""); ?>" autocomplete="off" required>
                   <label class="control-label">Bairro</label>
@@ -172,7 +173,7 @@
             <div class="bloco"> 
 
               <div class="form-group">
-                
+
                 <div class="controls">
                   <input size="40" class="campo" name="cidadePac" type="text" value="<?php isset($_GET['id']) ? print($dados->CIDADEPAC) : print(""); ?>" autocomplete="off" required>
                   <label class="control-label">Cidade</label>
@@ -180,279 +181,283 @@
                   <span class="help-inline"><?php?></span>
                 </div>
               </div>
-              </div>
+            </div>
 
-                 </div> 
-
-                <div class="group-bloco">
-                  
-                  <div class="bloco">
-                      
-                      <div class="form-group">
-                        <div class="controls">
-                          <select class="campo" name="estadoCivilPac" required>
-                            <option value=""></option>
-							<option value="Solteiro">Solteiro(a)</option>
-							<option value="Casado">Casado(a)</option>
-							<option value="Divorciado">Divorciado(a)</option>
-						    <option value="Viuvo">Viúvo(a)</option>
-                          </select>
-                          <label class="control-label">Estado Civil</label>
-                          <i class="fas fa-info-circle" id="icon-info"></i>
-                          <span class="help-inline"><?php?></span>
-                        </div>
-                     </div>
-                  </div>  
-
-             <div class="bloco">
-          
+            <div class="bloco">
 
               <div class="form-group">
-            
-               <div class="controls">
-                  <input size="40" class="campo" id="telefone" name="telefonePac" type="text" value="<?php isset($_GET['id']) ? print($dados->TELEFONEPAC) : print(""); ?>" autocomplete="off" required>
-                  <label class="control-label">Telefone</label>
+                <div class="controls">
+                  <select class="campo" name="estadoCivilPac" required>
+                    <option value=""></option>
+                    <option value="Solteiro">Solteiro(a)</option>
+                    <option value="Casado">Casado(a)</option>
+                    <option value="Divorciado">Divorciado(a)</option>
+                    <option value="Viuvo">Viúvo(a)</option>
+                  </select>
+                  <label class="control-label">Estado Civil</label>
                   <i class="fas fa-info-circle" id="icon-info"></i>
                   <span class="help-inline"><?php?></span>
                 </div>
               </div>
+            </div>  
 
-             </div> 
-             <div class="bloco">
-
-                <div class="form-group">
-                  <div class="controls">
-                     <input size="10" class="campo" id="profissao" name="profissaoPac" type="text" value="<?php isset($_GET['id']) ? print($dados->PROFISSAOPAC) : print(""); ?>" autocomplete="off" required>
-                     <label class="control-label">Profissão</label>
-                     <i class="fas fa-info-circle" id="icon-info"></i>
-                     <span class="help-inline"><?php?></span>
-                  </div>
-                </div>
-
-             </div>
-
-          </div>
-          <div class="group-bloco">
-
-             <div class="bloco">
-
-                <div class="form-group">
-                  
-                  <div class="controls">
-                    <input size="10" class="campo" name="numProntuarioPac" type="text" value="<?php isset($_GET['id']) ? print($dados->NUMEROPRONT) : print(""); ?>" autocomplete="off" required>
-                    <label class="control-label">Num Prontuário</label>
-                    <i class="fas fa-info-circle" id="icon-info"></i>
-                    <span class="help-inline"><?php?></span>
-                  </div>
-                </div>
-
-              </div>
-              <div class="bloco">
-
-                <div class="form-group">
-                
-                  <div class="controls">
-                    <input size="10" class="campo" name="postoSaudePac" type="text" value="<?php isset($_GET['id']) ? print($dados->POSTOSAUDE) : print(""); ?>" autocomplete="off" required>
-                    <label class="control-label">Posto de Saúde</label>
-                    <i class="fas fa-info-circle" id="icon-info"></i>
-                    <span class="help-inline"><?php?></span>
-                  </div>
-                </div>
-
-              </div>
-
-               <div class="bloco">
-
-                <div class="form-group">
-                
-                  <div class="controls">
-                    <input size="10" class="campo" name="agenteSaudePac" type="text" value="<?php isset($_GET['id']) ? print($dados->AGENTESAUDE) : print(""); ?>" autocomplete="off" required>
-                    <label class="control-label">Agente de Saúde</label>
-                    <i class="fas fa-info-circle" id="icon-info"></i>
-                    <span class="help-inline"><?php?></span>
-                  </div>
-                </div>
-
-              </div>
-
-          </div>
+          </div> 
 
           <div class="group-bloco">
 
-             <div class="bloco">
+           <div class="bloco">
 
-                <div class="form-group">
-                  
-                  <div class="controls">
-                    <input size="10" class="campo" name="pesoPac" type="text" value="<?php isset($_GET['id']) ? print($dados->PESOPAC) : print(""); ?>" autocomplete="off" required>
-                    <label class="control-label">Peso</label>
-                    <i class="fas fa-info-circle" id="icon-info"></i>
-                    <span class="help-inline"><?php?></span>
-                  </div>
-                </div>
 
-              </div>
-              <div class="bloco">
+            <div class="form-group">
 
-                <div class="form-group">
-                
-                  <div class="controls">
-                    <input size="10" class="campo" name="alturaPac" type="text" value="<?php isset($_GET['id']) ? print($dados->ALTURAPAC) : print(""); ?>" autocomplete="off" required>
-                    <label class="control-label">Altura</label>
-                    <i class="fas fa-info-circle" id="icon-info"></i>
-                    <span class="help-inline"><?php?></span>
-                  </div>
-                </div>
-
-              </div>
-
-               <div class="bloco">
-
-                <div class="form-group">
-                
-                  <div class="controls">
-                    <input size="10" class="campo" name="situacaoPac" type="text" value="<?php isset($_GET['id']) ? print($dados->SITUACAOPAC) : print(""); ?>" autocomplete="off" required>
-                    <label class="control-label">Situação</label>
-                    <i class="fas fa-info-circle" id="icon-info"></i>
-                    <span class="help-inline"><?php?></span>
-                  </div>
-                </div>
-
-              </div>
-
+             <div class="controls">
+              <input size="40" class="campo" id="telefone" name="telefonePac" type="text" value="<?php isset($_GET['id']) ? print($dados->TELEFONEPAC) : print(""); ?>" autocomplete="off" required>
+              <label class="control-label">Telefone</label>
+              <i class="fas fa-info-circle" id="icon-info"></i>
+              <span class="help-inline"><?php?></span>
+            </div>
           </div>
 
-          </form>
+        </div> 
+        <div class="bloco">
+
+          <div class="form-group">
+            <div class="controls">
+             <input size="10" class="campo" id="profissao" name="profissaoPac" type="text" value="<?php isset($_GET['id']) ? print($dados->PROFISSAOPAC) : print(""); ?>" autocomplete="off" required>
+             <label class="control-label">Profissão</label>
+             <i class="fas fa-info-circle" id="icon-info"></i>
+             <span class="help-inline"><?php?></span>
+           </div>
+         </div>
+
+       </div>
+
+       <div class="bloco">
+
+        <div class="form-group">
+
+          <div class="controls">
+            <input size="10" class="campo" name="numProntuarioPac" type="text" value="<?php isset($_GET['id']) ? print($dados->NUMEROPRONT) : print(""); ?>" autocomplete="off" required>
+            <label class="control-label">Num Prontuário</label>
+            <i class="fas fa-info-circle" id="icon-info"></i>
+            <span class="help-inline"><?php?></span>
+          </div>
+        </div>
+
+      </div>
+
+     </div>
+     <div class="group-bloco">
+
+     
+      <div class="bloco">
+
+        <div class="form-group">
+
+          <div class="controls">
+            <input size="10" class="campo" name="postoSaudePac" type="text" value="<?php isset($_GET['id']) ? print($dados->POSTOSAUDE) : print(""); ?>" autocomplete="off" required>
+            <label class="control-label">Posto de Saúde</label>
+            <i class="fas fa-info-circle" id="icon-info"></i>
+            <span class="help-inline"><?php?></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bloco">
+
+        <div class="form-group">
+
+          <div class="controls">
+            <input size="10" class="campo" name="agenteSaudePac" type="text" value="<?php isset($_GET['id']) ? print($dados->AGENTESAUDE) : print(""); ?>" autocomplete="off" required>
+            <label class="control-label">Agente de Saúde</label>
+            <i class="fas fa-info-circle" id="icon-info"></i>
+            <span class="help-inline"><?php?></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bloco">
+
+      <div class="form-group">
+
+        <div class="controls">
+          <input size="10" class="campo" name="pesoPac" type="text" value="<?php isset($_GET['id']) ? print($dados->PESOPAC) : print(""); ?>" autocomplete="off" required>
+          <label class="control-label">Peso</label>
+          <i class="fas fa-info-circle" id="icon-info"></i>
+          <span class="help-inline"><?php?></span>
         </div>
       </div>
-      <div class="btn-actions">
-        <div class="form-actions">
 
-          <button type="button" class="btn btn-success" id="btnSalvarPac">Salvar</button>
-          <button type="button" class="btn btn-success" id="btnAtualizarPac">Atualizar</button>
-          <a href="../Telas/ListarPacientes.php">
-          <button type="button" class="btn btn-success" id="btnPesquisarPac">Pesquisar</button></a>
+     </div>
 
+    </div>
+
+    <div class="group-bloco">
+
+   
+    <div class="bloco">
+
+      <div class="form-group">
+
+        <div class="controls">
+          <input size="10" class="campo" name="alturaPac" type="text" value="<?php isset($_GET['id']) ? print($dados->ALTURAPAC) : print(""); ?>" autocomplete="off" required>
+          <label class="control-label">Altura</label>
+          <i class="fas fa-info-circle" id="icon-info"></i>
+          <span class="help-inline"><?php?></span>
         </div>
       </div>
+
+    </div>
+
+    <div class="bloco">
+
+      <div class="form-group">
+
+        <div class="controls">
+          <input size="10" class="campo" name="situacaoPac" type="text" value="<?php isset($_GET['id']) ? print($dados->SITUACAOPAC) : print(""); ?>" autocomplete="off" required>
+          <label class="control-label">Situação</label>
+          <i class="fas fa-info-circle" id="icon-info"></i>
+          <span class="help-inline"><?php?></span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</form>
+</div>
+</div>
+<div class="btn-actions">
+  <div class="form-actions">
+
+    <button type="button" class="btn btn-success" id="btnSalvarPac">Salvar</button>
+    <button type="button" class="btn btn-success" id="btnAtualizarPac">Atualizar</button>
+    <a href="../Telas/ListarPacientes.php">
+      <button type="button" class="btn btn-success" id="btnPesquisarPac">Pesquisar</button></a>
+
     </div>
   </div>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  </body>
+</div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+</body>
 
-  <script src="../js/jquery-3.4.1.min.js"></script>
-  <script src="../bootstrap-4.3.1/js/bootstrap.min.js"></script>
-  <script src="../bootstrap-4.3.1/js/bootstrap.js"></script>
-  <script src="../bootstrap-4.3.1/js/bootstrap.bundle.js"></script>
-  <script src="../bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/jquerymask.js"></script>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../bootstrap-4.3.1/js/bootstrap.min.js"></script>
+<script src="../bootstrap-4.3.1/js/bootstrap.js"></script>
+<script src="../bootstrap-4.3.1/js/bootstrap.bundle.js"></script>
+<script src="../bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquerymask.js"></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
-      var id = "<?php echo $IdAtualizar; ?>"; 
+  var id = "<?php echo $IdAtualizar; ?>"; 
 
-      if(id != 0){
-          $('#btnAtualizarPac').css('visibility','visible');
-          $('#btnSalvarPac').css('visibility','hidden');
-      }else{
-          $('#btnAtualizarPac').css('display','none');
-      }
-
-
-      $('#btnSalvarPac').on('click',function(e){
-
-        var dados = $('.form-horizontal').serialize();
-
-        $.ajax({
-          url: "../Paciente/RegistrarPaciente.php",
-          datatype: 'JSON',
-          type: 'POST',
-          data: dados,
-          success: function(response){
-
-            if(response.status){
-          
-               $('#alert').fadeIn(1000);
-               $('#alert').html('Paciente cadastrado com sucesso!');
-
-                 window.setTimeout(function(){
-                                    $('#alert').fadeOut(900); 
-                               },3000);
-
-                 $('.form-horizontal')[0].reset();
-
-            }else{
-
-               $('#alert').css('background','red');
-               $('#alert').fadeIn(1000);
-               $('#alert').html('Error de Inserção!');
-
-                window.setTimeout(function(){
-                       $('#alert').fadeOut(900); 
-                },3000);
-            }         
-
-          },error: function(error){
-            console.log("Error: "+error.responseText);
-          }
-        });
-
-      });
+  if(id != 0){
+    $('#btnAtualizarPac').css('visibility','visible');
+    $('#btnSalvarPac').css('visibility','hidden');
+  }else{
+    $('#btnAtualizarPac').css('display','none');
+  }
 
 
-      $('#btnAtualizarPac').on('click',function(e){
+  $('#btnSalvarPac').on('click',function(e){
 
-        var dados = $('.form-horizontal').serialize();
+    var dados = $('.form-horizontal').serialize();
 
-        $.ajax({
-          url: "../Paciente/AtualizarPaciente.php",
-          datatype: 'JSON',
-          type: 'POST',
-          data: dados,
-          success: function(response){
+    $.ajax({
+      url: "../Paciente/RegistrarPaciente.php",
+      datatype: 'JSON',
+      type: 'POST',
+      data: dados,
+      success: function(response){
 
-            if(response.status){
+        if(response.status){
 
-               $('#alert').fadeIn(1000);
-               $('#alert').html('Paciente Atualizado com sucesso!');
+         $('#alert').fadeIn(1000);
+         $('#alert').html('Paciente cadastrado com sucesso!');
 
-                 window.setTimeout(function(){
-                      $('#alert').fadeOut(900); 
-                      window.location = "../Telas/ListarPacientes.php";
-                  },3000);
+         window.setTimeout(function(){
+          $('#alert').fadeOut(900); 
+        },3000);
 
-            }else{
+         $('.form-horizontal')[0].reset();
 
-               $('#alert').css('background','red');
-               $('#alert').fadeIn(1000);
-               $('#alert').html('Error de Atualizacao!');
+       }else{
 
-                window.setTimeout(function(){
-                      $('#alert').fadeOut(900); 
-                },3000);
-            }         
+         $('#alert').css('background','red');
+         $('#alert').fadeIn(1000);
+         $('#alert').html('Error de Inserção!');
 
-          },error: function(error){
-            console.log(error);
-          }
-        });
+         window.setTimeout(function(){
+           $('#alert').fadeOut(900); 
+         },3000);
+       }         
 
-      });
+     },error: function(error){
+      console.log("Error: "+error.responseText);
+    }
+  });
 
-
-    // MÁSCARA DOS CAMPOS
-    $('#telefone').mask('(00) 0.0000-0000');
-    $('#cpf').mask('000.000.000-00');
-    $('#dataNasc').mask('00/00/0000');
-    //---------------------------------------
+  });
 
 
-    function verificaCampos(){
+  $('#btnAtualizarPac').on('click',function(e){
 
-      var quantidade = $('.form-horizontal')[0].childElementCount;
+    var dados = $('.form-horizontal').serialize();
 
-      for (var i = 0; i < quantidade; i++) {
+    $.ajax({
+      url: "../Paciente/AtualizarPaciente.php",
+      datatype: 'JSON',
+      type: 'POST',
+      data: dados,
+      success: function(response){
+
+        if(response.status){
+
+         $('#alert').fadeIn(1000);
+         $('#alert').html('Paciente Atualizado com sucesso!');
+
+         window.setTimeout(function(){
+          $('#alert').fadeOut(900); 
+          window.location = "../Telas/ListarPacientes.php";
+        },3000);
+
+       }else{
+
+         $('#alert').css('background','red');
+         $('#alert').fadeIn(1000);
+         $('#alert').html('Error de Atualizacao!');
+
+         window.setTimeout(function(){
+          $('#alert').fadeOut(900); 
+        },3000);
+       }         
+
+     },error: function(error){
+      console.log(error);
+    }
+  });
+
+  });
+
+
+      // MÁSCARA DOS CAMPOS
+      $('#telefone').mask('(00) 0.0000-0000');
+      $('#cpf').mask('000.000.000-00');
+      $('#dataNasc').mask('00/00/0000');
+      //---------------------------------------
+
+
+      function verificaCampos(){
+
+        var quantidade = $('.form-horizontal')[0].childElementCount;
+
+        for (var i = 0; i < quantidade; i++) {
 
          var campo = $('.form-horizontal')[0][i];
 
@@ -464,7 +469,7 @@
           $(info).popover('show');
 
           $(campo).css('border-bottom','1px solid red');
-         }
+        }
       }
     }
 

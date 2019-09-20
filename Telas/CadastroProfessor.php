@@ -138,11 +138,8 @@
               </div>
 
             </div>
-          </div>   
 
-          <div class="group-bloco">
-
-              <div class="bloco">
+            <div class="bloco">
 
               <div class="form-group">
                 
@@ -154,7 +151,12 @@
                 </div>
               </div>
 
-              </div>
+            </div>
+          </div>   
+
+          <div class="group-bloco">
+
+            
               <div class="bloco">
 
 
@@ -182,11 +184,7 @@
               </div>
               </div>
 
-                 </div> 
-
-                <div class="group-bloco">
-                  
-                  <div class="bloco">
+                 <div class="bloco">
                       
                       <div class="form-group">
                         <div class="controls">
@@ -204,6 +202,10 @@
                      </div>
                   </div>  
 
+            </div> 
+
+            <div class="group-bloco">            
+
              <div class="bloco">
           
 
@@ -218,11 +220,7 @@
               </div>
 
              </div> 
-
-          </div>
-          <div class="group-bloco">
-
-              <div class="bloco">
+             <div class="bloco">
 
                 <div class="form-group">
                   <div class="controls">
@@ -234,6 +232,11 @@
                 </div>
 
              </div>
+
+          </div>
+          <div class="group-bloco">
+
+         
              <div class="bloco">
 
                 <div class="form-group">
@@ -260,6 +263,21 @@
                 </div>
 
               </div>
+
+               <div class="bloco">     
+                      <div class="form-group">
+                        <div class="controls">
+                          <select class="campo" name="coordenador" required>
+                              <option value=""></option>
+                              <option value="true">Sim</option>
+                              <option value="false">Não</option>
+                          </select>
+                          <label class="control-label">Coordenador:</label>
+                          <i class="fas fa-info-circle" id="icon-info"></i>
+                          <span class="help-inline"><?php?></span>
+                        </div>
+                     </div>
+              </div>  
 
           </div>
 

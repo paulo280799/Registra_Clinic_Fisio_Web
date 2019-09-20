@@ -1,20 +1,20 @@
 <?php  
-require '../Util/daoGenerico.php';
-include_once '../Anamnese/Anamnese.php';
-require '../Banco/ClassConexao.php';
+require '../Anamnese/Anamnese.php';
+header("Content-type: application/json; charset=utf-8");
+
 
 if (isset($_POST['queixaPrincipal'])) {
 
 	$queixaPrincipal = addslashes($_POST['queixaPrincipal']);
 	$hpp = addslashes($_POST['hpp']);
 	$hda = addslashes($_POST['hda']);
-	$historiaF = addslashes($_POST['historiaF']);
-	$historiaS = addslashes($_POST['historiaS']);
+	$historicoF = addslashes($_POST['historicoFamiliar']);
+	$historicoS = addslashes($_POST['historicoSocial']);
 	$pa = addslashes($_POST['pa']);
 	$fr = addslashes($_POST['fr']);
 	$fc = addslashes($_POST['fc']);
 	$temperatura = addslashes($_POST['temperatura']);
-	$exames = addslashes($_POST['exames']);
+	$examesComp = addslashes($_POST['examesComple']);
 	
 
 	$anamnese = new Anamnese();
@@ -22,24 +22,20 @@ if (isset($_POST['queixaPrincipal'])) {
 	$anamnese->setQueixaPrincipal($queixaPrincipal);
 	$anamnese->setHpp($hpp);
 	$anamnese->setHda($hda);
-	$anamnese->setHistoriaFamiliar($historiaF);
-	$anamnese->setHistoriaSocial($historiaS);
+	$anamnese->setHistoricoFamiliar($historicoF);
+	$anamnese->setHistoricoSocial($historicoS);
 	$anamnese->setPa($pa);
 	$anamnese->setFr($fr);
 	$anamnese->setFc($fc);
 	$anamnese->setTemperatura($temperatura);
-	$anamnese->setExamesComplementares($exames);
+	$anamnese->setExamesComplementares($examesComp);
 
 	$anamnese->setObjeto($anamnese);
 
-
-
 	if($anamnese->inserir($anamnese)){
-
-		echo "<script>alert('SALVO COM SUCESSO !!');window.location = '../Telas/CadastroAnamnese.php';</script>";
-	
+		echo json_encode(array('status' => true));
 	}else{
-		echo "<script>alert('ERRO NA INSERÇÃO DO USUARIO!!')</script>";
+		echo json_encode(array('status' => false));
 	}
 }
 ?>

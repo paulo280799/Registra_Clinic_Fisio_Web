@@ -1,5 +1,5 @@
 <?php
-
+require '../Util/daoGenerico.php';
 /**
  *
  * @author Fernando
@@ -7,21 +7,20 @@
 
 class Anamnese extends daoGenerico{
     
-    private $QueixaPrincipal;
-    private $Hpp;
-    private $Hda;
-    private $HistoriaFamiliar;
-    private $HistoriaSocial;
-    private $Pa;
-    private $Fr;
-    private $Fc;
-    private $Temperatura;
-    private $ExamesComplementares;
+    private $queixaPrincipal;
+    private $hpp;
+    private $hda;
+    private $historicoFamiliar;
+    private $historicoSocial;
+    private $pa;
+    private $fr;
+    private $fc;
+    private $temperatura;
+    private $examesComplementares;
     
     public function __construct(){
-       
         parent::__construct();
-        $this->tabela = "anamnese";
+        $this->tabela = "ANAMNESE";
         
         $this->campopk = "IDANAMNESE";
     }
@@ -29,13 +28,12 @@ class Anamnese extends daoGenerico{
        
     function setObjeto($objeto = null){
          if ($objeto != null){
-            $this->campos = array(
-     
+            $this->campos = array(  
                 "QUEIXAPRINCIPAL" => $objeto->getQueixaPrincipal(),
                 "HPP" => $objeto->getHpp(),
                 "HDA" => $objeto->getHda(),
-                "HISTORIAFAMILIAR" => $objeto->getHistoriaFamiliar(),
-                "HISTORIASOCIAL" => $objeto->getHistoriaSocial(),
+                "HISTORICOFAMILIAR" => $objeto->getHistoricoFamiliar(),
+                "HISTORICOSOCIAL" => $objeto->getHistoricoSocial(),
                 "PA" => $objeto->getPa(),
                 "FR" => $objeto->getFr(),
                 "FC" => $objeto->getFc(),
@@ -48,84 +46,84 @@ class Anamnese extends daoGenerico{
     }
     
     
-   public function getQueixaPrincipal(){
-        return $this->QueixaPrincipal;
+    public function getQueixaPrincipal(){
+        return $this->queixaPrincipal;
     }
 
-    public function setQueixaPrincipal($QueixaPrincipal){
-        $this->QueixaPrincipal = $QueixaPrincipal;
+    public function setQueixaPrincipal($queixaPrinc){
+        $this->queixaPrincipal = $queixaPrinc;
     }
 
     public function getHpp(){
-        return $this->Hpp;
+        return $this->hpp;
     }
 
-    public function setHpp($Hpp){
-        $this->Hpp = $Hpp;
+    public function setHpp($HPP){
+        $this->hpp = $HPP;
     }
 
     public function getHda(){
-        return $this->Hda;
+        return $this->hda;
     }
 
-    public function setHda($Hda){
-        $this->Hda = $Hda;
+    public function setHda($HDA){
+        $this->hda = $HDA;
     }
 
-    public function getHistoriaFamiliar(){
-        return $this->HistoriaFamiliar;
+    public function getHistoricoFamiliar(){
+        return $this->historicoFamiliar;
     }
 
-    public function setHistoriaFamiliar($HistoriaFamiliar){
-        $this->HistoriaFamiliar = $HistoriaFamiliar;
+    public function setHistoricoFamiliar($historicoFamil){
+        $this->historicoFamiliar = $historicoFamil;
     }
 
-    public function getHistoriaSocial(){
-        return $this->HistoriaSocial;
+    public function getHistoricoSocial(){
+        return $this->historicoSocial;
     }
 
-    public function setHistoriaSocial($HistoriaSocial){
-        $this->HistoriaSocial = $HistoriaSocial;
+    public function setHistoricoSocial($historicoSoc){
+        $this->historicoSocial = $historicoSoc;
     }
 
     public function getPa(){
-        return $this->Pa;
+        return $this->pa;
     }
 
-    public function setPa($Pa){
-        $this->Pa = $Pa;
+    public function setPa($PA){
+        $this->pa = $PA;
     }
 
     public function getFr(){
-        return $this->Fr;
+        return $this->fr;
     }
 
-    public function setFr($Fr){
-        $this->Fr = $Fr;
+    public function setFr($FR){
+        $this->fr = $FR;
     }
 
     public function getFc(){
-        return $this->Fc;
+        return $this->fc;
     }
 
-    public function setFc($Fc){
-        $this->Fc = $Fc;
+    public function setFc($FC){
+        $this->fc = $FC;
     }
 
     public function getTemperatura(){
-        return $this->Temperatura;
+        return $this->temperatura;
     }
 
-    public function setTemperatura($Temperatura){
-        $this->Temperatura = $Temperatura;
+    public function setTemperatura($temp){
+        $this->temperatura = $temp;
     }
 
      public function getExamesComplementares(){
-        return $this->ExamesComplementares;
+        return $this->examesComplementares;
     }
 
-    public function setExamesComplementares($ExamesComplementares){
-        $this->ExamesComplementares = $ExamesComplementares;
+    public function setExamesComplementares($examesComp){
+        $this->examesComplementares = $examesComp;
     }
 }
 ?>

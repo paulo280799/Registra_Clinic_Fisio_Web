@@ -10,6 +10,7 @@ require '../Usuario/Usuario.php';
 class Professor extends Usuario {
     
     private $Especializacao;
+    private $coordenador;
     
     public function __construct(){
         parent::__construct();
@@ -36,6 +37,7 @@ class Professor extends Usuario {
                 "TELEFONEPROF" => $objeto->getTelefone(),
                 /*------- PROFESSOR --------*/
                 "ESPECIALIZACAO" => $objeto->getEspecializacao(),
+                "COORDENADOR" => $objeto->getCoordenador(),
                 /*------- USUARIO --------*/
                 "LOGIN" => $objeto->getLogin(),
                 "SENHA" => $objeto->getSenha()
@@ -52,6 +54,15 @@ class Professor extends Usuario {
     
     function getEspecializacao(){
         return $this->Especializacao;
+    }
+    
+
+    function setCoordenador($coord){
+        $this->coordenador = $coord;
+    }
+    
+    function getCoordenador(){
+        return $this->coordenador;
     }
     
     

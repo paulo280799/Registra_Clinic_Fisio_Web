@@ -56,9 +56,9 @@ if(isset($_GET['id'])){
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Especialização</th>
+                            <th scope="col">Queixa</th>
+                            <th scope="col">Temperatura</th>
+                            <th scope="col">Exames</th>
                             <th scope="col">Ação</th>
                         </tr>
                     </thead>
@@ -67,20 +67,20 @@ if(isset($_GET['id'])){
                         require '../Util/daoGenerico.php';
 
                         $dao = new daoGenerico();
-                        $sql = 'SELECT * FROM PROFESSOR ORDER BY IDPROF ASC';
+                        $sql = 'SELECT * FROM ANAMNESE ORDER BY IDANAMNESE ASC';
                         $dados = $dao->getDados($sql,true);
 
                         foreach($dados as $row){
                             echo '<tr>';
-			                echo '<th scope="row">'. $row->IDPROF . '</th>';
-                            echo '<td>'. $row->NOMEPROF . '</td>';
-                            echo '<td>'. $row->TELEFONEPROF . '</td>';
-                            echo '<td>'. $row->ESPECIALIZACAO . '</td>';
+			                echo '<th scope="row">'. $row->IDANAMNESE . '</th>';
+                            echo '<td>'. $row->QUEIXAPRINCIPAL . '</td>';
+                            echo '<td>'. $row->TEMPERATURA . '</td>';
+                            echo '<td>'. $row->EXAMESCOMPLEMENTARES . '</td>';
                             echo '<td width=250>';
                             echo ' ';
-                            echo '<a class="btn btn-success" href="../Telas/CadastroProfessor.php?id='.$row->IDPROF.'">Atualizar</a>';
+                            echo '<a class="btn btn-success" href="../Telas/CadastroAnamnese.php?id='.$row->IDANAMNESE.'">Atualizar</a>';
                             echo ' ';
-                            echo '<a class="btn btn-danger" href="../Telas/ListarProfessor.php?id='.$row->IDPROF.'">Excluir</button>';
+                            echo '<a class="btn btn-danger" href="../Telas/ListarAnamnese.php?id='.$row->IDANAMNESE.'">Excluir</button>';
                             echo '</td>';
                             echo '</tr>';
                         }
@@ -126,14 +126,14 @@ if(isset($_GET['id'])){
 
       $('#btnConfirm').click(function(e){
         $.ajax({
-            url: '../Professor/ExcluirProfessor.php',
+            url: '../Anamnese/ExcluirAnamnese.php',
             type: 'POST',
             datatype: 'JSON',
             data: { id : valor},
             success: function(response){
 
                 if(response.status){
-                   window.location = '../Telas/ListarProfessor.php';   
+                   window.location = '../Telas/ListarAnamnese.php';   
                 }
                 
             },error: function(e){
