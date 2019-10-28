@@ -79,6 +79,11 @@ form{
   padding-bottom: 5px;
 }
 
+input[name='nomePaciente'],input[name='tipoAtend']{
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
 .campo:focus ~ label,
 .campo:valid ~ label{
   position: absolute;

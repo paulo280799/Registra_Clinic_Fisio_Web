@@ -261,15 +261,21 @@
     var camposForm = $($('.form-horizontal')[0]).find("input[class='campo']");
     var camposVazios = false;
 
-      //VERIFICAR CAMPOS VAZIOS
-      camposForm.each(function(indice,elemento){
-        if($(elemento).val() == ""){
-         $(elemento).focus();
-         camposVazios = true;
-       }
-     });  
 
-      if(camposVazios == false){
+    //VERIFICAR CAMPOS VAZIOS
+    camposForm.each(function(indice,elemento){
+         if($(elemento).val() == ""){
+           $(elemento).focus();
+           camposVazios = true;
+           return false;
+         } 
+     });
+
+    console.log(camposForm);   
+
+     console.log(camposVazios);
+
+      if(!camposVazios){
 
         $.ajax({
           url: "../Anamnese/RegistrarAnamnese.php",

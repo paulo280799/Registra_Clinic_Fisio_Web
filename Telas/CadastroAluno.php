@@ -98,8 +98,8 @@ if(isset($_GET['id'])){
 							<div class="controls">
 								<select class="campo" name="sexoAluno" required>
 									<option value=""></option>
-									<option value="Solteiro">Masculino</option>
-									<option value="Casado">Feminino</option>
+									<option value="Masculino">Masculino</option>
+									<option value="Feminino">Feminino</option>
 								</select>
 								<label class="control-label">Sexo:</label>
 								<i class="fas fa-info-circle" id="icon-info"></i>
@@ -314,8 +314,23 @@ if(isset($_GET['id'])){
 			$('#btnSalvarAluno').on('click',function(e){
 
 				var dados = $('.form-horizontal').serialize();
+				var campos = $($('.form-horizontal')[0]).find("*[class='campo']");
+				var vazios = false;
 
-				$.ajax({
+				//VERIFICAR CAMPOS E SELECTS VAZIOS
+			    campos.each(function(indice,elemento){
+			        if($(elemento).val() == ""){
+			           $(elemento).focus();
+			           vazios = true;
+			           return false;
+			        }else{
+			        	vazios = false
+			        }
+			     });
+
+			   if(!vazios){
+
+			   	$.ajax({
 					url: "../Aluno/RegistraAluno.php",
 					datatype: 'JSON',
 					type: 'POST',
@@ -348,6 +363,7 @@ if(isset($_GET['id'])){
 						console.log(error);
 					}
 				});
+			  } 
 
 			});
 

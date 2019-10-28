@@ -191,6 +191,7 @@
 
         var id = "<?php echo $IdAtualizar; ?>"; 
 
+
         if(id != 0){
             $('#btnAtualizarTriagem').css('visibility','visible');
             $('#btnSalvarTriagem').css('visibility','hidden');
@@ -199,7 +200,9 @@
         }
 
 
-        $('#btnSalvarTriagem').on('click',function(e){
+
+
+      $('#btnSalvarTriagem').on('click',function(e){
 
           var dados = $('.form-horizontal').serialize();
          
@@ -242,11 +245,12 @@
         });
 
 
+
         $('#btnAtualizarTriagem').on('click',function(e){
 
           var dados = $('.form-horizontal').serialize();
 
-          $.ajax({
+         /* $.ajax({
             url: "../Paciente/AtualizarPaciente.php",
             datatype: 'JSON',
             type: 'POST',
@@ -277,17 +281,17 @@
             },error: function(error){
               console.log(error);
             }
-          });
-
-        });
+          });*/
+      });
 
 
       // MÁSCARA DOS CAMPOS
       $('#telefone').mask('(00) 0.0000-0000');
       $('#cpf').mask('000.000.000-00');
       $('#dataNasc').mask('00/00/0000');
+      $("input[name='nomePaciente']").mask('');
+      $("input[name='tipoAtend']").mask('');
       //---------------------------------------
-
 
       function verificaCampos(){
 
@@ -309,8 +313,6 @@
         }
       }
 
-
-        
     
 </script>
 <script type="text/javascript">
@@ -326,8 +328,8 @@
 
     $('#searchPacientes').keyup(function(e){
           
-          var valorCampo = $(this).val();
-          var filhos = $('#tabelaPacientes')[0].children;
+        var valorCampo = $(this).val();
+        var filhos = $('#tabelaPacientes')[0].children;
 
         $.ajax({
           url: "../Triagem/ConsultarPaciente.php",

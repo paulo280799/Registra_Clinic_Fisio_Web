@@ -322,6 +322,21 @@
       $('#btnSalvarProf').on('click',function(e){
 
         var dados = $('.form-horizontal').serialize();
+        var campos = $($('.form-horizontal')[0]).find("*[class='campo']");
+        var vazios = false;
+
+        //VERIFICAR CAMPOS E SELECTS VAZIOS
+          campos.each(function(indice,elemento){
+              if($(elemento).val() == ""){
+                 $(elemento).focus();
+                 vazios = true;
+                 return false;
+              }else{
+                vazios = false
+              }
+           });
+
+        if(!vazios){  
 
         $.ajax({
           url: "../Professor/RegistraProfessor.php",
@@ -356,8 +371,9 @@
             console.log(error);
           }
         });
-
-      });
+      }
+    
+    });
 
 
       $('#btnAtualizarProf').on('click',function(e){
