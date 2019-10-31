@@ -5,7 +5,8 @@ body {
 .modal{
     background-color: white; 
     /*background-color: #50c878;*/
-    background: #3cb371;
+     /*background: #3cb371;*/
+    background-image: linear-gradient(-34deg, #3cb371,rgba(0,0,0,0.5));
     opacity: 0.1;
 }
 .modal-body{
@@ -73,7 +74,7 @@ body {
     margin-bottom: 15px;
     background: #fff;
     border: 1px solid #f3f3f3;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0,.4);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0,.4);
     padding: 25px;
 }
 .modal-login .form-group {

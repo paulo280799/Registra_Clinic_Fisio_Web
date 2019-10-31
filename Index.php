@@ -15,8 +15,7 @@
 <!-- Modal HTML -->
 <div id="ModalLogin" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-login">
-           <div class="alert alert-danger" id="alert" role="alert" style="text-align:center;padding:7px;display:none;margin-bottom:-25px;">
-                
+           <div class="alert alert-danger" id="alert" role="alert" style="text-align:center;padding:7px;display:none;margin-bottom:-25px;">  
            </div>  
 		<div class="modal-content">
 			<div class="modal-header">	

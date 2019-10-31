@@ -8,7 +8,7 @@
       <a class="navbar-brand" href="#" id="nome-logo">Clinic Fisio</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu-opcoes">
             <li class="nav-item active"  id="items-li">
-              <a class="nav-link" href="##" id="items-a">Home<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="../Telas/" id="items-a">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active" id="items-li">
               <a class="nav-link" href="##" id="items-a">Cadastro</a>
@@ -17,7 +17,21 @@
                   <li class="sub-menu-li"  id="cadProfessor"><a href="../Telas/CadastroProfessor.php">Professor</a></li>
                   <li class="sub-menu-li"  id="cadFuncionario"><a href="../Telas/CadastroFuncionario.php">Funcionário</a></li>
                   <li class="sub-menu-li"  id="cadAluno"><a href="../Telas/CadastroAluno.php">Aluno</a></li>
-                  <li class="sub-menu-li"  id="cadAnamnese"><a href="../Telas/CadastroAnamnese.php">Anamnese</a></li>
+                  <li class="sub-menu-li"  id="cadAnamnese">
+                    <a  href="../Telas/CadastroAnamnese.php">Anamnese</a>
+                      <ul class="sub-menu-2">
+                          <li class="sub-menu-li-2">
+                              <a href="../Telas/AnamneseCardiorrespiratoria.php">
+                              <i class="fas fa-chevron-circle-right next"></i>Cardiorrespiratória
+                              </a>
+                          </li>
+                          <li class="sub-menu-li-2">
+                              <a href="">
+                              <i class="fas fa-chevron-circle-right next"></i>Dermatofuncional
+                              </a>
+                          </li>
+                      </ul>
+                  </li>
                   <li class="sub-menu-li"  id="cadTriagem"><a href="../Telas/CadastroTriagem.php">Triagem</a></li>
                 </ul>
             </li>
